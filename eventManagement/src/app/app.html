@@ -1,0 +1,28 @@
+<app-header [navItems]="navItems">
+  <div headerLeft class="flex items-center gap-4">
+    <div class="dropdown dropdown-bottom dropdown-start">
+      <div tabindex="0" role="button" class="cursor-pointer">
+        <img src="assets/imgs/arrow.svg" alt="arrow" class="w-4 h-4" />
+      </div>
+      <ul
+        tabindex="0"
+        class="dropdown-content menu bg-base-100 rounded-box z-[1] mt-2 w-40 p-2 shadow"
+      >
+        <li><a [class]="TypographyStyle.TITLE4">تسجيل الخروج</a></li>
+      </ul>
+    </div>
+    <div class="flex items-center gap-2 whitespace-nowrap">
+      <app-text [text]="'مرحباً بك'" [style]="TypographyStyle.TITLE3"></app-text>
+
+      <img src="assets/imgs/user.svg" alt="profile" class="w-5 h-5 object-contain" />
+    </div>
+    <div class="h-5 w-px bg-base-300"></div>
+    <div class="flex items-center gap-2 whitespace-nowrap">
+      <img src="assets/imgs/language.svg" alt="language" class="w-5 h-5 object-contain" />
+      <app-text [text]="'En'" [style]="TypographyStyle.TITLE3"></app-text>
+    </div>
+  </div>
+  <div headerRight>
+    <img src="assets/imgs/logo.svg" alt="logo" class="h-10 md:h-12 w-auto object-contain" />
+  </div>
+</app-header>
