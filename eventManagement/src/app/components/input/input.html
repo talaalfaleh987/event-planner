@@ -1,0 +1,32 @@
+<div class="w-full flex gap-2" [class.flex-col]="!isCheckbox()">
+  @if (!isCheckbox() && label()) {
+    <label class="block mb-2 font-semibold" [class.text-error]="hasError">
+      {{ label() }}
+    </label>
+  }
+  <input
+    [type]="inputType()"
+    [placeholder]="placeholder()"
+    [formControl]="control()"
+    [class]="isCheckbox() ? 'checkbox' : 'w-full rounded-md border-2 px-4 py-3 outline-none'"
+    [class.border-error]="hasError"
+  />
+  @if (isCheckbox()) {
+    <div class="flex items-center gap-2">
+      <span class="text-sm" [class.text-error]="hasError">
+        {{ label() || placeholder() }}
+      </span>
+    </div>
+  }
+  <div class="min-h-[20px]">
+    @if (hasError) {
+      @for (error of errors(); track $index) {
+        @if (hasErrorByType(error.types)) {
+          <span class="text-sm text-error block">
+            {{ error.message }}
+          </span>
+        }
+      }
+    }
+  </div>
+</div>
