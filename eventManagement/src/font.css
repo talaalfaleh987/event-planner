@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Neo Sans Light';
+  src: url('assets/fonts/NeoSansArabicLight.ttf');
+}
+
+@font-face {
+  font-family: 'Neo Sans Regular';
+  src: url('assets/fonts/NeoSansArabicRegular.ttf');
+}
+
+@font-face {
+  font-family: 'Neo Sans Medium';
+  src: url('assets/fonts/NeoSansArabicMedium.ttf');
+}
+
+@font-face {
+  font-family: 'Neo Sans Bold';
+  src: url('assets/fonts/NeoSansArabicBold.ttf');
+}
+
+@font-face {
+  font-family: 'Neo Sans Black';
+  src: url('assets/fonts/NeoSansArabicBlack.ttf');
+}

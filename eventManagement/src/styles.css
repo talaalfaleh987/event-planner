@@ -1,3 +1,31 @@
+@import 'font.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-neo-regular;
+  }
+}
+@layer utilities {
+  .font-neo-light {
+    font-family: 'Neo Sans Light', sans-serif;
+  }
+
+  .font-neo-regular {
+    font-family: 'Neo Sans Regular', sans-serif;
+  }
+
+  .font-neo-medium {
+    font-family: 'Neo Sans Medium', sans-serif;
+  }
+
+  .font-neo-bold {
+    font-family: 'Neo Sans Bold', sans-serif;
+  }
+  .font-neo-black {
+    font-family: 'Neo Sans Black', sans-serif;
+  }
+}
