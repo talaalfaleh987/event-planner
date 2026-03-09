@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'Neo Sans Light';
+  src: url('assets/fonts/NeoSansProLight.OTF');
+}
+
+@font-face {
+  font-family: 'Neo Sans Regular';
+  src: url('assets/fonts/NeoSansProRegular.OTF');
+}
+
+@font-face {
+  font-family: 'Neo Sans Medium';
+  src: url('assets/fonts/NeoSansProMedium.OTF');
+}
+
+@font-face {
+  font-family: 'Neo Sans Bold';
+  src: url('assets/fonts/NeoSansProBold.OTF');
+}
