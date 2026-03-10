@@ -1,7 +1,6 @@
-<button
-  (click)="toggleLanguage()"
-  class="flex items-center gap-1 text-primary text-lg cursor-pointer">
-  {{ 'SWITCH_LANGUGE' | translate }}
-  <img src="assets/imgs/language.svg" class="w-6 h-6" alt="language" />
-</button>
-
+<app-custom-button 
+(click)="toggleLanguage()" 
+[style]="ButtonStyle.ICON">
+    {{ 'SWITCH_LANGUGE' | translate }}
+    <img src="assets/imgs/language.svg" class="w-6 h-6" alt="language" />
+</app-custom-button>
