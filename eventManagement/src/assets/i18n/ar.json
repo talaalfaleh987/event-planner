@@ -4,5 +4,10 @@
   "LOG_OUT": "تسجيل الخروج",
   "HOME": "الرئيسية",
   "EVENTS_MANAGEMENT": "إدارة الفعاليات",
-  "POWERED_BY": "تشغيل بواسطة"
+  "POWERED_BY": "تشغيل بواسطة",
+    "WELCOME_MESSAGE": "مرحبًا بك في منصة ترويح",
+    "LOGIN": "تسجيل الدخول",
+    "USERNAME": "اسم المستخدم",
+    "PASSWORD": "كلمة المرور",
+    "INVALID_CREDENTIALS": "بيانات الدخول مطلوبة"
 }

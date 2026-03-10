@@ -1,22 +1,22 @@
-<div class="w-full flex gap-2" [class.flex-col]="!isCheckbox()">
+<div class="w-full flex flex-col gap-1 relative" [class.flex-col]="!isCheckbox()">
+  <input [type]="inputType()" [placeholder]="placeholder()" [formControl]="control()"
+    [class.border-red-error]="hasError"
+    [class]="isCheckbox() ? 'checkbox' : 'peer block w-full border-b-2 border-primary-normal px-3 pt-8 pb-1 font-neo-medium focus:outline-none'"/>
   @if (!isCheckbox() && label()) {
-    <label class="block mb-2 font-semibold" [class.text-error]="hasError">
-      {{ label() }}
-    </label>
+  <label for="title" class="absolute top-2.5 text-primary font-neo-medium transition-all
+           peer-placeholder-shown:top-5
+           peer-placeholder-shown:text-base
+           peer-focus:top-2.5" 
+  [class.text-red-error]=" hasError">
+    {{ label() }}
+  </label>
   }
-  <input
-    [type]="inputType()"
-    [placeholder]="placeholder()"
-    [formControl]="control()"
-    [class]="isCheckbox() ? 'checkbox' : 'w-full rounded-md border-2 px-4 py-3 outline-none'"
-    [class.border-error]="hasError"
-  />
   @if (isCheckbox()) {
-    <div class="flex items-center gap-2">
-      <span class="text-sm" [class.text-error]="hasError">
-        {{ label() || placeholder() }}
-      </span>
-    </div>
+  <div class="flex items-center gap-1">
+    <span class="text-sm" [class.text-red-error]="hasError">
+      {{ label() || placeholder() }}
+    </span>
+  </div>
   }
   <div class="min-h-[20px]">
     @if (hasError) {
