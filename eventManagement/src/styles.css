@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+html[lang='ar'] body {
+  direction: rtl;
+}
+html[lang='en'] body {
+  direction: ltr;
+}
+
 @layer base {
   body {
     @apply font-neo-regular;
