@@ -1,13 +1,21 @@
-<header class="h-[74px] bg-header-bg flex items-center justify-between px-4 sm:px-6 shadow-md">
-  <div class="flex items-center gap-3">
-    <ng-content select="[logo]"></ng-content>
-  </div>
-  <div class="flex items-center gap-3 text-white">
-    <span class="w-8 h-8 rounded-full flex items-center justify-center">
-      <ng-content select="[icon]"></ng-content>
-    </span>
-    <span class="text-sm sm:text-base font-normal whitespace-nowrap">
-      <ng-content select="[userName]"></ng-content>
-    </span>
+<header class="w-full bg-white border-b border-base-300 shadow-md px-4 sm:px-6">
+  <div class="flex items-center justify-between gap-4 py-3">
+    <div class="flex items-center gap-4 md:gap-6 min-w-0">
+      <ng-content select="[logoSlot]"></ng-content>
+      <nav class="min-w-0">
+        <ul class="menu menu-horizontal px-0 gap-1 md:gap-2">
+          @for (item of navItems(); track item.route) {
+            <li>
+              <a [routerLink]="item.route" class="font-neo-medium text-sm md:text-lg px-2 md:px-3">
+                {{ item.label | translate }}
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
+    </div>
+    <div class="relative overflow-visible">
+      <ng-content select="[userSlot]"></ng-content>
+    </div>
   </div>
 </header>
