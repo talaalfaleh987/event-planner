@@ -1,4 +1,7 @@
 {
-  "WELCOME": "مرحبا بك",
-  "SWITCH_LANGUGE": "En"
+  "WELCOME": "مرحبًا بك",
+  "SWITCH_LANGUGE": "En",
+  "LOG_OUT": "تسجيل الخروج",
+  "HOME": "الرئيسية",
+  "EVENTS_MANAGEMENT": "إدارة الفعاليات"
 }

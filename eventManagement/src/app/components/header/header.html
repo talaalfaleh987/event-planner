@@ -1,34 +1,21 @@
-<header class="bg-base-100 border-b border-base-300 shadow-sm px-4 sm:px-6">
-  <div class="py-3 md:py-0 md:min-h-[74px]">
-    <div class="flex items-center justify-between gap-4">
-      <div class="flex items-center gap-4">
-        <ng-content select="[headerLeft]"></ng-content>
-      </div>
-      <div class="flex items-center gap-2">
-        <nav class="hidden md:block">
-          <ul class="menu menu-horizontal px-0">
-            @for (item of navItems(); track item.route) {
-              <li>
-                <a [routerLink]="item.route" [class]="TypographyStyle.TITLE2">
-                  {{ item.label }}
-                </a>
-              </li>
-            }
-          </ul>
-        </nav>
-        <ng-content select="[headerRight]"></ng-content>
-      </div>
+<header class="w-full bg-base-100 border-b border-base-300 shadow-sm px-4 sm:px-6 overflow-visible">
+  <div class="flex items-center justify-between gap-4 py-3 overflow-visible">
+    <div class="flex items-center gap-4 md:gap-6 min-w-0">
+      <ng-content select="[logoSlot]"></ng-content>
+      <nav class="min-w-0">
+        <ul class="menu menu-horizontal px-0 gap-1 md:gap-2">
+          @for (item of navItems(); track item.route) {
+            <li>
+              <a [routerLink]="item.route" class="font-neo-medium text-sm md:text-lg px-2 md:px-3">
+                {{ item.label | translate }}
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
     </div>
-    <nav class="mt-2 md:hidden">
-      <ul class="menu menu-horizontal w-full px-0 justify-end">
-        @for (item of navItems(); track item.route) {
-          <li>
-            <a [routerLink]="item.route" [class]="TypographyStyle.TITLE2">
-              {{ item.label }}
-            </a>
-          </li>
-        }
-      </ul>
-    </nav>
+    <div class="relative overflow-visible">
+      <ng-content select="[userSlot]"></ng-content>
+    </div>
   </div>
 </header>

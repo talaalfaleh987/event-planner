@@ -12,5 +12,5 @@ export enum ButtonStyle {
     disabled:cursor-not-allowed
     disabled:hover:brightness-100
   `,
-  ICON = `flex items-center gap-1 text-primary text-lg cursor-pointer font-neo-medium`,
+  ICON = `flex items-center gap-1 text-primary text-lg cursor-pointer font-neo-medium text-sm`,
 }
