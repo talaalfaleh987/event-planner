@@ -1,0 +1,36 @@
+<app-header class="w-full" [navItems]="navItems">
+  <div userSlot class="flex items-center shrink-0 whitespace-nowrap gap-2 sm:gap-3">
+    <div class="flex items-center gap-2 whitespace-nowrap">
+      <img src="assets/imgs/user.svg" alt="profile" class="w-5 h-5 object-contain shrink-0" />
+      <span class="hidden sm:inline font-neo-medium text-base">
+        {{ 'WELCOME' | translate }}
+      </span>
+    </div>
+    <div
+      class="dropdown dropdown-bottom"
+      [class.dropdown-right]="currentLang === Language.ARABIC"
+      [class.dropdown-left]="currentLang === Language.ENGLISH"
+    >
+      <div tabindex="0" role="button" class="cursor-pointer flex items-center">
+        <img src="assets/imgs/arrow.svg" alt="arrow" class="w-4 h-4" />
+      </div>
+      <ul
+        tabindex="0"
+        class="dropdown-content menu bg-base-100 rounded-box z-[1] mt-2 w-40 p-2 shadow"
+      >
+        <li>
+          <app-translate-button></app-translate-button>
+        </li>
+        <li>
+          <a class="font-neo-medium text-sm">
+            {{ 'LOG_OUT' | translate }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div logoSlot>
+    <img src="assets/imgs/logo.svg" alt="logo" class="h-14" />
+  </div>
+</app-header>
+<router-outlet></router-outlet>
