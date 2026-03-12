@@ -6,10 +6,11 @@ import { TranslateButton } from '../../components/translate-button/translate-but
 import { RouterOutlet } from '@angular/router';
 import { RouterPath } from '../../core/router-paths';
 import { Language } from '../../enums/language.enum';
+import { Footer } from '../../components/footer/footer';
 
 @Component({
   selector: 'app-layout',
-  imports: [Header, TranslateButton, TranslatePipe, RouterOutlet],
+  imports: [Header, TranslateButton, TranslatePipe, RouterOutlet, Footer],
   templateUrl: './layout.html',
 })
 export class Layout {

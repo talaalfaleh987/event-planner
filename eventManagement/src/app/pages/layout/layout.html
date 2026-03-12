@@ -33,4 +33,11 @@
     <img src="assets/imgs/logo.svg" alt="logo" class="h-14" />
   </div>
 </app-header>
-<router-outlet></router-outlet>
+<main class="flex-1">
+  <router-outlet></router-outlet>
+</main>
+<app-footer>
+  <span year class="font-neo-regular text-sm"> 2024</span>
+  <img logo src="assets/imgs/tahakom.svg" alt="Tahakom" class="h-8 w-auto" />
+  <span sponsoredMessage class="font-neo-regular">{{ 'POWERED_BY' | translate }}</span>
+</app-footer>
