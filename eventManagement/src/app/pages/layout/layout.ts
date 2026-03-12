@@ -3,8 +3,9 @@ import { NavItem } from '../../models/nav-item';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Header } from '../../components/header/header';
 import { TranslateButton } from '../../components/translate-button/translate-button';
-import { Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { RouterPath } from '../../core/router-paths';
+import { Language } from '../../enums/language.enum';
 
 @Component({
   selector: 'app-layout',
@@ -13,6 +14,7 @@ import { RouterPath } from '../../core/router-paths';
 })
 export class Layout {
   private readonly translate = inject(TranslateService);
+  readonly Language = Language;
 
   navItems: NavItem[] = [
     { label: 'HOME', route: RouterPath.Pages.HOME },
