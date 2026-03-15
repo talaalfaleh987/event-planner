@@ -4,5 +4,10 @@
   "LOG_OUT": "Log Out",
   "HOME": "Home",
   "EVENTS_MANAGEMENT": "Events Management",
-  "POWERED_BY": "Powered By"
+  "POWERED_BY": "Powered By",
+    "WELCOME_MESSAGE": "Welcome to the Tarwih Platform",
+    "LOGIN": "Login",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "INVALID_CREDENTIALS": "Login credentials required"
 }

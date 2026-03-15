@@ -1,4 +1,5 @@
 import { Component, input } from '@angular/core';
+import { CardStyle } from '../../enums/card.enum';
 
 @Component({
   selector: 'app-card',
@@ -7,4 +8,5 @@ import { Component, input } from '@angular/core';
 })
 export class Card {
   hasBorder = input<boolean>(true);
+  style = input<CardStyle>(CardStyle.LOGIN);
 }
