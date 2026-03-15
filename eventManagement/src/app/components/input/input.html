@@ -1,8 +1,7 @@
-<div class="w-full flex flex-col gap-1 relative" [class.flex-col]="!isCheckbox()">
-  <input [type]="inputType()" [placeholder]="placeholder()" [formControl]="control()"
+<div class="w-full flex flex-col gap-1 relative">
+  <input [type]="inputType()" [formControl]="control()"
     [class.border-red-error]="hasError"
-    [class]="isCheckbox() ? 'checkbox' : 'peer block w-full border-b-2 border-primary-normal px-3 pt-8 pb-1 font-neo-medium focus:outline-none'"/>
-  @if (!isCheckbox() && label()) {
+    class="peer block w-full border-b-2 border-primary-normal px-3 pt-8 pb-1 font-neo-medium focus:outline-none"/>
   <label for="title" class="absolute top-2.5 text-primary font-neo-medium transition-all
            peer-placeholder-shown:top-5
            peer-placeholder-shown:text-base
@@ -10,19 +9,11 @@
   [class.text-red-error]=" hasError">
     {{ label() }}
   </label>
-  }
-  @if (isCheckbox()) {
-  <div class="flex items-center gap-1">
-    <span class="text-sm" [class.text-red-error]="hasError">
-      {{ label() || placeholder() }}
-    </span>
-  </div>
-  }
-  <div class="min-h-[20px]">
+  <div class="min-h-6">
     @if (hasError) {
       @for (error of errors(); track $index) {
         @if (hasErrorByType(error.types)) {
-          <span class="text-sm text-error block">
+          <span class="absolute font-neo-medium text-red-error block">
             {{ error.message }}
           </span>
         }
