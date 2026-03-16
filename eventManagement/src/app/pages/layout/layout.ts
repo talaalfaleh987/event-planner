@@ -7,7 +7,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import { RouterPath } from '../../core/router-paths';
 import { Language } from '../../enums/language.enum';
 import { Footer } from '../../components/footer/footer';
-import { AuthService } from '../../service/auth-service';
+import { AuthService } from '../../service/auth/auth-service';
 
 @Component({
   selector: 'app-layout',

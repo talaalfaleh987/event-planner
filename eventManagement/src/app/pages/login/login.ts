@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 import { REGEX, Constants } from '../../core/constants';
 import { RouterPath } from '../../core/router-paths';
 import { InputErrorMessage } from '../../models/input-error-message';
-import { AuthService } from '../../service/auth-service';
+import { AuthService } from '../../service/auth/auth-service';
 
 @Component({
   selector: 'app-login',
