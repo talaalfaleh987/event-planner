@@ -1,18 +1,20 @@
 {
-  "WELCOME": "مرحبًا بك",
-  "SWITCH_LANGUGE": "En",
-  "LOG_OUT": "تسجيل الخروج",
-  "HOME": "الرئيسية",
-  "EVENTS_MANAGEMENT": "إدارة الفعاليات",
-  "POWERED_BY": "تشغيل بواسطة",
-  "WELCOME_MESSAGE": "مرحبًا بك في منصة ترويح",
-  "LOGIN": "تسجيل الدخول",
-  "USERNAME": "اسم المستخدم",
-  "PASSWORD": "كلمة المرور",
-  "INVALID_CREDENTIALS": "بيانات الدخول مطلوبة",
-  "USERNAME_REQUIRED": "اسم المستخدم مطلوب",
-  "PASSWORD_REQUIRED": "كلمة المرور مطلوبة",
-  "USERNAME_PATTERN": "يجب أن يحتوي اسم المستخدم على أرقام",
-  "PASSWORD_MIN_LENGTH": "كلمة المرور لا تقل عن 8 أحرف",
-  "USERNAME_MAX_LENGTH": "يجب ألا يتجاوز اسم المستخدم 10 أحرف"
+  "AUTH": {
+    "WELCOME": "مرحبًا بك",
+    "WELCOME_MESSAGE": "مرحبًا بك في منصة ترويح",
+    "LOGIN": "تسجيل الدخول",
+    "LOG_OUT": "تسجيل الخروج",
+    "USERNAME": "اسم المستخدم",
+    "PASSWORD": "كلمة المرور"
+  },
+  "ERRORS": {
+    "INVALID_CREDENTIALS": "بيانات الدخول مطلوبة",
+    "USERNAME_REQUIRED": "اسم المستخدم مطلوب",
+    "USERNAME_PATTERN": "يجب أن يحتوي اسم المستخدم على أرقام",
+    "PASSWORD_REQUIRED": "كلمة المرور مطلوبة",
+    "PASSWORD_MIN_LENGTH": "كلمة المرور لا تقل عن 8 أحرف"
+  },
+  "NAVIGATION": { "HOME": "الرئيسية", "EVENTS_MANAGEMENT": "إدارة الفعاليات" },
+  "ACTIONS": { "SWITCH_LANGUAGE": "En" },
+  "LAYOUT": { "POWERED_BY": "تشغيل بواسطة" }
 }

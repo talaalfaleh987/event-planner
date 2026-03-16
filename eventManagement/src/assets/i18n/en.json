@@ -1,18 +1,27 @@
 {
-  "WELCOME": "Welcome",
-  "SWITCH_LANGUGE": "العربية",
-  "LOG_OUT": "Log Out",
-  "HOME": "Home",
-  "EVENTS_MANAGEMENT": "Events Management",
-  "POWERED_BY": "Powered By",
-  "WELCOME_MESSAGE": "Welcome to the Tarwih Platform",
-  "LOGIN": "Login",
-  "USERNAME": "Username",
-  "PASSWORD": "Password",
-  "INVALID_CREDENTIALS": "Login credentials required",
-  "USERNAME_REQUIRED": "Username is required",
-  "PASSWORD_REQUIRED": "Password is required",
-  "USERNAME_PATTERN": "Username must contain numbers",
-  "PASSWORD_MIN_LENGTH": "Password at least 8 characters",
-  "USERNAME_MAX_LENGTH": "Username must not exceed 10 characters"
+  "AUTH": {
+    "WELCOME": "Welcome",
+    "WELCOME_MESSAGE": "Welcome to the Tarwih Platform",
+    "LOGIN": "Login",
+    "LOG_OUT": "Log Out",
+    "USERNAME": "Username",
+    "PASSWORD": "Password"
+  },
+  "ERRORS": {
+    "INVALID_CREDENTIALS": "Login credentials required",
+    "USERNAME_REQUIRED": "Username is required",
+    "USERNAME_PATTERN": "Username must contain numbers",
+    "PASSWORD_REQUIRED": "Password is required",
+    "PASSWORD_MIN_LENGTH": "Password must be at least 8 characters"
+  },
+  "NAVIGATION": {
+    "HOME": "Home",
+    "EVENTS_MANAGEMENT": "Events Management"
+  },
+  "ACTIONS": {
+    "SWITCH_LANGUAGE": "العربية"
+  },
+  "LAYOUT": {
+    "POWERED_BY": "Powered By"
+  }
 }

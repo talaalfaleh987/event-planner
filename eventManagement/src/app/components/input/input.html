@@ -2,6 +2,7 @@
   <input
     [type]="inputType()"
     [formControl]="control()"
+    [attr.maxlength]="maxLength()"
     placeholder=" "
     [class.border-red-error]="hasError"
     class="peer block w-full border-b-2 border-primary-normal px-3 pt-8 pb-1 font-neo-medium focus:outline-none"

@@ -11,27 +11,28 @@
         <section id="form-header" class="w-full max-w-md">
           <div class="text-center mb-4">
             <h1 class="text-1xl md:text-2xl font-neo-medium">
-              {{ 'WELCOME_MESSAGE' | translate }}
+              {{ 'AUTH.WELCOME_MESSAGE' | translate }}
             </h1>
           </div>
           <div body>
             <form [formGroup]="userForm" class="flex flex-col w-full" (ngSubmit)="onSubmit()">
               <div class="min-h-9 m-2">
                 @if (submitted() && userForm.invalid) {
-                  <app-message [textMessage]="'INVALID_CREDENTIALS' | translate">
+                  <app-message [textMessage]="'ERRORS.INVALID_CREDENTIALS' | translate">
                     <img src="assets/imgs/error.svg" alt="error" class="w-6 h-6 mx-2" />
                   </app-message>
                 }
               </div>
               <app-input
-                [label]="'USERNAME' | translate"
+                [label]="'AUTH.USERNAME' | translate"
                 [control]="userForm.controls.username"
+                [maxLength]="10"
                 [errors]="usernameErrors"
                 [inputType]="InputType.TEXT"
               >
               </app-input>
               <app-input
-                [label]="'PASSWORD' | translate"
+                [label]="'AUTH.PASSWORD' | translate"
                 [control]="userForm.controls.password"
                 [errors]="passwordErrors"
                 [inputType]="InputType.PASSWORD"
@@ -39,7 +40,7 @@
               </app-input>
               <div class="mt-4">
                 <app-custom-button [buttonType]="ButtonType.SUBMIT">
-                  {{ 'LOGIN' | translate }}
+                  {{ 'AUTH.LOGIN' | translate }}
                 </app-custom-button>
               </div>
             </form>

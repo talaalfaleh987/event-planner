@@ -39,11 +39,7 @@ export class Login {
 
   userForm = new FormGroup({
     username: new FormControl('', {
-      validators: [
-        Validators.required,
-        Validators.pattern(REGEX.NUMBERS),
-        Validators.maxLength(Constants.USERNAME_MAX_LENGTH),
-      ],
+      validators: [Validators.required, Validators.pattern(REGEX.NUMBERS)],
     }),
     password: new FormControl('', {
       validators: [Validators.required, Validators.minLength(Constants.PASSWORD_MIN_LENGTH)],
@@ -51,14 +47,13 @@ export class Login {
   });
 
   usernameErrors: InputErrorMessage[] = [
-    { message: 'USERNAME_REQUIRED', types: [ValidatorType.required] },
-    { message: 'USERNAME_PATTERN', types: [ValidatorType.pattern] },
-    { message: 'USERNAME_MAX_LENGTH', types: [ValidatorType.maxlength] },
+    { message: 'ERRORS.USERNAME_REQUIRED', types: [ValidatorType.required] },
+    { message: 'ERRORS.USERNAME_PATTERN', types: [ValidatorType.pattern] },
   ];
 
   passwordErrors: InputErrorMessage[] = [
-    { message: 'PASSWORD_REQUIRED', types: [ValidatorType.required] },
-    { message: 'PASSWORD_MIN_LENGTH', types: [ValidatorType.minlength] },
+    { message: 'ERRORS.PASSWORD_REQUIRED', types: [ValidatorType.required] },
+    { message: 'ERRORS.PASSWORD_MIN_LENGTH', types: [ValidatorType.minlength] },
   ];
 
   onSubmit(): void {

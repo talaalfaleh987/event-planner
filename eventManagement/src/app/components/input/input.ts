@@ -14,6 +14,7 @@ export class CustomInput {
   inputType = input<InputType>(InputType.TEXT);
   label = input<string>('');
   errors = input<InputErrorMessage[]>([]);
+  maxLength = input<number>();
 
   get hasError(): boolean {
     const control = this.control();

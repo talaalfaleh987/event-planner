@@ -21,8 +21,8 @@ export class Layout {
   readonly Language = Language;
 
   navItems: NavItem[] = [
-    { label: 'HOME', route: RouterPath.Pages.HOME },
-    { label: 'EVENTS_MANAGEMENT', route: RouterPath.Pages.EVENTS_MANAGEMENT },
+    { label: 'NAVIGATION.HOME', route: RouterPath.Pages.HOME },
+    { label: 'NAVIGATION.EVENTS_MANAGEMENT', route: RouterPath.Pages.EVENTS_MANAGEMENT },
   ];
 
   protected get currentLang(): string {
