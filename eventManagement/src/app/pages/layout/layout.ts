@@ -3,10 +3,11 @@ import { NavItem } from '../../models/nav-item';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Header } from '../../components/header/header';
 import { TranslateButton } from '../../components/translate-button/translate-button';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { RouterPath } from '../../core/router-paths';
 import { Language } from '../../enums/language.enum';
 import { Footer } from '../../components/footer/footer';
+import { AuthService } from '../../service/auth-service';
 
 @Component({
   selector: 'app-layout',
@@ -15,6 +16,8 @@ import { Footer } from '../../components/footer/footer';
 })
 export class Layout {
   private readonly translate = inject(TranslateService);
+  private readonly router = inject(Router);
+  private readonly authService = inject(AuthService);
   readonly Language = Language;
 
   navItems: NavItem[] = [
@@ -24,5 +27,10 @@ export class Layout {
 
   protected get currentLang(): string {
     return this.translate.getCurrentLang();
+  }
+
+  logout() {
+    this.authService.logout();
+    void this.router.navigate([RouterPath.Pages.LOGIN], { replaceUrl: true });
   }
 }

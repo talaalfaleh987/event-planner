@@ -12,16 +12,26 @@ import { Router } from '@angular/router';
 import { REGEX, Constants } from '../../core/constants';
 import { RouterPath } from '../../core/router-paths';
 import { InputErrorMessage } from '../../models/input-error-message';
+import { AuthService } from '../../service/auth-service';
 
 @Component({
   selector: 'app-login',
-  imports: [TranslatePipe, CustomButton, Card, CustomInput, ReactiveFormsModule, TranslateButton, Message],
+  imports: [
+    TranslatePipe,
+    CustomButton,
+    Card,
+    CustomInput,
+    ReactiveFormsModule,
+    TranslateButton,
+    Message,
+  ],
   templateUrl: './login.html',
 })
 export class Login {
   submitted = signal(false);
 
   router = inject(Router);
+  private readonly authService = inject(AuthService);
 
   readonly InputType = InputType;
   readonly ButtonType = ButtonType;
@@ -29,7 +39,11 @@ export class Login {
 
   userForm = new FormGroup({
     username: new FormControl('', {
-      validators: [Validators.required, Validators.pattern(REGEX.NUMBERS)],
+      validators: [
+        Validators.required,
+        Validators.pattern(REGEX.NUMBERS),
+        Validators.maxLength(Constants.USERNAME_MAX_LENGTH),
+      ],
     }),
     password: new FormControl('', {
       validators: [Validators.required, Validators.minLength(Constants.PASSWORD_MIN_LENGTH)],
@@ -37,32 +51,22 @@ export class Login {
   });
 
   usernameErrors: InputErrorMessage[] = [
-    { message: 'Username is required', types: [ValidatorType.required] },
-    { message: 'Username must contain numbers', types: [ValidatorType.pattern] },
+    { message: 'USERNAME_REQUIRED', types: [ValidatorType.required] },
+    { message: 'USERNAME_PATTERN', types: [ValidatorType.pattern] },
+    { message: 'USERNAME_MAX_LENGTH', types: [ValidatorType.maxlength] },
   ];
 
   passwordErrors: InputErrorMessage[] = [
-    { message: 'Password is required', types: [ValidatorType.required] },
-    { message: 'Password at least 8 characters', types: [ValidatorType.minlength] },
+    { message: 'PASSWORD_REQUIRED', types: [ValidatorType.required] },
+    { message: 'PASSWORD_MIN_LENGTH', types: [ValidatorType.minlength] },
   ];
 
   onSubmit(): void {
     this.submitted.set(true);
     this.userForm.markAllAsTouched();
     if (this.userForm.invalid) return;
-
-    sessionStorage.setItem('isLoggedIn', 'true');
-    sessionStorage.setItem('username', this.userForm.value.username ?? '');
-
+    const username = this.userForm.value.username ?? '';
+    this.authService.login(username);
     void this.router.navigateByUrl(RouterPath.Pages.HOME);
-
   }
-  get usernameControl(): FormControl {
-    return this.userForm.get('username') as FormControl;
-  }
-
-  get passwordControl(): FormControl {
-    return this.userForm.get('password') as FormControl;
-  }
-
 }
