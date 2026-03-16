@@ -1,0 +1,41 @@
+<div class="min-h-screen px-8 py-16 md:px-20 md:py-16 bg-main-gradient">
+    <app-translate-button [style]="ButtonStyle.WHITE_ICON" />
+    <app-card [hasBorder]="false">
+        <div class="flex flex-col md:flex-row max-w-5xl mx-auto gap-20 justify-center items-center min-w-min">
+            <div class="flex flex-1 w-full">
+                <img src="assets/imgs/text-logo.svg" alt="logo" class="w-full" />
+            </div>
+            <div class="flex flex-col w-full m-12 md:w-2/5 md:m-16 items-end min-w-46">
+                <section id="form-header" class="w-full max-w-md">
+                    <div class="text-center mb-4">
+                        <h1 class="text-1xl md:text-2xl font-neo-medium">
+                            {{ 'WELCOME_MESSAGE' | translate }}
+                        </h1>
+                    </div>
+                    <div body>
+                        <form [formGroup]="userForm" class="flex flex-col w-full" (ngSubmit)="onSubmit()">
+                            <div class="min-h-9 m-2">
+                                @if (submitted() && userForm.invalid) {
+                                <app-message [textMessage]="'INVALID_CREDENTIALS' | translate">
+                                    <img src="assets/imgs/error.svg" alt="error" class="w-6 h-6 mx-2" />
+                                </app-message>
+                                }
+                            </div>
+                            <app-input [label]="'USERNAME' | translate" [control]="usernameControl"
+                                [errors]="usernameErrors" [inputType]="InputType.TEXT">
+                            </app-input>
+                            <app-input [label]="'PASSWORD' | translate" [control]="passwordControl"
+                                [errors]="passwordErrors" [inputType]="InputType.PASSWORD">
+                            </app-input>
+                            <div class="mt-4">
+                                <app-custom-button [buttonType]="ButtonType.SUBMIT">
+                                    {{ 'LOGIN' | translate }}
+                                </app-custom-button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </app-card>
+</div>

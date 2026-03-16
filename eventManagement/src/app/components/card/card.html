@@ -1,17 +1,15 @@
-<div class="h-svh card w-full bg-base-100 rounded-md shadow-md overflow-hidden">
-  <div class="card-body p-4 sm:p-6 md:p-8">
-    <h2 class="text-xl font-medium text-primary">
-      <ng-content select="[cardHeader]"></ng-content>
-    </h2>
-    <div class="text-base-content/80">
-      <ng-content select="[cardBody]"></ng-content>
+<div [class]="style()">
+    <div>
+        <ng-content select="[header]" class="card-title"></ng-content>
     </div>
-    <div
-      class="pt-4 flex justify-end"
-      [class.border-t-2]="hasBorder()"
-      [class.border-base-300]="hasBorder()"
-    >
-      <ng-content select="[cardFooter]"></ng-content>
+    @if (hasBorder()) {
+    <hr class="my-4 border-t border-gray-2">
+  }
+    <div>
+        <ng-content select="[body]"></ng-content>
     </div>
-  </div>
+    <div>
+        <ng-content select="[footer]"></ng-content>
+    </div>
+    <ng-content/>
 </div>

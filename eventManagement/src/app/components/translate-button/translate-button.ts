@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../../service/language-service';
 import { Language } from '../../enums/language.enum';
@@ -15,6 +15,8 @@ export class TranslateButton {
 
   readonly Language = Language;
   readonly ButtonStyle = ButtonStyle;
+
+  style = input<ButtonStyle>(ButtonStyle.PRIMARY_ICON);
 
   toggleLanguage() {
     this.languageService.changeLanguage();

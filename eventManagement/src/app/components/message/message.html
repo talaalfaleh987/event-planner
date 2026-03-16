@@ -1,3 +1,4 @@
-<div class="mb-4" [class]="messageStyle()">
-  {{ textMessage() }}
+<div [class]="messageStyle()">
+    <ng-content />
+    {{ textMessage()}}
 </div>
