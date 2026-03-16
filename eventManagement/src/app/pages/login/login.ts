@@ -12,16 +12,26 @@ import { Router } from '@angular/router';
 import { REGEX, Constants } from '../../core/constants';
 import { RouterPath } from '../../core/router-paths';
 import { InputErrorMessage } from '../../models/input-error-message';
+import { AuthService } from '../../service/auth/auth-service';
 
 @Component({
   selector: 'app-login',
-  imports: [TranslatePipe, CustomButton, Card, CustomInput, ReactiveFormsModule, TranslateButton, Message],
+  imports: [
+    TranslatePipe,
+    CustomButton,
+    Card,
+    CustomInput,
+    ReactiveFormsModule,
+    TranslateButton,
+    Message,
+  ],
   templateUrl: './login.html',
 })
 export class Login {
   submitted = signal(false);
 
   router = inject(Router);
+  private readonly authService = inject(AuthService);
 
   readonly InputType = InputType;
   readonly ButtonType = ButtonType;
@@ -37,32 +47,21 @@ export class Login {
   });
 
   usernameErrors: InputErrorMessage[] = [
-    { message: 'Username is required', types: [ValidatorType.required] },
-    { message: 'Username must contain numbers', types: [ValidatorType.pattern] },
+    { message: 'ERRORS.USERNAME_REQUIRED', types: [ValidatorType.required] },
+    { message: 'ERRORS.USERNAME_PATTERN', types: [ValidatorType.pattern] },
   ];
 
   passwordErrors: InputErrorMessage[] = [
-    { message: 'Password is required', types: [ValidatorType.required] },
-    { message: 'Password at least 8 characters', types: [ValidatorType.minlength] },
+    { message: 'ERRORS.PASSWORD_REQUIRED', types: [ValidatorType.required] },
+    { message: 'ERRORS.PASSWORD_MIN_LENGTH', types: [ValidatorType.minlength] },
   ];
 
   onSubmit(): void {
     this.submitted.set(true);
     this.userForm.markAllAsTouched();
     if (this.userForm.invalid) return;
-
-    sessionStorage.setItem('isLoggedIn', 'true');
-    sessionStorage.setItem('username', this.userForm.value.username ?? '');
-
+    const username = this.userForm.value.username ?? '';
+    this.authService.login(username);
     void this.router.navigateByUrl(RouterPath.Pages.HOME);
-
   }
-  get usernameControl(): FormControl {
-    return this.userForm.get('username') as FormControl;
-  }
-
-  get passwordControl(): FormControl {
-    return this.userForm.get('password') as FormControl;
-  }
-
 }

@@ -1,12 +1,17 @@
 <div class="w-full flex flex-col gap-1 relative">
-  <input [type]="inputType()" [formControl]="control()"
+  <input
+    [type]="inputType()"
+    [formControl]="control()"
+    [attr.maxlength]="maxLength()"
+    placeholder=" "
     [class.border-red-error]="hasError"
-    class="peer block w-full border-b-2 border-primary-normal px-3 pt-8 pb-1 font-neo-medium focus:outline-none"/>
-  <label for="title" class="absolute top-2.5 text-primary font-neo-medium transition-all
-           peer-placeholder-shown:top-5
-           peer-placeholder-shown:text-base
-           peer-focus:top-2.5" 
-  [class.text-red-error]=" hasError">
+    class="peer block w-full border-b-2 border-primary-normal px-3 pt-8 pb-1 font-neo-medium focus:outline-none"
+  />
+  <label
+    for="title"
+    class="absolute top-2.5 text-primary font-neo-medium transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2.5"
+    [class.text-red-error]="hasError"
+  >
     {{ label() }}
   </label>
   <div class="min-h-6">
@@ -14,7 +19,7 @@
       @for (error of errors(); track $index) {
         @if (hasErrorByType(error.types)) {
           <span class="absolute font-neo-medium text-red-error block">
-            {{ error.message }}
+            {{ error.message | translate }}
           </span>
         }
       }
