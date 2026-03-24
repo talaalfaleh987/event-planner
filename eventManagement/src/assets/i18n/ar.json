@@ -14,7 +14,14 @@
     "PASSWORD_REQUIRED": "كلمة المرور مطلوبة",
     "PASSWORD_MIN_LENGTH": "كلمة المرور لا تقل عن 8 أحرف"
   },
-  "NAVIGATION": { "HOME": "الرئيسية", "EVENTS_MANAGEMENT": "إدارة الفعاليات" },
-  "ACTIONS": { "SWITCH_LANGUAGE": "En" },
-  "LAYOUT": { "POWERED_BY": "تشغيل بواسطة" }
+  "NAVIGATION": {
+    "HOME": "الرئيسية",
+    "EVENTS_MANAGEMENT": "إدارة الفعاليات"
+  },
+  "ACTIONS": {
+    "SWITCH_LANGUAGE": "En"
+  },
+  "LAYOUT": {
+    "POWERED_BY": "تشغيل بواسطة"
+  }
 }
