@@ -23,5 +23,18 @@
   },
   "LAYOUT": {
     "POWERED_BY": "تشغيل بواسطة"
+  },
+  "EVENTS": {
+    "EVENT_NAME": "اسم الفعالية",
+    "EVENT_CATEGORY": "تصنيف الفعالية",
+    "EVENT_TYPE": "طبيعة الفعالية",
+    "EVENT_CAPACITY": "السعة الاستيعابية",
+    "EVENT_LOCATION": "موقع الفعالية",
+    "EVENT_LINK": "رابط الفعالية",
+    "EVENT_DATE": "تاريخ الفعالية",
+    "EVENT_TIME": "وقت الفعالية",
+    "DATA_PLACEHOLDER": "بيانات",
+    "EVENT_TYPE_ONLINE": "عن بُعد",
+    "EVENT_TYPE_PHYSICAL": "حضوري"
   }
 }

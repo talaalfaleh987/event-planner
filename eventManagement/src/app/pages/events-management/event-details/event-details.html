@@ -1,0 +1,86 @@
+<app-card [style]="CardStyle.DETAILS">
+  @if (event(); as currentEvent) {
+    <div body class="grid grid-cols-1 gap-16 text-start md:grid-cols-3">
+      <ng-container
+        *ngTemplateOutlet="
+          detailItem;
+          context: { label: 'EVENTS.EVENT_NAME', value: currentEvent.name }
+        "
+      ></ng-container>
+      <ng-container
+        *ngTemplateOutlet="
+          detailItem;
+          context: { label: 'EVENTS.EVENT_CATEGORY', value: currentEvent.category }
+        "
+      ></ng-container>
+      <ng-container
+        *ngTemplateOutlet="
+          detailItem;
+          context: {
+            label: 'EVENTS.EVENT_TYPE',
+            value: getEventTypeTranslationKey(currentEvent.type),
+            translateValue: true,
+          }
+        "
+      ></ng-container>
+      @if (currentEvent.type === 'physical') {
+        <ng-container
+          *ngTemplateOutlet="
+            detailItem;
+            context: { label: 'EVENTS.EVENT_LOCATION', value: currentEvent.location }
+          "
+        ></ng-container>
+      }
+      @if (currentEvent.type === 'online') {
+        <ng-container
+          *ngTemplateOutlet="
+            detailLinkItem;
+            context: { label: 'EVENTS.EVENT_LINK', value: currentEvent.link }
+          "
+        ></ng-container>
+      }
+      <ng-container
+        *ngTemplateOutlet="
+          detailItem;
+          context: { label: 'EVENTS.EVENT_DATE', value: currentEvent.date }
+        "
+      ></ng-container>
+      <ng-container
+        *ngTemplateOutlet="
+          detailItem;
+          context: { label: 'EVENTS.EVENT_TIME', value: currentEvent.time }
+        "
+      ></ng-container>
+      <ng-container
+        *ngTemplateOutlet="
+          detailItem;
+          context: { label: 'EVENTS.EVENT_CAPACITY', value: currentEvent.capacity }
+        "
+      ></ng-container>
+    </div>
+  }
+</app-card>
+<ng-template #detailItem let-label="label" let-value="value" let-translateValue="translateValue">
+  <div class="flex flex-col gap-1">
+    <p class="font-neo-medium text-sm text-grey-subtitle">
+      {{ label | translate }}
+    </p>
+    <p class="font-neo-regular text-sm text-primary">
+      @if (value) {
+        {{ translateValue ? (value | translate) : value }}
+      } @else {
+        {{ 'EVENTS.DATA_PLACEHOLDER' | translate }}
+      }
+    </p>
+  </div>
+</ng-template>
+<ng-template #detailLinkItem let-label="label" let-value="value">
+  <div class="flex flex-col gap-1">
+    <p class="font-neo-medium text-sm text-grey-subtitle">
+      {{ label | translate }}
+    </p>
+    <p class="font-neo-regular text-sm text-primary break-all">
+      {{ value || ('EVENTS.DATA_PLACEHOLDER' | translate) }}
+    </p>
+  </div>
+</ng-template>
