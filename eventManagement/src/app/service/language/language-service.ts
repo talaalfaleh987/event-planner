@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Language } from '../enums/language.enum';
+import { Language } from '../../enums/language.enum';
+
 
 @Injectable({
   providedIn: 'root',
