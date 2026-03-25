@@ -35,6 +35,11 @@
     "EVENT_TIME": "Event Time",
     "DATA_PLACEHOLDER": "Data",
     "EVENT_TYPE_ONLINE": "Online",
-    "EVENT_TYPE_PHYSICAL": "Physical"
+    "EVENT_TYPE_PHYSICAL": "Physical",
+    "EVENT_CATEGORY_ENTERTAINMENT": "Entertainment",
+    "EVENT_CATEGORY_WORK": "Work",
+    "EVENT_CATEGORY_EDUCATION": "Education",
+    "EVENT_CATEGORY_OTHER": "Other",
+    "TECH_CONFERENCE_2026": "Tech Conference 2026"
   }
 }

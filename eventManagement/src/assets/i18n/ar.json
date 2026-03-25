@@ -35,6 +35,11 @@
     "EVENT_TIME": "وقت الفعالية",
     "DATA_PLACEHOLDER": "بيانات",
     "EVENT_TYPE_ONLINE": "عن بُعد",
-    "EVENT_TYPE_PHYSICAL": "حضوري"
+    "EVENT_TYPE_PHYSICAL": "حضوري",
+    "EVENT_CATEGORY_ENTERTAINMENT": "ترفيه",
+    "EVENT_CATEGORY_WORK": "عمل",
+    "EVENT_CATEGORY_EDUCATION": "تعليمي",
+    "EVENT_CATEGORY_OTHER": "أخرى",
+    "TECH_CONFERENCE_2026": "مؤتمر التقنية 2026"
   }
 }

@@ -2,7 +2,7 @@ import { Component, input } from '@angular/core';
 import { CardStyle } from '../../../enums/card.enum';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Card } from '../../../components/card/card';
-import { AppEvent } from '../../../models/event';
+import { Event } from '../../../models/event';
 import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
@@ -12,9 +12,5 @@ import { NgTemplateOutlet } from '@angular/common';
 })
 export class EventDetails {
   readonly CardStyle = CardStyle;
-  event = input.required<AppEvent>();
-
-  protected getEventTypeTranslationKey(type: AppEvent['type']): string {
-    return `EVENTS.EVENT_TYPE_${type.toUpperCase()}`;
-  }
+  event = input.required<Event>();
 }

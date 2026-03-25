@@ -1,6 +1,6 @@
-export interface AppEvent {
+export interface Event {
   name: string;
-  category: string;
+  category: 'Entertainment' | 'Work' | 'Education' | 'Other';
   type: 'online' | 'physical';
   location: string;
   link: string;
