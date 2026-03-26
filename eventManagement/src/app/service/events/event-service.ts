@@ -8,7 +8,7 @@ import { Event } from '../../models/event';
 export class EventService {
   getEvent(): Observable<Event> {
     return of({
-      name: 'EVENTS.TECH_CONFERENCE_2026',
+       name:'مؤتمر التقنية 2026',
       category: 'Work',
       type: 'online',
       location: 'Virtual',

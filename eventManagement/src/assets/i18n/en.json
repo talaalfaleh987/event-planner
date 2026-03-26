@@ -39,7 +39,6 @@
     "EVENT_CATEGORY_ENTERTAINMENT": "Entertainment",
     "EVENT_CATEGORY_WORK": "Work",
     "EVENT_CATEGORY_EDUCATION": "Education",
-    "EVENT_CATEGORY_OTHER": "Other",
-    "TECH_CONFERENCE_2026": "Tech Conference 2026"
+    "EVENT_CATEGORY_OTHER": "Other"
   }
 }
