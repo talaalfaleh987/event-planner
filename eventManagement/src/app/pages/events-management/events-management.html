@@ -1,0 +1,6 @@
+<div class="m-10">
+  <!-- TODO: Handle routing and load event details based on the selected event -->
+  @if (event$ | async; as event) {
+    <app-event-details [event]="event"></app-event-details>
+  }
+</div>

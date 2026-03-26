@@ -12,7 +12,7 @@ export enum ButtonStyle {
     disabled:cursor-not-allowed
     disabled:hover:brightness-100
   `,
-  ICON = `flex gap-1 text-lg cursor-pointer font-neo-medium`,
+  ICON = `flex gap-1 text-lg cursor-pointer font-neo-regular`,
   WHITE_ICON = ICON + " text-white fill-white absolute top-6 end-6",
   PRIMARY_ICON = ICON + " text-primary fill-primary",
 

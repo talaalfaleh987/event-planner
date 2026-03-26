@@ -7,6 +7,6 @@ import { CardStyle } from '../../enums/card.enum';
   templateUrl: './card.html',
 })
 export class Card {
-  hasBorder = input<boolean>(true);
+  hasBorder = input<boolean>(false);
   style = input<CardStyle>(CardStyle.LOGIN);
 }

@@ -1,8 +1,9 @@
 <app-custom-button (click)="toggleLanguage()" [style]="style()">
-    {{ 'ACTIONS.SWITCH_LANGUAGE' | translate }}
-   @if (style() === ButtonStyle.WHITE_ICON) {
+   @if (style() === ButtonStyle.WHITE_ICON) { 
+     {{ 'ACTIONS.SWITCH_LANGUAGE' | translate }}
     <img src="assets/imgs/language-white.svg" class="w-6 h-6" alt="language" />
   } @else {
     <img src="assets/imgs/language-primary.svg" class="w-6 h-6" alt="language" />
+      {{ 'ACTIONS.SWITCH_LANGUAGE' | translate }}
   }
 </app-custom-button>

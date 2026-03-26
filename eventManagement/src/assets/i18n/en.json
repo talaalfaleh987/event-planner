@@ -23,5 +23,22 @@
   },
   "LAYOUT": {
     "POWERED_BY": "Powered By"
+  },
+  "EVENTS": {
+    "EVENT_NAME": "Event Name",
+    "EVENT_CATEGORY": "Event Category",
+    "EVENT_TYPE": "Event Type",
+    "EVENT_CAPACITY": "Event Capacity",
+    "EVENT_LOCATION": "Event Location",
+    "EVENT_LINK": "Event Link",
+    "EVENT_DATE": "Event Date",
+    "EVENT_TIME": "Event Time",
+    "DATA_PLACEHOLDER": "Data",
+    "EVENT_TYPE_ONLINE": "Online",
+    "EVENT_TYPE_PHYSICAL": "Physical",
+    "EVENT_CATEGORY_ENTERTAINMENT": "Entertainment",
+    "EVENT_CATEGORY_WORK": "Work",
+    "EVENT_CATEGORY_EDUCATION": "Education",
+    "EVENT_CATEGORY_OTHER": "Other"
   }
 }

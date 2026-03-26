@@ -6,7 +6,7 @@
         <ul class="menu menu-horizontal px-0 gap-1 md:gap-2">
           @for (item of navItems(); track item.route) {
             <li>
-              <a [routerLink]="item.route" class="font-neo-medium text-sm md:text-lg px-2 md:px-3">
+              <a [routerLink]="item.route" class="font-neo-regular text-base md:text-lg px-2 md:px-3">
                 {{ item.label | translate }}
               </a>
             </li>
