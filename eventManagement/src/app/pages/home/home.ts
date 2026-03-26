@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { StackedBarChart } from '../../charts/bar/stacked-bar-chart/stacked-bar-chart';
-import { MonthlyEventsChartItem } from '../../models/monthly-events-chartItem';
+import { MonthlyEventsChartItem } from '../../models/charts/monthly-events-chart-Item';
 
 @Component({
   selector: 'app-home',
