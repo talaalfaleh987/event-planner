@@ -39,6 +39,8 @@
     "EVENT_CATEGORY_ENTERTAINMENT": "Entertainment",
     "EVENT_CATEGORY_WORK": "Work",
     "EVENT_CATEGORY_EDUCATION": "Education",
-    "EVENT_CATEGORY_OTHER": "Other"
+    "EVENT_CATEGORY_OTHER": "Other",
+    "PHYSICAL": "Physical",
+    "REMOTE": "Remote"
   }
 }

@@ -39,6 +39,8 @@
     "EVENT_CATEGORY_ENTERTAINMENT": "ترفيه",
     "EVENT_CATEGORY_WORK": "عمل",
     "EVENT_CATEGORY_EDUCATION": "تعليمي",
-    "EVENT_CATEGORY_OTHER": "أخرى"
+    "EVENT_CATEGORY_OTHER": "أخرى",
+    "PHYSICAL": "حضورية",
+    "REMOTE": "عن بعد"
   }
 }
