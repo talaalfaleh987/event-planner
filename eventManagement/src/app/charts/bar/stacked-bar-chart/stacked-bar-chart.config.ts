@@ -1,10 +1,6 @@
-import { StackedBarChartLabels } from '../../../models/charts/bar-chart';
-import { MonthlyEventsChartItem } from '../../../models/charts/monthly-events-chart-Item';
+import { ChartData } from '../../../models/charts/chart-data';
 
-export const stackedBarChartConfig = (
-  data: MonthlyEventsChartItem[],
-  labels: StackedBarChartLabels,
-) => {
+export const stackedBarChartConfig = (data: ChartData) => {
   return {
     tooltip: {
       trigger: 'axis',
@@ -27,7 +23,7 @@ export const stackedBarChartConfig = (
         color: '#1F2A44',
         padding: [0, 0, 0, 6],
       },
-      data: [labels.physical, labels.remote],
+      data: data.series.map((item) => item.name),
     },
 
     grid: {
@@ -40,7 +36,7 @@ export const stackedBarChartConfig = (
 
     xAxis: {
       type: 'category',
-      data: data.map((item) => item.month),
+      data: data.labels,
       axisLine: {
         show: false,
       },
@@ -84,29 +80,16 @@ export const stackedBarChartConfig = (
       },
     },
 
-    series: [
-      {
-        name: labels.remote,
-        type: 'bar',
-        stack: 'total',
-        barWidth: 20,
-        data: data.map((item) => item.remote),
-        itemStyle: {
-          color: '#62B7AE',
-          borderRadius: [0, 0, 6, 6],
-        },
+    series: data.series.map((item) => ({
+      name: item.name,
+      type: 'bar',
+      stack: 'total',
+      barWidth: 20,
+      data: item.data,
+      itemStyle: {
+        color: item.color,
+        borderRadius: item.borderRadius ?? [0, 0, 0, 0],
       },
-      {
-        name: labels.physical,
-        type: 'bar',
-        stack: 'total',
-        barWidth: 20,
-        data: data.map((item) => item.physical),
-        itemStyle: {
-          color: '#B14696',
-          borderRadius: [6, 6, 0, 0],
-        },
-      },
-    ],
+    })),
   };
 };

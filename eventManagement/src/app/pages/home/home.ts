@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { StackedBarChart } from '../../charts/bar/stacked-bar-chart/stacked-bar-chart';
 import { MonthlyEventsChartItem } from '../../models/charts/monthly-events-chart-Item';
+import { TranslateService } from '@ngx-translate/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs';
+import { ChartData } from '../../models/charts/chart-data';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +12,13 @@ import { MonthlyEventsChartItem } from '../../models/charts/monthly-events-chart
   templateUrl: './home.html',
 })
 export class Home {
-  protected chartData: MonthlyEventsChartItem[] = [
+  private readonly translate = inject(TranslateService);
+
+  private readonly currentLang = toSignal(
+    this.translate.onLangChange.pipe(map((language) => language)),
+  );
+
+  protected monthlyEventsData: MonthlyEventsChartItem[] = [
     { month: '1', physical: 5000, remote: 1500 },
     { month: '2', physical: 10500, remote: 5000 },
     { month: '3', physical: 7200, remote: 3000 },
@@ -22,4 +32,26 @@ export class Home {
     { month: '11', physical: 8500, remote: 3700 },
     { month: '12', physical: 5000, remote: 1500 },
   ];
+
+  protected chartData = computed<ChartData>(() => {
+    this.currentLang();
+
+    return {
+      labels: this.monthlyEventsData.map((item) => item.month),
+      series: [
+        {
+          name: this.translate.instant('EVENTS.REMOTE'),
+          data: this.monthlyEventsData.map((item) => item.remote),
+          color: '#62B7AE',
+          borderRadius: [0, 0, 6, 6],
+        },
+        {
+          name: this.translate.instant('EVENTS.PHYSICAL'),
+          data: this.monthlyEventsData.map((item) => item.physical),
+          color: '#B14696',
+          borderRadius: [6, 6, 0, 0],
+        },
+      ],
+    };
+  });
 }
