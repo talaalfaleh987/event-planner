@@ -27,7 +27,9 @@
   "EVENTS": {
     "EVENT_NAME": "Event Name",
     "EVENT_CATEGORY": "Event Category",
+    "EVENTS_CATEGORY": "Events Category",
     "EVENT_TYPE": "Event Type",
+    "EVENTS_TYPE": "Events Type",
     "EVENT_CAPACITY": "Event Capacity",
     "EVENT_LOCATION": "Event Location",
     "EVENT_LINK": "Event Link",
@@ -41,6 +43,8 @@
     "EVENT_CATEGORY_EDUCATION": "Education",
     "EVENT_CATEGORY_OTHER": "Other",
     "PHYSICAL": "Physical",
-    "REMOTE": "Remote"
+    "REMOTE": "Remote",
+    "TOTAL_EVENTS": "Total Events",
+    "TOTAL_ATTENDEES": "Total Attendees"
   }
 }

@@ -27,7 +27,9 @@
   "EVENTS": {
     "EVENT_NAME": "اسم الفعالية",
     "EVENT_CATEGORY": "تصنيف الفعالية",
+    "EVENTS_CATEGORY": "تصنيف الفعاليات",
     "EVENT_TYPE": "طبيعة الفعالية",
+    "EVENTS_TYPE": "طبيعة الفعاليات",
     "EVENT_CAPACITY": "السعة الاستيعابية",
     "EVENT_LOCATION": "موقع الفعالية",
     "EVENT_LINK": "رابط الفعالية",
@@ -41,6 +43,8 @@
     "EVENT_CATEGORY_EDUCATION": "تعليمي",
     "EVENT_CATEGORY_OTHER": "أخرى",
     "PHYSICAL": "حضورية",
-    "REMOTE": "عن بعد"
+    "REMOTE": "عن بعد",
+    "TOTAL_EVENTS": "إجمالي الفعاليات",
+    "TOTAL_ATTENDEES": "إجمالي الحضور"
   }
 }

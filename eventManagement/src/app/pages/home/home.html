@@ -1,1 +1,46 @@
-<app-events-stacked-bar-chart [data]="chartData()"></app-events-stacked-bar-chart>
+<div class="flex flex-col gap-6 p-6">
+  <h1 class="font-neo-medium text-xl text-primary">
+    <!--TODO: add breadcrumb component-->
+    {{ 'NAVIGATION.HOME' | translate }}
+  </h1>
+  <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+    <app-card [style]="CardStyle.CHART">
+      <div header class="flex items-center justify-between">
+        <h2 class="font-neo-regular text-xl text-primary">
+          {{ 'EVENTS.EVENTS_TYPE' | translate }}
+        </h2>
+      </div>
+      <div body>
+        <!-- TODO -->
+      </div>
+    </app-card>
+    <app-card [style]="CardStyle.CHART">
+      <div header class="flex items-center justify-between">
+        <h2 class="font-neo-regular text-xl text-primary">
+          {{ 'EVENTS.EVENTS_CATEGORY' | translate }}
+        </h2>
+      </div>
+      <div body>
+        <!-- TODO -->
+      </div>
+    </app-card>
+    <app-card [style]="CardStyle.CHART">
+      <div header class="font-neo-regular text-lg text-primary">
+        {{ 'EVENTS.TOTAL_EVENTS' | translate }}
+      </div>
+      <div body>
+        <app-events-stacked-bar-chart [data]="chartData()"></app-events-stacked-bar-chart>
+      </div>
+    </app-card>
+    <app-card [style]="CardStyle.CHART">
+      <div header class="flex items-center justify-between">
+        <h2 class="font-neo-regular text-xl text-primary">
+          {{ 'EVENTS.TOTAL_ATTENDEES' | translate }}
+        </h2>
+      </div>
+      <div>
+        <!-- TODO -->
+      </div>
+    </app-card>
+  </div>
+</div>
