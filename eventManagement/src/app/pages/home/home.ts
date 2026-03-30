@@ -1,9 +1,9 @@
 import { Component, computed, inject } from '@angular/core';
-import { StackedBarChart } from '../../charts/bar/stacked-bar-chart/stacked-bar-chart';
-import { MonthlyEventsChartItem } from '../../components/charts/monthly-events-chart-Item';
+import { StackedBarChart } from '../../components/charts/bar/stacked-bar-chart/stacked-bar-chart';
+import { MonthlyEventsChartItem } from '../../models/charts/monthly-events-chart-Item';
 import { TranslateService } from '@ngx-translate/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ChartData } from '../../components/charts/chart-data';
+import { ChartData } from '../../models/charts/chart-data';
 
 @Component({
   selector: 'app-home',

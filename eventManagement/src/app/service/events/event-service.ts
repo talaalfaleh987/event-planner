@@ -18,4 +18,6 @@ export class EventService {
       capacity: '150',
     });
   }
+
+   
 }
