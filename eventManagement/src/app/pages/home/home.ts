@@ -15,10 +15,9 @@ import { EventService } from '../../service/events/event-service';
 })
 export class Home {
   private readonly translate = inject(TranslateService);
-
+  private readonly eventService = inject(EventService);
   private readonly currentLang = toSignal(this.translate.onLangChange);
   protected readonly CardStyle = CardStyle;
-  private readonly eventService = inject(EventService);
 
   protected monthlyEventsData = toSignal(this.eventService.getMonthlyEventsData(), {
     initialValue: [],
