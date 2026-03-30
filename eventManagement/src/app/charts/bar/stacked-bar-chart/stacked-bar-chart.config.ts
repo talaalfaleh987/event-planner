@@ -1,4 +1,4 @@
-import { ChartData } from '../../../models/charts/chart-data';
+import { ChartData } from '../../../components/charts/chart-data';
 
 export const stackedBarChartConfig = (data: ChartData) => {
   return {

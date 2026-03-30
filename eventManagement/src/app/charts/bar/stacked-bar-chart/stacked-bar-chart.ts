@@ -5,7 +5,7 @@ import { BarChart } from 'echarts/charts';
 import { GridComponent, LegendComponent, TooltipComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import { stackedBarChartConfig } from './stacked-bar-chart.config';
-import { ChartData } from '../../../models/charts/chart-data';
+import { ChartData } from '../../../components/charts/chart-data';
 
 echarts.use([BarChart, GridComponent, LegendComponent, TooltipComponent, CanvasRenderer]);
 

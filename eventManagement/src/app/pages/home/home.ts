@@ -1,10 +1,9 @@
 import { Component, computed, inject } from '@angular/core';
 import { StackedBarChart } from '../../charts/bar/stacked-bar-chart/stacked-bar-chart';
-import { MonthlyEventsChartItem } from '../../models/charts/monthly-events-chart-Item';
+import { MonthlyEventsChartItem } from '../../components/charts/monthly-events-chart-Item';
 import { TranslateService } from '@ngx-translate/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { map } from 'rxjs';
-import { ChartData } from '../../models/charts/chart-data';
+import { ChartData } from '../../components/charts/chart-data';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +13,7 @@ import { ChartData } from '../../models/charts/chart-data';
 export class Home {
   private readonly translate = inject(TranslateService);
 
-  private readonly currentLang = toSignal(
-    this.translate.onLangChange.pipe(map((language) => language)),
-  );
+  private readonly currentLang = toSignal(this.translate.onLangChange);
 
   protected monthlyEventsData: MonthlyEventsChartItem[] = [
     { month: '1', physical: 5000, remote: 1500 },
@@ -34,20 +31,20 @@ export class Home {
   ];
 
   protected chartData = computed<ChartData>(() => {
-    this.currentLang();
+    const lang = this.currentLang();
 
     return {
-      labels: this.monthlyEventsData.map((item) => item.month),
+      labels: this.monthlyEventsData.map((item: MonthlyEventsChartItem) => item.month),
       series: [
         {
           name: this.translate.instant('EVENTS.REMOTE'),
-          data: this.monthlyEventsData.map((item) => item.remote),
+          data: this.monthlyEventsData.map((item: MonthlyEventsChartItem) => item.remote),
           color: '#62B7AE',
           borderRadius: [0, 0, 6, 6],
         },
         {
           name: this.translate.instant('EVENTS.PHYSICAL'),
-          data: this.monthlyEventsData.map((item) => item.physical),
+          data: this.monthlyEventsData.map((item: MonthlyEventsChartItem) => item.physical),
           color: '#B14696',
           borderRadius: [6, 6, 0, 0],
         },
