@@ -3,7 +3,7 @@ import { of, Observable } from 'rxjs';
 import { Event } from '../../models/event';
 import { MonthlyEventsChartItem } from '../../models/charts/monthly-events-chart-Item';
 import { PieChartItem } from '../../models/charts/events-pie-charts-data';
-import { MonthlyAttendanceChartItem } from '../../models/charts/monthly-attendance-chartI-tem';
+import { MonthlyAttendanceChartItem } from '../../models/charts/monthly-attendance-chartI-tem';import { Option } from '../../models/dropdown/option';
 
 @Injectable({
   providedIn: 'root',
@@ -70,5 +70,21 @@ export class EventService {
       { month: '11', male: 20000, female: 16000 },
       { month: '12', male: 21000, female: 17000 },
     ]);
+}
+
+  getEventTypeOptions(): Observable<Option[]> {
+    return of([
+      { value: 1, nameAr: 'حضورية', nameEn: 'Physical' },
+      { value: 2, nameAr: 'عن بعد', nameEn: 'Online' },
+    ]);
   }
+
+  getCategoryOptions(): Observable<Option[]> {
+    return of([
+      { value: 1, nameAr: 'عمل', nameEn: 'Work' },
+      { value: 2, nameAr: 'تعليمية', nameEn: 'Education' },
+      { value: 3, nameAr: 'ترفيهية', nameEn: 'Entertainment' },
+      { value: 4, nameAr: 'أخرى', nameEn: 'Other' },
+    ]);
+    }
 }

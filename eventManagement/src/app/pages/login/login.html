@@ -1,39 +1,39 @@
-<div class="min-h-screen px-8 py-16 md:px-20 md:py-16 bg-main-gradient">
+<div class="min-h-screen bg-main-gradient px-8 py-16 md:px-20 md:py-16">
   <app-translate-button [style]="ButtonStyle.WHITE_ICON" />
   <app-card [hasBorder]="false">
     <div
-      class="flex flex-col md:flex-row max-w-5xl mx-auto gap-20 justify-center items-center min-w-min"
+      class="mx-auto flex max-w-5xl min-w-min flex-col items-center justify-center gap-20 md:flex-row"
     >
-      <div class="flex flex-1 w-full">
+      <div class="flex w-full flex-1">
         <img src="assets/imgs/text-logo.svg" alt="logo" class="w-full" />
       </div>
-      <div class="flex flex-col w-full m-12 md:w-2/5 md:m-16 items-end min-w-46">
+      <div class="m-12 flex min-w-46 w-full flex-col items-end md:m-16 md:w-2/5">
         <section id="form-header" class="w-full max-w-md">
-          <div class="text-center mb-4">
+          <div class="mb-4 text-center">
             <h1 class="text-1xl md:text-2xl font-neo-medium">
               {{ 'AUTH.WELCOME_MESSAGE' | translate }}
             </h1>
           </div>
           <div body>
-            <form [formGroup]="userForm" class="flex flex-col w-full" (ngSubmit)="onSubmit()">
-              <div class="min-h-9 m-2">
+            <form [formGroup]="userForm" class="flex w-full flex-col" (ngSubmit)="onSubmit()">
+              <div class="m-2 min-h-9">
                 @if (submitted() && userForm.invalid) {
                   <app-message [textMessage]="'ERRORS.INVALID_CREDENTIALS' | translate">
-                    <img src="assets/imgs/error.svg" alt="error" class="w-6 h-6 mx-2" />
+                    <img src="assets/imgs/error.svg" alt="error" class="mx-2 h-6 w-6" />
                   </app-message>
                 }
               </div>
               <app-input
+                [controlName]="CredentialsControls.USERNAME"
                 [label]="'AUTH.USERNAME' | translate"
-                [control]="userForm.controls.username"
                 [maxLength]="10"
                 [errors]="usernameErrors"
                 [inputType]="InputType.TEXT"
               >
               </app-input>
               <app-input
+                [controlName]="CredentialsControls.PASSWORD"
                 [label]="'AUTH.PASSWORD' | translate"
-                [control]="userForm.controls.password"
                 [errors]="passwordErrors"
                 [inputType]="InputType.PASSWORD"
               >
