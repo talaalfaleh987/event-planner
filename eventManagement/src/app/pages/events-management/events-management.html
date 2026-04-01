@@ -1,3 +1,100 @@
+<!-- <div class="m-10"> -->
+<!-- TODO: Handle routing and load event details based on the selected event -->
+<!-- @if (event$ | async; as event) {
+    <app-event-details [event]="event"></app-event-details>
+  }
+</div>  -->
+<div class="flex items-center justify-between p-12">
+  <h2 class="text-lg font-semibold">
+    {{ 'EVENTS.TITLE' | translate }}
+  </h2>
+  <app-custom-button [style]="ButtonStyle.VIEW" (triggerCallback)="toggleView()">
+    <img
+      [src]="isTableView() ? 'assets/imgs/card-view.svg' : 'assets/imgs/table-view.svg'"
+      alt="view icon"
+    />
+  </app-custom-button>
+</div>
+@if (isTableView()) {
+  <p>Table View</p>
+} @else {
+  <p>Card View</p>
+}
+<div class="m-10">
+  <app-card [style]="CardStyle.DETAILS">
+    <form body [formGroup]="eventForm" class="flex flex-col gap-12" (ngSubmit)="onSubmit()">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <app-input
+          [controlName]="EventFormControls.NAME"
+          [label]="'EVENTS.EVENT_NAME'"
+          [errors]="nameErrors"
+          [showRequiredStar]="true"
+        ></app-input>
+        <app-dropdown
+          [controlName]="EventFormControls.CATEGORY"
+          [label]="'EVENTS.EVENT_CATEGORY'"
+          [options]="categoryOptions()"
+          [errors]="categoryErrors"
+          [showRequiredStar]="true"
+        ></app-dropdown>
+        <app-dropdown
+          [controlName]="EventFormControls.TYPE"
+          [label]="'EVENTS.EVENT_TYPE'"
+          [options]="eventTypeOptions()"
+          [errors]="typeErrors"
+          [showRequiredStar]="true"
+        ></app-dropdown>
+
+        <app-input
+          [controlName]="EventFormControls.CAPACITY"
+          [label]="'EVENTS.EVENT_CAPACITY'"
+          [errors]="capacityErrors"
+          [showRequiredStar]="true"
+        ></app-input>
+        <app-input
+          [controlName]="EventFormControls.DATE"
+          [label]="'EVENTS.EVENT_DATE'"
+          [errors]="dateErrors"
+          [showRequiredStar]="true"
+        ></app-input>
+        <app-input
+          [controlName]="EventFormControls.TIME"
+          [label]="'EVENTS.EVENT_TIME'"
+          [errors]="timeErrors"
+          [showRequiredStar]="true"
+        ></app-input>
+        @if (isPhysical) {
+          <app-input
+            [controlName]="EventFormControls.LOCATION"
+            [label]="'EVENTS.EVENT_LOCATION'"
+            [errors]="locationErrors"
+            [showRequiredStar]="true"
+          ></app-input>
+        }
+        @if (isOnline) {
+          <app-input
+            [controlName]="EventFormControls.LINK"
+            [label]="'EVENTS.EVENT_LINK'"
+            [errors]="linkErrors"
+            [showRequiredStar]="true"
+          ></app-input>
+        }
+      </div>
+      <div class="flex flex-wrap justify-end gap-4">
+        <app-custom-button
+          [buttonType]="ButtonType.BUTTON"
+          [style]="ButtonStyle.OUTLINE"
+          (triggerCallback)="onCancel()"
+        >
+          {{ 'COMMON.CANCEL' | translate }}
+        </app-custom-button>
+        <app-custom-button [buttonType]="ButtonType.SUBMIT" [style]="ButtonStyle.FORM_PRIMARY">
+          {{ 'COMMON.ADD' | translate }}
+        </app-custom-button>
+      </div>
+    </form>
+  </app-card>
+</div> 
 <div class="flex items-center justify-between p-12">
   <h2 class="text-lg font-semibold">
     {{ 'EVENTS.TITLE' | translate }}
@@ -35,3 +132,4 @@
     <app-event-details [event]="event"></app-event-details>
   }
 </div> -->
+

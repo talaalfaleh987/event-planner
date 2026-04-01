@@ -13,7 +13,14 @@
     "USERNAME_PATTERN": "Username must contain numbers",
     "PASSWORD_REQUIRED": "Password is required",
     "PASSWORD_MIN_LENGTH": "Password must be at least 8 characters",
-    "REQUIRED": "This field is required"
+    "REQUIRED": "This field is required",
+    "MIN_CAPACITY": "Capacity must be at least 5",
+    "DATE_FORMAT": "Format must be YYYY-MM-DD",
+    "TIME_FORMAT": "Format must be hh:mm"
+  },
+  "COMMON": {
+    "ADD": "Add",
+    "CANCEL": "Cancel"
   },
   "NAVIGATION": {
     "HOME": "Home",
