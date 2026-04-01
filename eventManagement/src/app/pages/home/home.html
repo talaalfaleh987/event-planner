@@ -29,7 +29,7 @@
         {{ 'EVENTS.TOTAL_EVENTS' | translate }}
       </div>
       <div body>
-        <app-events-stacked-bar-chart [data]="chartData()"></app-events-stacked-bar-chart>
+        <app-events-stacked-bar-chart [data]="monthlyEventsData()"></app-events-stacked-bar-chart>
       </div>
     </app-card>
     <app-card [style]="CardStyle.CHART">
