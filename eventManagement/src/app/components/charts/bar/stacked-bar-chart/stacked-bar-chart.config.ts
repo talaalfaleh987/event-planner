@@ -23,7 +23,7 @@ export const stackedBarChartConfig = (data: ChartData) => {
         color: '#1F2A44',
         padding: [0, 0, 0, 6],
       },
-      data: data.series.map((item) => item.name),
+      data: data.series.map((item) => item.label),
     },
 
     grid: {
@@ -81,7 +81,7 @@ export const stackedBarChartConfig = (data: ChartData) => {
     },
 
     series: data.series.map((item) => ({
-      name: item.name,
+      name: item.label,
       type: 'bar',
       stack: 'total',
       barWidth: 20,

@@ -1,5 +1,5 @@
 export type ChartSeries = {
-  name: string;
+  label: string;
   data: number[];
   color: string;
   borderRadius?: number[];
