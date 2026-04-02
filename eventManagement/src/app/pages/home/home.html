@@ -47,8 +47,10 @@
                 {{ 'EVENTS.TOTAL_EVENTS' | translate }}
             </div>
             <div body>
-                <app-events-stacked-bar-chart [data]="monthlyEventsData()"
-                    [config]="eventsChartConfig"></app-events-stacked-bar-chart>
+               <app-events-stacked-bar-chart
+                [data]="monthlyEventsData()"
+                [config]="eventsChartConfig">
+                </app-events-stacked-bar-chart>
             </div>
         </app-card>
         <app-card [style]="CardStyle.CHART">
@@ -58,7 +60,10 @@
                 </h2>
             </div>
             <div>
-                <!-- TODO -->
+                <app-grouped-bar
+                 [data]="monthlyAttendanceData()"
+                 [config]="attendanceChartConfig">
+                </app-grouped-bar>
             </div>
         </app-card>
     </div>

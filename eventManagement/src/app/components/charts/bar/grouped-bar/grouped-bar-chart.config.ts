@@ -5,7 +5,7 @@ export const groupedBarChartConfig = (
   data: ChartData
 ): EChartsCoreOption => {
   const seriesData = data.series.map(s => ({
-    name: s.name,
+    name: s.label,
     type: 'bar',
     data: s.data,
     color: s.color,
@@ -30,7 +30,7 @@ export const groupedBarChartConfig = (
         color: '#1F2A44',
         padding: [0, 0, 0, 6],
       },
-      data: data.series.map(s => s.name),
+      data: data.series.map(s => s.label),
     },
     grid: {
       left: '6%',
@@ -41,7 +41,7 @@ export const groupedBarChartConfig = (
     },
     xAxis: {
       type: 'category',
-      data: data.labels, // ✅ هنا الصح
+      data: data.labels,
       axisLine: { show: false },
       axisTick: { show: false },
       axisLabel: {
