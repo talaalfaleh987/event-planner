@@ -24,7 +24,9 @@ export class Home {
   private readonly translate = inject(TranslateService);
   private readonly currentLang = toSignal(this.translate.onLangChange);
 
-  protected monthlyEventsData = toSignal(this.eventService.getMonthlyEventsData(), {
+  protected monthlyEventsData = toSignal(
+    this.eventService.getMonthlyEventsData(), 
+  {
     initialValue: [],
   });
 
@@ -35,13 +37,37 @@ export class Home {
         name: 'EVENTS.REMOTE',
         getValue: (item) => item.remote,
         color: '#62B7AE',
-        borderRadius: [0, 0, 6, 6],
+        borderRadius: [0, 0, 3, 3],
       },
       {
         name: 'EVENTS.PHYSICAL',
         getValue: (item) => item.physical,
         color: '#B14696',
-        borderRadius: [6, 6, 0, 0],
+        borderRadius: [3, 3, 0, 0],
+      },
+    ],
+  };
+
+  protected monthlyAttendanceData = toSignal(
+    this.eventService.getMonthlyAttendanceData(), 
+  {
+    initialValue: [],
+  });
+
+  protected readonly attendanceChartConfig: ChartSeriesConfig<MonthlyAttendanceChartItem> = {
+    getLabel: (item) => item.month,
+    series: [
+      {
+        name: 'EVENTS.MALE',
+        getValue: (item) => item.male,
+        color: '#0195ff',
+        borderRadius: [3, 3, 0, 0],
+      },
+      {
+        name: 'EVENTS.FEMALE',
+        getValue: (item) => item.female,
+        color: '#fa5b7d',
+        borderRadius: [3, 3, 0, 0],
       },
     ],
   };
