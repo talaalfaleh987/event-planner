@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
 import { Event } from '../../models/event';
 import { MonthlyEventsChartItem } from '../../models/charts/monthly-events-chart-Item';
+import { PieChartItem } from '../../models/charts/events-pie-charts-data';
+
 
 @Injectable({
   providedIn: 'root',
@@ -36,4 +38,20 @@ export class EventService {
       { month: '12', physical: 5000, remote: 1500 },
     ]);
   }
+
+ getEventTypesData(): Observable<PieChartItem[]> {
+  return of([
+    { value: 400, name: 'EVENT_TYPE_PHYSICAL', itemStyle: {color: '#77c6a9'} },
+    { value: 700, name: 'EVENT_TYPE_ONLINE', itemStyle: {color: '#fad848'} }
+  ]);
+}
+
+  getEventCategoriesData(): Observable<PieChartItem[]> {
+  return of([
+    { value: 1000, name: 'EVENT_CATEGORY_OTHER' },
+    { value: 7000, name: 'EVENT_CATEGORY_EDUCATION' },
+    { value: 2000, name: 'EVENT_CATEGORY_WORK' },
+    { value: 3000, name: 'EVENT_CATEGORY_ENTERTAINMENT' }
+  ]);
+}
 }
