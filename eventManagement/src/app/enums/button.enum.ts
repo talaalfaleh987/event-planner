@@ -15,5 +15,5 @@ export enum ButtonStyle {
   ICON = `flex gap-1 text-lg cursor-pointer font-neo-regular`,
   WHITE_ICON = ICON + " text-white fill-white absolute top-6 end-6",
   PRIMARY_ICON = ICON + " text-primary fill-primary",
-
+  VIEW = `bg-gray-200 rounded-md p-3 flex`,
 }

@@ -45,6 +45,7 @@
     "PHYSICAL": "حضورية",
     "REMOTE": "عن بعد",
     "TOTAL_EVENTS": "إجمالي الفعاليات",
-    "TOTAL_ATTENDEES": "إجمالي الحضور"
+    "TOTAL_ATTENDEES": "إجمالي الحضور",
+    "TITLE": "قائمة الفعاليات"
   }
 }
