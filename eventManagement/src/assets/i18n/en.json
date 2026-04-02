@@ -45,6 +45,7 @@
     "PHYSICAL": "Physical",
     "REMOTE": "Remote",
     "TOTAL_EVENTS": "Total Events",
-    "TOTAL_ATTENDEES": "Total Attendees"
+    "TOTAL_ATTENDEES": "Total Attendees",
+    "TITLE": "Events List"
   }
 }
