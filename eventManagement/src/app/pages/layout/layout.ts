@@ -8,10 +8,11 @@ import { RouterPath } from '../../core/router-paths';
 import { Language } from '../../enums/language.enum';
 import { Footer } from '../../components/footer/footer';
 import { AuthService } from '../../service/auth/auth-service';
+import { Toast } from '../../components/toast/toast';
 
 @Component({
   selector: 'app-layout',
-  imports: [Header, TranslateButton, TranslatePipe, RouterOutlet, Footer],
+  imports: [Header, TranslateButton, TranslatePipe, RouterOutlet, Footer,Toast],
   templateUrl: './layout.html',
 })
 export class Layout {
@@ -33,4 +34,5 @@ export class Layout {
     this.authService.logout();
     void this.router.navigate([RouterPath.Pages.LOGIN], { replaceUrl: true });
   }
+  
 }

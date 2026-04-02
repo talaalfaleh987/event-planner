@@ -7,6 +7,8 @@ import { ButtonStyle } from '../../enums/button.enum';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Dropdown } from '../../components/dropdown/dropdown';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastService } from '../../service/toast/toast-service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-events-management',
@@ -24,5 +26,10 @@ export class EventsManagement {
 
   toggleView() {
     this.isTableView.update(view  => !view );
+  }
+  private readonly toastService = inject(ToastService);
+  private readonly translate = inject(TranslateService);
+  testToast() {
+    this.toastService.success(this.translate.instant('EVENTS.ADDED_SUCCESSFULLY'));
   }
 }

@@ -49,6 +49,7 @@
     "TOTAL_ATTENDEES": "Total Attendees",
     "TITLE": "Events List",
     "MALE": "Male",
-    "FEMALE": "Female"
+    "FEMALE": "Female",
+    "ADDED_SUCCESSFULLY": "Event added successfully"
   }
 }
