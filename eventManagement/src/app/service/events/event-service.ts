@@ -3,7 +3,7 @@ import { of, Observable } from 'rxjs';
 import { Event } from '../../models/event';
 import { MonthlyEventsChartItem } from '../../models/charts/monthly-events-chart-Item';
 import { PieChartItem } from '../../models/charts/events-pie-charts-data';
-
+import { MonthlyAttendanceChartItem } from '../../models/charts/monthly-attendance-chartI-tem';
 
 @Injectable({
   providedIn: 'root',
@@ -54,4 +54,21 @@ export class EventService {
     { value: 3000, name: 'EVENT_CATEGORY_ENTERTAINMENT' }
   ]);
 }
+
+  getMonthlyAttendanceData(): Observable<MonthlyAttendanceChartItem[]> {
+    return of([
+      { month: '1', male: 14000, female: 12500 },
+      { month: '2', male: 17000, female: 11500 },
+      { month: '3', male: 6000,  female: 22500 },
+      { month: '4', male: 10000, female: 9500 },
+      { month: '5', male: 13000, female: 12000 },
+      { month: '6', male: 15000, female: 14000 },
+      { month: '7', male: 16000, female: 13000 },
+      { month: '8', male: 17000, female: 12500 },
+      { month: '9', male: 18000, female: 14000 },
+      { month: '10', male: 19000, female: 15000 },
+      { month: '11', male: 20000, female: 16000 },
+      { month: '12', male: 21000, female: 17000 },
+    ]);
+  }
 }

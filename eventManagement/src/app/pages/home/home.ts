@@ -1,7 +1,7 @@
 import { StackedBarChart } from '../../components/charts/bar/stacked-bar-chart/stacked-bar-chart';
 import { Component, computed, inject } from '@angular/core';
 import { MonthlyEventsChartItem } from '../../models/charts/monthly-events-chart-Item';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CardStyle } from '../../enums/card.enum';
 import { Card } from '../../components/card/card';
@@ -9,17 +9,20 @@ import { EventService } from '../../service/events/event-service';
 import { ChartSeriesConfig } from '../../models/charts/chart-series-config';
 import { PieChartType } from '../../enums/charts.enum';
 import { PieCharts } from '../../components/charts/pie/pie-chart/pie-chart';
-
+import { GroupedBar } from '../../components/charts/bar/grouped-bar/grouped-bar';
+import { MonthlyAttendanceChartItem } from '../../models/charts/monthly-attendance-chartI-tem';
 
 @Component({
   selector: 'app-home',
-  imports: [StackedBarChart, Card, TranslatePipe, PieCharts],
+  imports: [StackedBarChart, Card, TranslatePipe, PieCharts, GroupedBar],
   templateUrl: './home.html',
 })
 export class Home {
   private readonly eventService = inject(EventService);
   protected readonly CardStyle = CardStyle;
   protected readonly PieChartType = PieChartType;
+  private readonly translate = inject(TranslateService);
+  private readonly currentLang = toSignal(this.translate.onLangChange);
 
   protected monthlyEventsData = toSignal(this.eventService.getMonthlyEventsData(), {
     initialValue: [],
