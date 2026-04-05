@@ -1,14 +1,21 @@
+import { EChartsCoreOption } from 'echarts/core';
 import { ChartData } from '../../../../models/charts/chart-data';
 
-export const stackedBarChartConfig = (data: ChartData) => {
+export const groupedBarChartConfig = (
+  data: ChartData
+): EChartsCoreOption => {
+  const seriesData = data.series.map(s => ({
+    name: s.label,
+    type: 'bar',
+    data: s.data,
+    color: s.color,
+    borderRadius: s.borderRadius,
+  }));
   return {
     tooltip: {
       trigger: 'axis',
-      axisPointer: {
-        type: 'shadow',
-      },
+      axisPointer: { type: 'shadow' }
     },
-
     legend: {
       bottom: '6%',
       left: 'center',
@@ -23,9 +30,8 @@ export const stackedBarChartConfig = (data: ChartData) => {
         color: '#1F2A44',
         padding: [0, 0, 0, 6],
       },
-      data: data.series.map((item) => item.label),
+      data: data.series.map(s => s.label),
     },
-
     grid: {
       left: '6%',
       right: '6%',
@@ -33,39 +39,25 @@ export const stackedBarChartConfig = (data: ChartData) => {
       bottom: '18%',
       containLabel: true,
     },
-
     xAxis: {
       type: 'category',
       data: data.labels,
-      axisLine: {
-        show: false,
-      },
-      axisTick: {
-        show: false,
-      },
+      axisLine: { show: false },
+      axisTick: { show: false },
       axisLabel: {
         fontFamily: 'Neo Sans Regular',
         fontSize: 14,
-        fontWeight: 400,
         color: '#6B86A8',
         margin: 12,
       },
     },
-
     yAxis: {
       type: 'value',
-      min: 0,
-      interval: 5000,
-      axisLine: {
-        show: false,
-      },
-      axisTick: {
-        show: false,
-      },
+      axisLine: { show: false },
+      axisTick: { show: false },
       axisLabel: {
         fontFamily: 'Neo Sans Regular',
         fontSize: 14,
-        fontWeight: 400,
         color: '#6B86A8',
         margin: 16,
         formatter: (value: number) => {
@@ -79,16 +71,15 @@ export const stackedBarChartConfig = (data: ChartData) => {
         },
       },
     },
-
-    series: data.series.map((item) => ({
-      name: item.label,
+    series: seriesData.map(s => ({
+      name: s.name,
       type: 'bar',
-      stack: 'total',
-      barWidth: 14,
-      data: item.data,
+      data: s.data,
+      barWidth: 8,
+      barGap: '30%',
       itemStyle: {
-        color: item.color,
-        borderRadius: item.borderRadius ?? [0, 0, 0, 0],
+        color: s.color,
+        borderRadius: s.borderRadius ?? [3, 3, 3, 3],
       },
     })),
   };

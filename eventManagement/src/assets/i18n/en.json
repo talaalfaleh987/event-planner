@@ -46,6 +46,8 @@
     "REMOTE": "Remote",
     "TOTAL_EVENTS": "Total Events",
     "TOTAL_ATTENDEES": "Total Attendees",
-    "TITLE": "Events List"
+    "TITLE": "Events List",
+    "MALE": "Male",
+    "FEMALE": "Female"
   }
 }

@@ -2,7 +2,6 @@ import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Language } from './enums/language.enum';
 import { TranslateService } from '@ngx-translate/core';
-import { PieChartType } from './enums/charts.enum';
 
 @Component({
   selector: 'app-root',
