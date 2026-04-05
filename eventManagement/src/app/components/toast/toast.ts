@@ -8,7 +8,7 @@ import { NgClass } from '@angular/common';
   templateUrl: './toast.html',
 })
 export class Toast {
-    protected readonly toastService = inject(ToastService);
+  protected readonly toastService = inject(ToastService);
 
   protected readonly toast = this.toastService.toast;
 
@@ -34,5 +34,4 @@ export class Toast {
   protected hideToast(): void {
     this.toastService.hide();
   }
-
 }

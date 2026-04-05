@@ -12,7 +12,7 @@ import { Toast } from '../../components/toast/toast';
 
 @Component({
   selector: 'app-layout',
-  imports: [Header, TranslateButton, TranslatePipe, RouterOutlet, Footer,Toast],
+  imports: [Header, TranslateButton, TranslatePipe, RouterOutlet, Footer, Toast],
   templateUrl: './layout.html',
 })
 export class Layout {
@@ -34,5 +34,4 @@ export class Layout {
     this.authService.logout();
     void this.router.navigate([RouterPath.Pages.LOGIN], { replaceUrl: true });
   }
-  
 }
