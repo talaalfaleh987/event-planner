@@ -8,14 +8,18 @@ import { Router } from '@angular/router';
 import { RouterPath } from '../../core/router-paths';
 import { EventData } from '../../models/event-details';
 import { AsyncPipe } from '@angular/common';
+import { BreadcrumbService } from '../../service/breadcrumb/breadcrumb-service';
+import { Breadcrumb } from '../../components/breadcrumb/breadcrumb';
 
 @Component({
   selector: 'app-events-management',
-  imports: [AsyncPipe, CustomButton, TranslatePipe, CardView],
+  imports: [AsyncPipe, EventDetails, CustomButton, TranslatePipe, Breadcrumb, CardView],
   templateUrl: './events-management.html',
 })
 export class EventsManagement {
   private readonly eventService = inject(EventService);
+  private readonly breadcrumbService = inject(BreadcrumbService);
+
   private readonly router = inject(Router);
 
   readonly ButtonStyle = ButtonStyle;
@@ -38,6 +42,20 @@ export class EventsManagement {
       '/',
       RouterPath.Pages.EVENTS_MANAGEMENT,
       RouterPath.Pages.ADD_EVENT,
+    ]);
+  }
+  onAdd(): void {
+    this.isAddMode.set(true);
+    this.breadcrumbService.set([
+      { label: 'EVENTS.TITLE' },
+      { label: 'EVENTS.ADD' },
+    ]);
+  }
+   back() {
+    this.isAddMode.set(false);
+
+    this.breadcrumbService.set([
+      { label: 'EVENTS.TITLE' },
     ]);
   }
 }
