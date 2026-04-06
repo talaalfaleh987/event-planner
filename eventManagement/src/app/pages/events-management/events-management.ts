@@ -6,9 +6,6 @@ import { EventDetails } from './event-details/event-details';
 import { EventService } from '../../service/events/event-service';
 import { CustomButton } from '../../components/custom-button/custom-button';
 import { ButtonStyle } from '../../enums/button.enum';
-import { Tag } from '../../components/tag/tag';
-import { TagType } from '../../enums/tag.enum';
-
 
 @Component({
   selector: 'app-events-management',

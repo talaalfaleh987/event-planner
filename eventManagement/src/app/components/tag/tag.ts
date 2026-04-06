@@ -9,31 +9,16 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class Tag {
   type = input<TagType>(TagType.OTHER);
+  label = input<string>('');
 
   readonly TagStyle = TagStyle;
 
   private configMap = {
-    [TagType.EDUCATIONAL]: {
-      label: 'EVENTS.EVENT_CATEGORY_EDUCATION',
-      bg: TagStyle.EDUCATIONAL_BG,
-      text: TagStyle.EDUCATIONAL_TEXT
-    },
-    [TagType.ENTERTAINMENT]: {
-      label: 'EVENTS.EVENT_CATEGORY_ENTERTAINMENT',
-      bg: TagStyle.ENTERTAINMENT_BG,
-      text: TagStyle.ENTERTAINMENT_TEXT
-    },
-    [TagType.WORK]: {
-      label: 'EVENTS.EVENT_CATEGORY_WORK',
-      bg: TagStyle.WORK_BG,
-      text: TagStyle.WORK_TEXT
-    },
-    [TagType.OTHER]: {
-      label: 'EVENTS.EVENT_CATEGORY_OTHER',
-      bg: TagStyle.OTHER_BG,
-      text: TagStyle.OTHER_TEXT
-    }
-  };
+  [TagType.EDUCATIONAL]: TagStyle.EDUCATIONAL,
+  [TagType.ENTERTAINMENT]: TagStyle.ENTERTAINMENT,
+  [TagType.WORK]: TagStyle.WORK,
+  [TagType.OTHER]: TagStyle.OTHER
+ };
 
   config = computed(() => {
     return this.configMap[this.type()] || this.configMap[TagType.OTHER];
