@@ -5,14 +5,17 @@ import { AsyncPipe } from '@angular/common';
 import { CustomButton } from '../../components/custom-button/custom-button';
 import { ButtonStyle } from '../../enums/button.enum';
 import { TranslatePipe } from '@ngx-translate/core';
+import { Dropdown } from '../../components/dropdown/dropdown';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-events-management',
-  imports: [AsyncPipe, EventDetails, CustomButton, TranslatePipe],
+  imports: [AsyncPipe, EventDetails, CustomButton, TranslatePipe, ReactiveFormsModule],
   templateUrl: './events-management.html',
 })
 export class EventsManagement {
   private readonly eventService = inject(EventService);
+
   event$ = this.eventService.getEvent();
 
   readonly ButtonStyle = ButtonStyle;

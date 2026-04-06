@@ -12,7 +12,8 @@
     "USERNAME_REQUIRED": "اسم المستخدم مطلوب",
     "USERNAME_PATTERN": "يجب أن يحتوي اسم المستخدم على أرقام",
     "PASSWORD_REQUIRED": "كلمة المرور مطلوبة",
-    "PASSWORD_MIN_LENGTH": "كلمة المرور لا تقل عن 8 أحرف"
+    "PASSWORD_MIN_LENGTH": "كلمة المرور لا تقل عن 8 أحرف",
+    "REQUIRED": "هذا الحقل مطلوب"
   },
   "NAVIGATION": {
     "HOME": "الرئيسية",

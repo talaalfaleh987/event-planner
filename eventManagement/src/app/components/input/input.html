@@ -1,24 +1,41 @@
-<div class="w-full flex flex-col gap-1 relative">
-  <input
-    [type]="inputType()"
-    [formControl]="control()"
-    [attr.maxlength]="maxLength()"
-    placeholder=" "
-    [class.border-red-error]="hasError"
-    class="peer block w-full border-b-2 border-primary-normal px-3 pt-8 pb-1 font-neo-medium focus:outline-none"
-  />
+<div class="relative flex w-full flex-col gap-1">
+  @if (isReadonly()) {
+    <input
+      [type]="inputType()"
+      [value]="displayValue()"
+      placeholder=" "
+      readonly
+      [attr.maxlength]="maxLength()"
+      [class.border-red-error]="hasError"
+      class="peer block w-full border-b border-primary-normal bg-transparent px-3 pt-8 pb-1 font-neo-regular focus:outline-none"
+    />
+  } @else {
+    <input
+      [type]="inputType()"
+      [formControl]="control()"
+      [attr.maxlength]="maxLength()"
+      placeholder=" "
+      [class.border-red-error]="hasError"
+      class="peer block w-full border-b border-primary-normal bg-transparent px-3 pt-8 pb-1 font-neo-regular focus:outline-none"
+    />
+  }
   <label
-    for="title"
-    class="absolute top-2.5 text-primary font-neo-medium transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2.5"
+    class="absolute top-2.5 text-primary font-neo-regular transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-focus:top-2.5"
     [class.text-red-error]="hasError"
   >
-    {{ label() }}
+    {{ label() | translate }}
+    @if (showRequiredStar()) {
+      <span class="text-red-error">*</span>
+    }
   </label>
+  <span class="absolute bottom-11 end-2">
+    <ng-content select="[v-tail]" />
+  </span>
   <div class="min-h-6">
     @if (hasError) {
       @for (error of errors(); track $index) {
         @if (hasErrorByType(error.types)) {
-          <span class="absolute font-neo-medium text-red-error block">
+          <span class="absolute block font-neo-regular text-sm text-red-error">
             {{ error.message | translate }}
           </span>
         }

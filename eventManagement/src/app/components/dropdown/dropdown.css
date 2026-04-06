@@ -1,0 +1,3 @@
+.dropdown:focus-within img[alt="arrow"] {
+  transform: rotate(180deg);
+}

@@ -13,6 +13,7 @@ import { REGEX, Constants } from '../../core/constants';
 import { RouterPath } from '../../core/router-paths';
 import { InputErrorMessage } from '../../models/input-error-message';
 import { AuthService } from '../../service/auth/auth-service';
+import { CredentialsControls } from '../../enums/credentials-control';
 
 @Component({
   selector: 'app-login',
@@ -36,12 +37,13 @@ export class Login {
   readonly InputType = InputType;
   readonly ButtonType = ButtonType;
   readonly ButtonStyle = ButtonStyle;
+  readonly CredentialsControls = CredentialsControls;
 
   userForm = new FormGroup({
-    username: new FormControl('', {
+    [CredentialsControls.USERNAME]: new FormControl('', {
       validators: [Validators.required, Validators.pattern(REGEX.NUMBERS)],
     }),
-    password: new FormControl('', {
+    [CredentialsControls.PASSWORD]: new FormControl('', {
       validators: [Validators.required, Validators.minLength(Constants.PASSWORD_MIN_LENGTH)],
     }),
   });
