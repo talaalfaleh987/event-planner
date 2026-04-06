@@ -5,17 +5,17 @@
       class="mx-auto flex max-w-5xl min-w-min flex-col items-center justify-center gap-20 md:flex-row"
     >
       <div class="flex w-full flex-1">
-        <img src="assets/imgs/text-logo.svg" alt="logo" class="w-full" />
+        <img src="assets/imgs/text-logo.svg" alt="logo" class="w-full md:min-w-64" />
       </div>
       <div class="m-12 flex min-w-46 w-full flex-col items-end md:m-16 md:w-2/5">
-        <section id="form-header" class="w-full max-w-md">
+        <section id="form-header" class="w-full">
           <div class="mb-4 text-center">
             <h1 class="text-1xl md:text-2xl font-neo-medium">
               {{ 'AUTH.WELCOME_MESSAGE' | translate }}
             </h1>
           </div>
           <div body>
-            <form [formGroup]="userForm" class="flex w-full flex-col" (ngSubmit)="onSubmit()">
+            <form [formGroup]="userForm" class="flex w-full flex-col md:min-w-64" (ngSubmit)="onSubmit()">
               <div class="m-2 min-h-9">
                 @if (submitted() && userForm.invalid) {
                   <app-message [textMessage]="'ERRORS.INVALID_CREDENTIALS' | translate">
