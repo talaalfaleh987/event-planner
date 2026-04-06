@@ -1,10 +1,11 @@
 import { Component, computed, inject } from '@angular/core';
 import { ToastService } from '../../service/toast/toast-service';
 import { NgClass } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-toast',
-  imports: [NgClass],
+  imports: [NgClass,TranslatePipe],
   templateUrl: './toast.html',
 })
 export class Toast {

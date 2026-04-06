@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { ToastData } from '../../models/toast.model';
+import { ToastData, ToastType } from '../../models/toast.model';
 import { Constants } from '../../core/constants';
 
 @Injectable({
@@ -22,11 +22,7 @@ export class ToastService {
     }, duration);
   }
 
-  setToast(
-    type: ToastData['type'],
-    message: string,
-    duration = Constants.DEFAULT_TOAST_DURATION,
-  ): void {
+  setToast(type: ToastType, message: string, duration = Constants.DEFAULT_TOAST_DURATION): void {
     this.show({
       message,
       type,
