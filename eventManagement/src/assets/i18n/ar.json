@@ -47,10 +47,10 @@
     "REMOTE": "عن بعد",
     "TOTAL_EVENTS": "إجمالي الفعاليات",
     "TOTAL_ATTENDEES": "إجمالي الحضور",
+    "ADDED_SUCCESSFULLY": "تم إضافة الفعالية بنجاح",
     "TITLE": "قائمة الفعاليات",
-    "TOTAL_EVENTS": "إجمالي الفعاليات",
     "MALE": "ذكر",
-    "FEMALE": "أنثى",
-    "TITLE": "قائمة الفعاليات"
+    "FEMALE": "أنثى"
+  
   }
 }

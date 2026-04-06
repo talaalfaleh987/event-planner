@@ -31,6 +31,11 @@ module.exports = {
           100: '',
           200: '',
         },
+        green: {
+          100: '#228B22',
+          200: '#E0EEE0',
+          300: '#8FBC8F',
+        },
       },
       backgroundImage: {
         'main-gradient': 'linear-gradient(112.9deg, #1D3557 0%, #264653 50%, #5FB6AB 100%)',

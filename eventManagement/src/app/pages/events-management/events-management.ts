@@ -1,12 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { EventDetails } from './event-details/event-details';
 import { EventService } from '../../service/events/event-service';
-import { AsyncPipe } from '@angular/common';
 import { CustomButton } from '../../components/custom-button/custom-button';
 import { ButtonStyle } from '../../enums/button.enum';
-import { TranslatePipe } from '@ngx-translate/core';
-import { Dropdown } from '../../components/dropdown/dropdown';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-events-management',
@@ -15,14 +14,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class EventsManagement {
   private readonly eventService = inject(EventService);
-
-  event$ = this.eventService.getEvent();
-
   readonly ButtonStyle = ButtonStyle;
 
+  event$ = this.eventService.getEvent();
   isTableView = signal(true);
 
   toggleView() {
-    this.isTableView.update(view  => !view );
+    this.isTableView.update((view) => !view);
   }
 }
