@@ -27,8 +27,30 @@ export const routes: Routes = [
       {
         path: RouterPath.Pages.EVENTS_MANAGEMENT,
         children: [
-          { path: '', component: EventsManagement },
-          { path: RouterPath.Pages.ADD_EVENT, component: AddEvent },
+          { 
+            path: '',
+             component: EventsManagement 
+            },
+           {
+            path: RouterPath.Pages.ADD_EVENT,
+            component: AddEvent,
+            data: {
+              breadcrumb: [
+                { label: 'EVENTS.TITLE' },
+                { label: 'EVENTS.ADD' }
+              ]
+            },
+          },
+          {
+            path: ':id',
+            component: EventDetails,
+            data: {
+              breadcrumb: [
+                { label: 'EVENTS.TITLE' },
+                { label: 'EVENTS.EVENT_DETAILS' }
+              ]
+            },
+          },
         ],
       },
       { path: RouterPath.Pages.EVENTS_DETAILS, component: EventDetails },

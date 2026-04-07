@@ -9,10 +9,11 @@ import { Language } from '../../enums/language.enum';
 import { Footer } from '../../components/footer/footer';
 import { AuthService } from '../../service/auth/auth-service';
 import { Toast } from '../../components/toast/toast';
+import { Breadcrumb } from '../../components/breadcrumb/breadcrumb';
 
 @Component({
   selector: 'app-layout',
-  imports: [Header, TranslateButton, TranslatePipe, RouterOutlet, Footer, Toast],
+  imports: [Header, TranslateButton, TranslatePipe, RouterOutlet, Footer, Toast, Breadcrumb],
   templateUrl: './layout.html',
 })
 export class Layout {
