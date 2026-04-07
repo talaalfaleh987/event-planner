@@ -50,6 +50,13 @@
     "TITLE": "Events List",
     "MALE": "Male",
     "FEMALE": "Female",
-    "ADDED_SUCCESSFULLY": "Event added successfully"
+    "ADDED_SUCCESSFULLY": "Event added successfully",
+    "DATE": "Event Date",
+    "TIME": "Event Time"
+  },
+  "TIME": {
+    "MINUTE": "Minute",
+    "HOUR": "Hour",
+    "PERIOD": "Period"
   }
 }

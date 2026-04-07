@@ -1,0 +1,64 @@
+<div class="relative w-full" [class]="customClasses()" [dir]="setDirection()">
+  <div class="w-full cursor-pointer" (click)="toggleDatepicker()">
+    <app-input
+      [controlName]="controlName()"
+      [label]="label()"
+      [errors]="errors()"
+      [maxLength]="maxLength()"
+      [showRequiredStar]="showRequiredStar()"
+      [isReadonly]="true"
+      [displayValue]="displayValue()"
+    >
+      <div v-tail class="flex items-center gap-2">
+        @if (showClearIcon() && control().value) {
+          <button
+            type="button"
+            class="flex h-5 w-5 items-center justify-center"
+            (click)="onClearIconClick($event)"
+          >
+            <img src="assets/imgs/close.svg" alt="clear" />
+          </button>
+        }
+        <button
+          type="button"
+          class="flex h-5 w-5 items-center justify-center"
+          (click)="onCalendarIconClick($event)"
+        >
+          <img [src]="trailingIcon()" alt="calendar" />
+        </button>
+      </div>
+    </app-input>
+  </div>
+  @if (isRange()) {
+    <mat-date-range-input
+      [rangePicker]="rangePicker"
+      [formGroup]="dateRangeFormGroup"
+      [min]="minDate()"
+      [max]="maxDate()"
+      class="pointer-events-none absolute top-8 z-0 w-full opacity-0"
+    >
+      <input matStartDate formControlName="start" />
+      <input matEndDate formControlName="end" />
+    </mat-date-range-input>
+
+    <mat-date-range-picker
+      #rangePicker
+      [panelClass]="customCalendarStyle()"
+      (closed)="emitRangeDate()"
+    />
+  } @else {
+    <input
+      matInput
+      [matDatepicker]="singlePicker"
+      [formControl]="singleDateFormControl"
+      [min]="minDate()"
+      [max]="maxDate()"
+      class="pointer-events-none absolute top-8 z-0 w-full opacity-0"
+    />
+    <mat-datepicker
+      #singlePicker
+      [panelClass]="customCalendarStyle()"
+      (closed)="emitSingleDate()"
+    />
+  }
+</div>

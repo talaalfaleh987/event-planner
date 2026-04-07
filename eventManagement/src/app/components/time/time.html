@@ -1,0 +1,83 @@
+<div class="relative w-full" [class]="customClasses()">
+  <div class="w-full cursor-pointer" (click)="togglePanel()">
+    <app-input
+      [controlName]="controlName()"
+      [label]="label()"
+      [errors]="errors()"
+      [maxLength]="maxLength()"
+      [showRequiredStar]="showRequiredStar()"
+      [isReadonly]="true"
+      [displayValue]="displayValue()"
+    >
+      <div v-tail class="flex items-center gap-2">
+        @if (showClearIcon() && control().value) {
+          <button
+            type="button"
+            class="flex h-5 w-5 items-center justify-center"
+            (click)="onClearIconClick($event)"
+          >
+            <img src="assets/imgs/close.svg" alt="clear" />
+          </button>
+        }
+        <button
+          type="button"
+          class="flex h-5 w-5 items-center justify-center"
+          (click)="onClockIconClick($event)"
+        >
+          <img [src]="trailingIcon()" alt="clock" />
+        </button>
+      </div>
+    </app-input>
+  </div>
+  @if (isOpen()) {
+    <div class="absolute z-50 mt-2 w-full rounded-xl border border-gray-200 bg-white p-4 shadow-lg">
+      <div class="grid grid-cols-3 gap-3">
+        <div class="flex flex-col gap-1">
+          <label class="text-xs text-primary">{{ 'TIME.MINUTE' | translate }}</label>
+          <select
+            class="rounded-md border border-primary-normal bg-white px-3 py-2 outline-none"
+            [value]="selectedMinute()"
+            (change)="onMinuteChange($event)"
+          >
+            <option value="" disabled selected hidden></option>
+            @for (minute of minutesList; track minute.value) {
+              <option [value]="minute.value">
+                {{ languageService.isArabic() ? minute.textAr : minute.textEn }}
+              </option>
+            }
+          </select>
+        </div>
+        <div class="flex flex-col gap-1">
+          <label class="text-xs text-primary">{{ 'TIME.HOUR' | translate }}</label>
+          <select
+            class="rounded-md border border-primary-normal bg-white px-3 py-2 outline-none"
+            [value]="selectedHour()"
+            (change)="onHourChange($event)"
+          >
+            <option value="" disabled selected hidden></option>
+            @for (hour of hourList; track hour.value) {
+              <option [value]="hour.value">
+                {{ languageService.isArabic() ? hour.textAr : hour.textEn }}
+              </option>
+            }
+          </select>
+        </div>
+        <div class="flex flex-col gap-1">
+          <label class="text-xs text-primary">{{ 'TIME.PERIOD' | translate }}</label>
+          <select
+            class="rounded-md border border-primary-normal bg-white px-3 py-2 outline-none"
+            [value]="selectedPeriod()"
+            (change)="onPeriodChange($event)"
+          >
+            <option value="" disabled selected hidden></option>
+            @for (period of periodList; track period.value) {
+              <option [value]="period.value">
+                {{ languageService.isArabic() ? period.textAr : period.textEn }}
+              </option>
+            }
+          </select>
+        </div>
+      </div>
+    </div>
+  }
+</div>
