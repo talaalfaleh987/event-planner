@@ -1,31 +1,36 @@
-<div class="flex items-center justify-between p-12">
-  <h2 class="text-lg font-semibold">
-    {{ 'EVENTS.TITLE' | translate }}
-  </h2>
-  <app-custom-button [style]="ButtonStyle.VIEW" (triggerCallback)="toggleView()">
-    <img
-      [src]="isTableView() ? 'assets/imgs/card-view.svg' : 'assets/imgs/table-view.svg'"
-      alt="view icon"
-    />
-  </app-custom-button>
-</div>
-<hr class="mx-auto w-11/12 border-t-2 border-gray-300 pb-6" />
-<div class="flex items-center justify-between px-12">
-  <h2 class="text-lg font-semibold">{{ 'EVENTS.TOTAL' | translate }} ()</h2>
-  <app-custom-button
+@let events = events$ | async ;
+<div class="p-14 px-18">
+  <div class="flex items-center justify-between pb-6">
+    <h2 class="text-lg font-semibold">
+      {{ 'EVENTS.TITLE' | translate }}
+    </h2>
+    <app-custom-button [style]="ButtonStyle.VIEW" (triggerCallback)="toggleView()">
+      <img [src]="isTableView()
+        ? 'assets/imgs/card-view.svg'
+        : 'assets/imgs/table-view.svg'" alt="view icon" />
+    </app-custom-button>
+  </div>
+  <hr class="border-t-2 border-gray-300 mx-auto pb-6" />
+  <div class="flex items-center justify-between pb-8">
+    <h2 class="text-lg font-semibold">
+      {{ 'EVENTS.TOTAL' | translate }} ({{ events?.length || 0 }})</h2>
+    <app-custom-button
     [buttonType]="ButtonType.BUTTON"
     [style]="ButtonStyle.PRIMARY"
     [customClasses]="'w-auto min-w-[140px] px-6 py-3'"
     (triggerCallback)="goToAddEvent()"
   >
-    <span class="flex items-center justify-center gap-2">
-      <img src="assets/imgs/add.svg" alt="add icon" />
-      {{ 'EVENTS.ADD' | translate }}
-    </span>
-  </app-custom-button>
-</div>
-@if (isTableView()) {
+      <span class="flex items-center justify-center gap-2">
+        <img src="assets/imgs/add.svg" />
+        {{ 'EVENTS.ADD' | translate }}
+      </span>
+    </app-custom-button>
+  </div>
+  @if (isTableView()) {
   <p>Table View</p>
-} @else {
-  <p>Card View</p>
-}
+  } @else {
+  @if (events) {
+  <app-card-view [events]="events" (selectedEvent)="onSelectEvent($event)" />
+  }
+  }
+</div>

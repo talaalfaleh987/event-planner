@@ -1,0 +1,37 @@
+@if (events()) {
+<div class="grid grid-cols-3 gap-20">
+    @for (event of events(); track event.name) {
+    <app-card [style]="CardStyle.VIEW" (click)="onCardClick(event)">
+        <div body class="grid grid-cols-2 gap-5 text-sm font-medium gap-x-8">
+                {{ event.name }}
+                <div class="">
+                <app-tag [type]="categoryMap[event.category]"
+                    [label]="'EVENTS.EVENT_CATEGORY_' + event.category.toUpperCase()">
+                </app-tag></div>
+            <div class="flex items-center gap-3">
+                <img src="assets/imgs/group.svg" alt="group icon" />
+                <span>{{ event.capacity }}</span>
+            </div>
+            <div class="flex items-center gap-3">
+                @if (event.type === 'physical') {
+                <img src="assets/imgs/location.svg" alt="location icon" />
+                } @else {
+                <img src="assets/imgs/online.svg" alt="online icon" />
+                }
+                <span>
+                    {{ 'EVENTS.EVENT_TYPE_' + event.type.toUpperCase() | translate}}
+                </span>
+            </div>
+            <div class="flex items-center gap-3">
+                <img src="assets/imgs/calendar.svg" alt="calendar icon" />
+                <span>{{ event.date }}</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <img src="assets/imgs/time.svg" alt="time icon" />
+                <span>{{ event.time }}</span>
+            </div>
+        </div>
+    </app-card>
+    }
+</div>
+}
