@@ -9,6 +9,17 @@
     />
   </app-custom-button>
 </div>
+<hr class="border-t-2 border-gray-300 w-11/12 mx-auto pb-6" />
+<div class="flex items-center justify-between px-12">
+  <h2 class="text-lg font-semibold">{{ 'EVENTS.TOTAL' | translate }} ()</h2>
+  <app-custom-button [buttonType]="ButtonType.SUBMIT" [style]="ButtonStyle.FORM_PRIMARY">
+    <span class="flex items-center justify-center gap-2">
+      <img src="assets/imgs/add.svg" />
+
+      {{ 'EVENTS.ADD' | translate }}
+    </span>
+  </app-custom-button>
+</div>
 @if (isTableView()) {
   <p>Table View</p>
 } @else {

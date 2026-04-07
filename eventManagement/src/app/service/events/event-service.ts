@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
-import { Event } from '../../models/event';
+import { Data } from '../../models/data';
 import { MonthlyEventsChartItem } from '../../models/charts/monthly-events-chart-Item';
 import { PieChartItem } from '../../models/charts/events-pie-charts-data';
 import { MonthlyAttendanceChartItem } from '../../models/charts/monthly-attendance-chartI-tem';import { Option } from '../../models/dropdown/option';
@@ -9,7 +9,7 @@ import { MonthlyAttendanceChartItem } from '../../models/charts/monthly-attendan
   providedIn: 'root',
 })
 export class EventService {
-  getEvent(): Observable<Event> {
+  getEvent(): Observable<Data> {
     return of({
       name: 'مؤتمر التقنية 2026',
       category: 'Work',

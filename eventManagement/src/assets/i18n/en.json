@@ -51,6 +51,8 @@
     "MALE": "Male",
     "FEMALE": "Female",
     "ADDED_SUCCESSFULLY": "Event added successfully",
+    "ADD": "Add",
+    "TOTAL": "Total",
     "DATE": "Event Date",
     "TIME": "Event Time"
   },
