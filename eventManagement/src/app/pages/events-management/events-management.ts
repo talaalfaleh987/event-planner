@@ -9,7 +9,7 @@ import { ButtonStyle } from '../../enums/button.enum';
 
 @Component({
   selector: 'app-events-management',
-  imports: [AsyncPipe, EventDetails, CustomButton, TranslatePipe, ReactiveFormsModule],
+  imports: [AsyncPipe, EventDetails, CustomButton, TranslatePipe, ReactiveFormsModule, Tag],
   templateUrl: './events-management.html',
 })
 export class EventsManagement {
@@ -22,4 +22,6 @@ export class EventsManagement {
   toggleView() {
     this.isTableView.update((view) => !view);
   }
+
+  readonly TagType = TagType;
 }

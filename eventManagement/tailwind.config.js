@@ -35,7 +35,21 @@ module.exports = {
           100: '#228B22',
           200: '#E0EEE0',
           300: '#8FBC8F',
+          400: '#D2EED7',
+          500: '#4BBF64',       
         },
+        orange: {
+          100: '#FFE3DC',
+          200: '#FF9479',
+        },
+        purple: {
+          100: '#F0E1FE',
+          200: '#C48CFF',
+        },
+        pink: {
+          100: '#FDD4DD',
+          200: '#FA5A7D',
+        }
       },
       backgroundImage: {
         'main-gradient': 'linear-gradient(112.9deg, #1D3557 0%, #264653 50%, #5FB6AB 100%)',
