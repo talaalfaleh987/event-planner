@@ -1,0 +1,63 @@
+<div class="relative w-full" [class]="customClasses()" [dir]="setDirection()">
+  <div class="w-full cursor-pointer" (click)="toggleDatepicker()">
+    <app-input
+      [controlName]="controlName()"
+      [label]="label()"
+      [errors]="errors()"
+      [maxLength]="maxLength()"
+      [showRequiredStar]="showRequiredStar()"
+      [isReadonly]="true"
+      [displayValue]="displayValue()"
+    >
+      <div v-tail class="flex items-center gap-2">
+        @if (showClearIcon() && control().value) {
+          <app-custom-button
+            [buttonType]="ButtonType.BUTTON"
+            [style]="ButtonStyle.ICON_BUTTON_SM"
+            (triggerCallback)="onClearIconClick($event)"
+          >
+            <img src="assets/imgs/close.svg" alt="clear" />
+          </app-custom-button>
+        }
+        <app-custom-button
+          [buttonType]="ButtonType.BUTTON"
+          [style]="ButtonStyle.ICON_BUTTON_SM"
+          (triggerCallback)="onCalendarIconClick($event)"
+        >
+          <img [src]="trailingIcon()" alt="calendar" />
+        </app-custom-button>
+      </div>
+    </app-input>
+  </div>
+  @if (isRange()) {
+    <mat-date-range-input
+      [rangePicker]="rangePicker"
+      [formGroup]="dateRangeFormGroup"
+      [min]="minDate()"
+      [max]="maxDate()"
+      class="pointer-events-none absolute top-8 z-0 w-full opacity-0"
+    >
+      <input matStartDate formControlName="start" />
+      <input matEndDate formControlName="end" />
+    </mat-date-range-input>
+    <mat-date-range-picker
+      #rangePicker
+      [panelClass]="customCalendarStyle()"
+      (closed)="emitRangeDate()"
+    />
+  } @else {
+    <input
+      matInput
+      [matDatepicker]="singlePicker"
+      [formControl]="singleDateFormControl"
+      [min]="minDate()"
+      [max]="maxDate()"
+      class="pointer-events-none absolute top-8 z-0 w-full opacity-0"
+    />
+    <mat-datepicker
+      #singlePicker
+      [panelClass]="customCalendarStyle()"
+      (closed)="emitSingleDate()"
+    />
+  }
+</div>

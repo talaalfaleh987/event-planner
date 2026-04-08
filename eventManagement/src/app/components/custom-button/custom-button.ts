@@ -9,13 +9,14 @@ import { ButtonType, ButtonStyle } from '../../enums/button.enum';
 export class CustomButton {
   buttonType = input<ButtonType>(ButtonType.BUTTON);
   style = input<ButtonStyle>(ButtonStyle.PRIMARY);
-  triggerCallback = output<void>();
   isDisabled = input<boolean>(false);
+
+  triggerCallback = output<MouseEvent>();
 
   readonly ButtonType = ButtonType;
 
-  onClick(): void {
+  onClick(event: MouseEvent): void {
     if (this.isDisabled()) return;
-    this.triggerCallback .emit();
+    this.triggerCallback.emit(event);
   }
 }

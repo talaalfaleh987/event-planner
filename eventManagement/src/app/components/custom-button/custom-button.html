@@ -2,6 +2,6 @@
   [type]="ButtonType[buttonType()]"
   [class]="style()"
   [disabled]="isDisabled()"
-  (click)="onClick()">
+  (click)="onClick($event)">
   <ng-content />
 </button>
