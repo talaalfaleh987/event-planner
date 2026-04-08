@@ -2,7 +2,7 @@ import { Component, input } from '@angular/core';
 import { CardStyle } from '../../../enums/card.enum';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Card } from '../../../components/card/card';
-import { Event } from '../../../models/event';
+import { EventData } from '../../../models/data';
 import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
@@ -12,5 +12,5 @@ import { NgTemplateOutlet } from '@angular/common';
 })
 export class EventDetails {
   readonly CardStyle = CardStyle;
-  event = input.required<Event>();
+  event = input.required<EventData>();
 }
