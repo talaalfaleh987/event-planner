@@ -3,5 +3,6 @@ export class RouterPath {
     HOME = 'home';
     EVENTS_MANAGEMENT = 'events';
     LOGIN = 'login';
+    ADD_EVENT = 'add-event';
   })();
 }

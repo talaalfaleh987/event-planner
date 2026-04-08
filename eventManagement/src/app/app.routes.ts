@@ -5,6 +5,7 @@ import { Home } from './pages/home/home';
 import { EventsManagement } from './pages/events-management/events-management';
 import { Login } from './pages/login/login';
 import { authGuard } from './core/guards/auth-guard';
+import { AddEvent } from './pages/events-management/add-event/add-event';
 
 export const routes: Routes = [
   {
@@ -22,7 +23,13 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: RouterPath.Pages.HOME, component: Home },
-      { path: RouterPath.Pages.EVENTS_MANAGEMENT, component: EventsManagement },
+      {
+        path: RouterPath.Pages.EVENTS_MANAGEMENT,
+        children: [
+          { path: '', component: EventsManagement },
+          { path: RouterPath.Pages.ADD_EVENT, component: AddEvent },
+        ],
+      },
     ],
   },
 ];

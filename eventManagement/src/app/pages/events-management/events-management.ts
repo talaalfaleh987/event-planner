@@ -7,6 +7,8 @@ import { CustomButton } from '../../components/custom-button/custom-button';
 import { ButtonStyle, ButtonType } from '../../enums/button.enum';
 import { Tag } from '../../components/tag/tag';
 import { TagType } from '../../enums/tag.enum';
+import { Router } from '@angular/router';
+import { RouterPath } from '../../core/router-paths';
 
 @Component({
   selector: 'app-events-management',
@@ -15,6 +17,7 @@ import { TagType } from '../../enums/tag.enum';
 })
 export class EventsManagement {
   private readonly eventService = inject(EventService);
+  private readonly router = inject(Router);
 
   readonly ButtonStyle = ButtonStyle;
   readonly TagType = TagType;
@@ -25,5 +28,8 @@ export class EventsManagement {
 
   toggleView() {
     this.isTableView.update((view) => !view);
+  }
+  goToAddEvent() {
+    this.router.navigate(['/', RouterPath.Pages.EVENTS_MANAGEMENT, RouterPath.Pages.ADD_EVENT]);
   }
 }
