@@ -19,6 +19,8 @@ import { CustomInput } from '../input/input';
 import { InputErrorMessage } from '../../models/input-error-message';
 import { LanguageService } from '../../service/language/language-service';
 import { DateRangeValue } from '../../models/date-range';
+import { CustomButton } from '../custom-button/custom-button';
+import { ButtonStyle, ButtonType } from '../../enums/button.enum';
 
 @Component({
   selector: 'app-calendar',
@@ -28,6 +30,7 @@ import { DateRangeValue } from '../../models/date-range';
     MatInputModule,
     MatNativeDateModule,
     CustomInput,
+    CustomButton,
   ],
   templateUrl: './calendar.html',
   styleUrl: './calendar.css',
@@ -39,6 +42,8 @@ export class calendar implements OnInit {
 
   readonly singlePicker = viewChild<MatDatepicker<Date>>('singlePicker');
   readonly rangePicker = viewChild<MatDateRangePicker<Date>>('rangePicker');
+  readonly ButtonStyle = ButtonStyle;
+  readonly ButtonType = ButtonType;
 
   controlName = input.required<string>();
   label = input<string>('');

@@ -16,10 +16,12 @@ import { InputErrorMessage } from '../../models/input-error-message';
 import { LanguageService } from '../../service/language/language-service';
 import { HOURS_LIST, MINUTES_LIST, PERIODS_LIST } from './time-lists';
 import { TimeValue } from '../../models/time';
+import { CustomButton } from '../custom-button/custom-button';
+import { ButtonStyle, ButtonType } from '../../enums/button.enum';
 
 @Component({
   selector: 'app-time',
-  imports: [ReactiveFormsModule, CustomInput, TranslatePipe],
+  imports: [ReactiveFormsModule, CustomInput, TranslatePipe, CustomButton],
   templateUrl: './time.html',
   styleUrl: './time.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -51,6 +53,8 @@ export class time implements OnInit {
   protected readonly hourList = HOURS_LIST;
   protected readonly minutesList = MINUTES_LIST;
   protected readonly periodList = PERIODS_LIST;
+  readonly ButtonStyle = ButtonStyle;
+  readonly ButtonType = ButtonType;
 
   protected selectedHour = signal('');
   protected selectedMinute = signal('');

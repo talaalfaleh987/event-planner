@@ -14,12 +14,6 @@
 } @else {
   <p>Card View</p>
 }
-<div class="m-10">
-  <form [formGroup]="eventForm" class="flex flex-col gap-8">
-    <app-calendar [controlName]="'eventDate'" [label]="'EVENTS.DATE'" [showRequiredStar]="true" />
-    <app-time [controlName]="'eventTime'" [label]="'EVENTS.TIME'" [showRequiredStar]="true" />
-  </form>
-</div>
 <!-- <div class="m-10">
   TODO: add routing
   @if (event$ | async; as event) {

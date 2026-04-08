@@ -11,21 +11,21 @@
     >
       <div v-tail class="flex items-center gap-2">
         @if (showClearIcon() && control().value) {
-          <button
-            type="button"
-            class="flex h-5 w-5 items-center justify-center"
-            (click)="onClearIconClick($event)"
+          <app-custom-button
+            [buttonType]="ButtonType.BUTTON"
+            [style]="ButtonStyle.ICON_BUTTON_SM"
+            (triggerCallback)="onClearIconClick($event)"
           >
             <img src="assets/imgs/close.svg" alt="clear" />
-          </button>
+          </app-custom-button>
         }
-        <button
-          type="button"
-          class="flex h-5 w-5 items-center justify-center"
-          (click)="onCalendarIconClick($event)"
+        <app-custom-button
+          [buttonType]="ButtonType.BUTTON"
+          [style]="ButtonStyle.ICON_BUTTON_SM"
+          (triggerCallback)="onCalendarIconClick($event)"
         >
           <img [src]="trailingIcon()" alt="calendar" />
-        </button>
+        </app-custom-button>
       </div>
     </app-input>
   </div>
@@ -40,7 +40,6 @@
       <input matStartDate formControlName="start" />
       <input matEndDate formControlName="end" />
     </mat-date-range-input>
-
     <mat-date-range-picker
       #rangePicker
       [panelClass]="customCalendarStyle()"
