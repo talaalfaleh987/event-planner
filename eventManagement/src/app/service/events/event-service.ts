@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
-import { Data } from '../../models/data';
+import { EventData } from '../../models/data';
 import { MonthlyEventsChartItem } from '../../models/charts/monthly-events-chart-Item';
 import { PieChartItem } from '../../models/charts/events-pie-charts-data';
-import { MonthlyAttendanceChartItem } from '../../models/charts/monthly-attendance-chartI-tem';import { Option } from '../../models/dropdown/option';
+import { MonthlyAttendanceChartItem } from '../../models/charts/monthly-attendance-chartI-tem';
+import { Option } from '../../models/dropdown/option';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventService {
-  getEvent(): Observable<Data> {
+  getEvent(): Observable<EventData> {
     return of({
       name: 'مؤتمر التقنية 2026',
       category: 'Work',
@@ -39,27 +40,27 @@ export class EventService {
     ]);
   }
 
- getEventTypesData(): Observable<PieChartItem[]> {
-  return of([
-    { value: 400, name: 'EVENT_TYPE_PHYSICAL', itemStyle: {color: '#77c6a9'} },
-    { value: 700, name: 'EVENT_TYPE_ONLINE', itemStyle: {color: '#fad848'} }
-  ]);
-}
+  getEventTypesData(): Observable<PieChartItem[]> {
+    return of([
+      { value: 400, name: 'EVENT_TYPE_PHYSICAL', itemStyle: { color: '#77c6a9' } },
+      { value: 700, name: 'EVENT_TYPE_ONLINE', itemStyle: { color: '#fad848' } },
+    ]);
+  }
 
   getEventCategoriesData(): Observable<PieChartItem[]> {
-  return of([
-    { value: 1000, name: 'EVENT_CATEGORY_OTHER' },
-    { value: 7000, name: 'EVENT_CATEGORY_EDUCATION' },
-    { value: 2000, name: 'EVENT_CATEGORY_WORK' },
-    { value: 3000, name: 'EVENT_CATEGORY_ENTERTAINMENT' }
-  ]);
-}
+    return of([
+      { value: 1000, name: 'EVENT_CATEGORY_OTHER' },
+      { value: 7000, name: 'EVENT_CATEGORY_EDUCATION' },
+      { value: 2000, name: 'EVENT_CATEGORY_WORK' },
+      { value: 3000, name: 'EVENT_CATEGORY_ENTERTAINMENT' },
+    ]);
+  }
 
   getMonthlyAttendanceData(): Observable<MonthlyAttendanceChartItem[]> {
     return of([
       { month: '1', male: 14000, female: 12500 },
       { month: '2', male: 17000, female: 11500 },
-      { month: '3', male: 6000,  female: 22500 },
+      { month: '3', male: 6000, female: 22500 },
       { month: '4', male: 10000, female: 9500 },
       { month: '5', male: 13000, female: 12000 },
       { month: '6', male: 15000, female: 14000 },
@@ -70,7 +71,7 @@ export class EventService {
       { month: '11', male: 20000, female: 16000 },
       { month: '12', male: 21000, female: 17000 },
     ]);
-}
+  }
 
   getEventTypeOptions(): Observable<Option[]> {
     return of([
@@ -86,5 +87,5 @@ export class EventService {
       { value: 3, nameAr: 'ترفيهية', nameEn: 'Entertainment' },
       { value: 4, nameAr: 'أخرى', nameEn: 'Other' },
     ]);
-    }
+  }
 }

@@ -1,4 +1,4 @@
-export interface Data {
+export interface EventData {
   name: string;
   category: 'Entertainment' | 'Work' | 'Education' | 'Other';
   type: 'online' | 'physical';
