@@ -1,4 +1,5 @@
 export interface EventData {
+  id: number;
   name: string;
   category: 'Entertainment' | 'Work' | 'Education' | 'Other';
   type: 'online' | 'physical';
