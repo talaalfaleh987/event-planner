@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of, Observable } from 'rxjs';
+import { of, Observable, map, BehaviorSubject } from 'rxjs';
 import { EventData } from '../../models/data';
 import { MonthlyEventsChartItem } from '../../models/charts/monthly-events-chart-Item';
 import { PieChartItem } from '../../models/charts/events-pie-charts-data';
@@ -10,17 +10,103 @@ import { Option } from '../../models/dropdown/option';
   providedIn: 'root',
 })
 export class EventService {
-  getEvent(): Observable<EventData> {
-    return of({
+  private eventsSubject = new BehaviorSubject<EventData[]>([
+    {
+      id: 1,
       name: 'مؤتمر التقنية 2026',
       category: 'Work',
       type: 'online',
-      location: 'Virtual',
+      location: 'افتراضي',
       link: 'https://www.techconference2026.com',
-      date: '24-4-2026',
+      date: '2026-04-24',
       time: '18:00',
       capacity: '150',
-    });
+    },
+    {
+      id: 2,
+      name: 'ورشة تطوير الويب',
+      category: 'Education',
+      type: 'physical',
+      location: 'الرياض',
+      link: '',
+      date: '2026-05-02',
+      time: '10:00',
+      capacity: '30',
+    },
+    {
+      id: 3,
+      name: 'فعالية رسم',
+      category: 'Entertainment',
+      type: 'physical',
+      location: 'جدة',
+      link: '',
+      date: '2026-05-10',
+      time: '20:00',
+      capacity: '500',
+    },
+    {
+      id: 4,
+      name: 'دورة الذكاء الاصطناعي',
+      category: 'Education',
+      type: 'online',
+      location: 'افتراضي',
+      link: 'https://ai-course.com',
+      date: '2026-06-01',
+      time: '17:00',
+      capacity: '200',
+    },
+    {
+      id: 5,
+      name: 'لقاء مفتوح للمجتمع',
+      category: 'Other',
+      type: 'physical',
+      location: 'الدمام',
+      link: '',
+      date: '2026-06-12',
+      time: '19:00',
+      capacity: '80',
+    },
+  ]);
+
+  getEvent(id: number): Observable<EventData> {
+    return this.getAllEvents().pipe(
+      map((events) => {
+        const event = events.find((e) => e.id === id);
+        if (!event) {
+          throw new Error('Event not found');
+        }
+        return event;
+      }),
+    );
+  }
+
+  getAllEvents(): Observable<EventData[]> {
+    return this.eventsSubject.asObservable();
+  }
+
+  addEvent(newEvent: Omit<EventData, 'id'>): Observable<EventData> {
+    const currentEvents = this.eventsSubject.getValue();
+
+    const newId = currentEvents.length ? Math.max(...currentEvents.map((e) => e.id)) + 1 : 1;
+
+    const eventWithId: EventData = {
+      id: newId,
+      ...newEvent,
+    };
+
+    this.eventsSubject.next([...currentEvents, eventWithId]);
+    return of(eventWithId);
+    // TODO: use this code in add-event
+    //     this.eventService.addEvent({
+    //   name: 'فعالية جديدة',
+    //   category: 'Other',
+    //   type: 'physical',
+    //   location: 'الرياض',
+    //   link: '',
+    //   date: '2026-07-01',
+    //   time: '18:00',
+    //   capacity: '100',
+    // });
   }
 
   getMonthlyEventsData(): Observable<MonthlyEventsChartItem[]> {

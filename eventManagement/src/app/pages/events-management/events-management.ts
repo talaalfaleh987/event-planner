@@ -23,7 +23,7 @@ export class EventsManagement {
   readonly TagType = TagType;
   readonly ButtonType = ButtonType;
 
-  event$ = this.eventService.getEvent();
+  event$ = this.eventService.getAllEvents();
   isTableView = signal(true);
 
   toggleView() {
