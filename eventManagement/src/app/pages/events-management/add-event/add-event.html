@@ -54,7 +54,7 @@
             [showRequiredStar]="true"
           >
           </app-input>
-        } @else if (isOnline) {
+        } @else {
           <app-input
             [controlName]="EventFormControls.LINK"
             [label]="'EVENTS.EVENT_LINK' | translate"
@@ -76,6 +76,7 @@
           [buttonType]="ButtonType.SUBMIT"
           [style]="ButtonStyle.PRIMARY"
           [customClasses]="'w-auto min-w-[140px] px-6 py-3'"
+          [isDisabled]="eventForm.invalid"
         >
           {{ 'COMMON.ADD' | translate }}
         </app-custom-button>

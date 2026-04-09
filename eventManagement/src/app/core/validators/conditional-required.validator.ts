@@ -1,19 +1,12 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export function conditionalRequiredValidator(
-  predicate: (control: AbstractControl) => boolean,
+  siblingKey: string,
+  requiredWhenValue: unknown,
 ): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
-    if (!predicate(control)) {
-      return null;
-    }
-
-    const value = control.value;
-
-    if (value === null || value === undefined || value === '') {
-      return { required: true };
-    }
-
-    return null;
+    const siblingValue = control.parent?.get(siblingKey)?.value;
+    const isEmpty = control.value === null || control.value === undefined || control.value === '';
+    return siblingValue === requiredWhenValue && isEmpty ? { required: true } : null;
   };
 }

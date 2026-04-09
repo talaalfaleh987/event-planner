@@ -73,18 +73,10 @@ export class AddEvent {
       validators: [Validators.required, Validators.pattern(REGEX.NUMBERS)],
     }),
     [EventFormControls.LOCATION]: new FormControl('', {
-      validators: [
-        conditionalRequiredValidator(
-          (control) => control.parent?.get(EventFormControls.TYPE)?.value === EventType.PHYSICAL,
-        ),
-      ],
+      validators: [conditionalRequiredValidator(EventFormControls.TYPE, EventType.PHYSICAL)],
     }),
     [EventFormControls.LINK]: new FormControl('', {
-      validators: [
-        conditionalRequiredValidator(
-          (control) => control.parent?.get(EventFormControls.TYPE)?.value === EventType.ONLINE,
-        ),
-      ],
+      validators: [conditionalRequiredValidator(EventFormControls.TYPE, EventType.ONLINE)],
     }),
     [EventFormControls.DATE]: new FormControl('', {
       validators: [Validators.required],
@@ -124,14 +116,8 @@ export class AddEvent {
     return this.eventForm.controls[EventFormControls.TYPE].value === EventType.PHYSICAL;
   }
 
-  get isOnline(): boolean {
-    return this.eventForm.controls[EventFormControls.TYPE].value === EventType.ONLINE;
-  }
-
   onSubmit(): void {
     this.eventForm.markAllAsTouched();
-    this.eventForm.controls[EventFormControls.LOCATION].updateValueAndValidity();
-    this.eventForm.controls[EventFormControls.LINK].updateValueAndValidity();
 
     if (this.eventForm.invalid) return;
     //TODO: Call the service to add the event and use toast service
