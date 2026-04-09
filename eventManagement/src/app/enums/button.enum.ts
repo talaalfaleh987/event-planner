@@ -15,10 +15,6 @@ export enum ButtonStyle {
   ICON = `flex gap-1 text-lg cursor-pointer font-neo-regular`,
   WHITE_ICON = ICON + ' text-white fill-white absolute top-6 end-6',
   PRIMARY_ICON = ICON + ' text-primary fill-primary',
-  FORM_PRIMARY = PRIMARY +
-    `
-    w-auto min-w-[140px] px-6 py-3
-  `,
   OUTLINE = `
     rounded-md border border-primary-normal text-primary px-6 py-3 w-full font-neo-medium
     bg-transparent

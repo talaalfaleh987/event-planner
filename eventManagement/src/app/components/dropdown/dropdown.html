@@ -23,9 +23,7 @@
   >
     @for (option of options(); track option.value) {
       <li class="hover:bg-primary-normal/10 p-2 rounded-md" (click)="selectOption(option)">
-        <a
-          class="font-neo-regular text-primary transition-all duration-150 hover:bg-primary-normal/10"
-        >
+        <a class="font-neo-regular text-primary">
           {{ getOptionLabel(option) }}
         </a>
       </li>

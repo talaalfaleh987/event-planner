@@ -14,9 +14,7 @@
     "PASSWORD_REQUIRED": "Password is required",
     "PASSWORD_MIN_LENGTH": "Password must be at least 8 characters",
     "REQUIRED": "This field is required",
-    "MIN_CAPACITY": "Capacity must be at least 5",
-    "DATE_FORMAT": "Format must be YYYY-MM-DD",
-    "TIME_FORMAT": "Format must be hh:mm"
+    "NUMBERS_ONLY": "This field must contain numbers only"
   },
   "COMMON": {
     "ADD": "Add",

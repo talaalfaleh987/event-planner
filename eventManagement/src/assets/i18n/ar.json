@@ -14,9 +14,7 @@
     "PASSWORD_REQUIRED": "كلمة المرور مطلوبة",
     "PASSWORD_MIN_LENGTH": "كلمة المرور لا تقل عن 8 أحرف",
     "REQUIRED": "هذا الحقل مطلوب",
-    "MIN_CAPACITY": "يجب ألا تقل السعة عن 5",
-    "DATE_FORMAT": "يجب أن يكون التنسيق YYYY-MM-DD",
-    "TIME_FORMAT": "يجب أن يكون التنسيق hh:mm"
+    "NUMBERS_ONLY": "يجب أن يحتوي هذا الحقل على أرقام فقط"
   },
   "COMMON": {
     "ADD": "إضافة",

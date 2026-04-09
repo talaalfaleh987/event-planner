@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DoCheck,
   inject,
   input,
   OnInit,
@@ -36,7 +37,7 @@ import { ButtonStyle, ButtonType } from '../../enums/button.enum';
   styleUrl: './calendar.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class calendar implements OnInit {
+export class calendar implements OnInit, DoCheck {
   private readonly formGroupDirective = inject(FormGroupDirective);
   protected readonly languageService = inject(LanguageService);
 
@@ -88,6 +89,15 @@ export class calendar implements OnInit {
         this.control().setValue('');
       }
     });
+  }
+
+  ngDoCheck(): void {
+    const parentControl = this.control();
+
+    if (parentControl.touched) {
+      this.singleDateFormControl.markAsTouched({ onlySelf: true });
+      this.dateRangeFormGroup.markAllAsTouched();
+    }
   }
 
   protected control(): FormControl {
