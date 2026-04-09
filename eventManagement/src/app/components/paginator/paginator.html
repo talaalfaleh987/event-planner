@@ -1,0 +1,26 @@
+<!--TODO: should be remove-->
+@if (pagedEvents$ | async; as paged) {
+  @for (event of paged.items; track event.id) {
+    <div>
+      {{ event.name }}
+    </div>
+  }
+
+  <div class="w-100 border p-2 flex justify-between">
+    <button (click)="previousPage()" [disabled]="!paged.hasPrevious">
+      Previous
+    </button>
+
+    <span>Page {{ paged.currentPage }} of {{ paged.totalPages }}</span>
+
+    <button (click)="nextPage()" [disabled]="!paged.hasNext">
+      next
+    </button>
+
+    <select [value]="paged.pageSize" (change)="changePageSize(+$any($event.target).value)">
+      <option [value]="5">5</option>
+      <option [value]="10">10</option>
+      <option [value]="20">20</option>
+    </select>
+  </div>
+}
