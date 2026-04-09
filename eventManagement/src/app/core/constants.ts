@@ -1,5 +1,7 @@
 export const REGEX = {
   NUMBERS: /^\d+$/,
+  DATE_YYYY_MM_DD: /^\d{4}-\d{2}-\d{2}$/,
+  TIME_HH_MM: /^([01]\d|2[0-3]):([0-5]\d)$/,
 };
 
 export const Constants = {

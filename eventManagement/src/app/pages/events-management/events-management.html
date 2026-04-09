@@ -9,17 +9,17 @@
     />
   </app-custom-button>
 </div>
-<hr class="border-t-2 border-gray-300 w-11/12 mx-auto pb-6" />
+<hr class="mx-auto w-11/12 border-t-2 border-gray-300 pb-6" />
 <div class="flex items-center justify-between px-12">
   <h2 class="text-lg font-semibold">{{ 'EVENTS.TOTAL' | translate }} ()</h2>
   <app-custom-button
-    [buttonType]="ButtonType.SUBMIT"
-    [style]="ButtonStyle.FORM_PRIMARY"
+    [buttonType]="ButtonType.BUTTON"
+    [style]="ButtonStyle.PRIMARY"
+    [customClasses]="'w-auto min-w-[140px] px-6 py-3'"
     (triggerCallback)="goToAddEvent()"
   >
     <span class="flex items-center justify-center gap-2">
-      <img src="assets/imgs/add.svg" />
-
+      <img src="assets/imgs/add.svg" alt="add icon" />
       {{ 'EVENTS.ADD' | translate }}
     </span>
   </app-custom-button>
@@ -29,9 +29,3 @@
 } @else {
   <p>Card View</p>
 }
-<!-- <div class="m-10">
-  TODO: add routing
-  @if (event$ | async; as event) {
-    <app-event-details [event]="event"></app-event-details>
-  }
-</div> -->

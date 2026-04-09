@@ -10,6 +10,7 @@ export class CustomButton {
   buttonType = input<ButtonType>(ButtonType.BUTTON);
   style = input<ButtonStyle>(ButtonStyle.PRIMARY);
   isDisabled = input<boolean>(false);
+  customClasses = input<string>('');
 
   triggerCallback = output<MouseEvent>();
 

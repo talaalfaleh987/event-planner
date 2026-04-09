@@ -13,7 +13,12 @@
     "USERNAME_PATTERN": "يجب أن يحتوي اسم المستخدم على أرقام",
     "PASSWORD_REQUIRED": "كلمة المرور مطلوبة",
     "PASSWORD_MIN_LENGTH": "كلمة المرور لا تقل عن 8 أحرف",
-    "REQUIRED": "هذا الحقل مطلوب"
+    "REQUIRED": "هذا الحقل مطلوب",
+    "NUMBERS_ONLY": "يجب أن يحتوي هذا الحقل على أرقام فقط"
+  },
+  "COMMON": {
+    "ADD": "إضافة",
+    "CANCEL": "إلغاء"
   },
   "NAVIGATION": {
     "HOME": "الرئيسية",

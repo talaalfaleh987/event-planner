@@ -12,7 +12,7 @@ import { LanguageService } from '../../service/language/language-service';
 export class Dropdown extends CustomInput {
   private readonly languageService = inject(LanguageService);
 
-  options = input<Option[]>([]);
+  options = input.required<Option[]>();
 
   protected get selectedOption(): Option | undefined {
     return this.options().find((option) => option.value === this.control().value);

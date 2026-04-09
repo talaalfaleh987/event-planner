@@ -1,1 +1,86 @@
-<!--TODO: move add event form here-->
+<div class="m-10">
+  <app-card [style]="CardStyle.DETAILS">
+    <form body [formGroup]="eventForm" class="flex flex-col gap-12" (ngSubmit)="onSubmit()">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <app-input
+          [controlName]="EventFormControls.NAME"
+          [label]="'EVENTS.EVENT_NAME' | translate"
+          [errors]="nameErrors"
+          [showRequiredStar]="true"
+        >
+        </app-input>
+        <app-dropdown
+          [controlName]="EventFormControls.CATEGORY"
+          [label]="'EVENTS.EVENT_CATEGORY'"
+          [options]="categoryOptions()"
+          [errors]="categoryErrors"
+          [showRequiredStar]="true"
+        >
+        </app-dropdown>
+        <app-dropdown
+          [controlName]="EventFormControls.TYPE"
+          [label]="'EVENTS.EVENT_TYPE'"
+          [options]="eventTypeOptions()"
+          [errors]="typeErrors"
+          [showRequiredStar]="true"
+        >
+        </app-dropdown>
+        <app-input
+          [controlName]="EventFormControls.CAPACITY"
+          [label]="'EVENTS.EVENT_CAPACITY' | translate"
+          [errors]="capacityErrors"
+          [showRequiredStar]="true"
+        >
+        </app-input>
+        <app-calendar
+          [controlName]="EventFormControls.DATE"
+          [label]="'EVENTS.EVENT_DATE'"
+          [errors]="dateErrors"
+          [showRequiredStar]="true"
+        >
+        </app-calendar>
+        <app-time
+          [controlName]="EventFormControls.TIME"
+          [label]="'EVENTS.EVENT_TIME'"
+          [errors]="timeErrors"
+          [showRequiredStar]="true"
+        >
+        </app-time>
+        @if (isPhysical) {
+          <app-input
+            [controlName]="EventFormControls.LOCATION"
+            [label]="'EVENTS.EVENT_LOCATION' | translate"
+            [errors]="locationErrors"
+            [showRequiredStar]="true"
+          >
+          </app-input>
+        } @else {
+          <app-input
+            [controlName]="EventFormControls.LINK"
+            [label]="'EVENTS.EVENT_LINK' | translate"
+            [errors]="linkErrors"
+            [showRequiredStar]="true"
+          >
+          </app-input>
+        }
+      </div>
+      <div class="flex flex-wrap justify-end gap-4">
+        <app-custom-button
+          [buttonType]="ButtonType.BUTTON"
+          [style]="ButtonStyle.OUTLINE"
+          (triggerCallback)="onCancel()"
+        >
+          {{ 'COMMON.CANCEL' | translate }}
+        </app-custom-button>
+        <app-custom-button
+          [buttonType]="ButtonType.SUBMIT"
+          [style]="ButtonStyle.PRIMARY"
+          [customClasses]="'w-auto min-w-[140px] px-6 py-3'"
+          [isDisabled]="eventForm.invalid"
+        >
+          {{ 'COMMON.ADD' | translate }}
+        </app-custom-button>
+      </div>
+    </form>
+  </app-card>
+</div>
