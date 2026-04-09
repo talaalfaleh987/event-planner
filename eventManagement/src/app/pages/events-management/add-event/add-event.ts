@@ -20,6 +20,7 @@ import { EventService } from '../../../service/events/event-service';
 import { Option } from '../../../models/dropdown/option';
 import { conditionalRequiredValidator } from '../../../core/validators/conditional-required.validator';
 import { EventType } from '../../../enums/event-type';
+import { ToastService } from '../../../service/toast/toast-service';
 
 @Component({
   selector: 'app-add-event',
@@ -38,6 +39,7 @@ import { EventType } from '../../../enums/event-type';
 export class AddEvent {
   private readonly eventService = inject(EventService);
   private readonly router = inject(Router);
+  private readonly toastService = inject(ToastService);
 
   readonly ButtonStyle = ButtonStyle;
   readonly ButtonType = ButtonType;
@@ -120,8 +122,42 @@ export class AddEvent {
     this.eventForm.markAllAsTouched();
 
     if (this.eventForm.invalid) return;
-    //TODO: Call the service to add the event and use toast service
-    console.log(this.eventForm.value);
+
+    const formValue = this.eventForm.getRawValue();
+
+    const isPhysical = formValue.type === EventType.PHYSICAL;
+
+    this.eventService
+      .addEvent({
+        name: formValue.name ?? '',
+        category: this.getCategoryLabel(formValue.category),
+        type: isPhysical ? 'physical' : 'online',
+        location: isPhysical ? (formValue.location ?? '') : '',
+        link: isPhysical ? '' : (formValue.link ?? ''),
+        date: formValue.date ?? '',
+        time: formValue.time ?? '',
+        capacity: formValue.capacity ?? '',
+      })
+      .subscribe(() => {
+        this.toastService.setToast('success', 'EVENTS.ADDED_SUCCESSFULLY');
+        void this.router.navigateByUrl(RouterPath.Pages.EVENTS_MANAGEMENT);
+      });
+  }
+  private getCategoryLabel(
+    categoryValue: number | null,
+  ): 'Work' | 'Education' | 'Entertainment' | 'Other' {
+    switch (categoryValue) {
+      case 1:
+        return 'Work';
+      case 2:
+        return 'Education';
+      case 3:
+        return 'Entertainment';
+      case 4:
+        return 'Other';
+      default:
+        return 'Other';
+    }
   }
 
   onCancel(): void {

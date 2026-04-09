@@ -7,6 +7,7 @@ import { ButtonType, ButtonStyle } from '../../enums/button.enum';
 import { Router } from '@angular/router';
 import { RouterPath } from '../../core/router-paths';
 import { CustomButton } from '../../components/custom-button/custom-button';
+import { ToastService } from '../../service/toast/toast-service';
 
 @Component({
   selector: 'app-events-management',
@@ -16,6 +17,7 @@ import { CustomButton } from '../../components/custom-button/custom-button';
 export class EventsManagement {
   private readonly eventService = inject(EventService);
   private readonly router = inject(Router);
+  private readonly toastService = inject(ToastService);
 
   readonly ButtonStyle = ButtonStyle;
   readonly ButtonType = ButtonType;
