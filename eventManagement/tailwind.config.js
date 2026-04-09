@@ -54,6 +54,9 @@ module.exports = {
       backgroundImage: {
         'main-gradient': 'linear-gradient(112.9deg, #1D3557 0%, #264653 50%, #5FB6AB 100%)',
       },
+      screens: {
+        'lg-plus': '1025px',
+      },
     },
   },
   plugins: [require('daisyui')],

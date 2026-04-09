@@ -1,51 +1,51 @@
 <div class="min-h-screen bg-main-gradient px-8 py-16 md:px-20 md:py-16">
   <app-translate-button [style]="ButtonStyle.WHITE_ICON" />
   <app-card [hasBorder]="false">
-    <div
-      class="mx-auto flex max-w-5xl min-w-min flex-col items-center justify-center gap-20 md:flex-row"
-    >
-      <div class="flex w-full flex-1">
-        <img src="assets/imgs/text-logo.svg" alt="logo" class="w-full md:min-w-64" />
-      </div>
-      <div class="m-12 flex min-w-46 w-full flex-col items-end md:m-16 md:w-2/5">
+    <div body class="mx-auto flex flex-col items-center justify-center lg-plus:flex-row gap-8">
+      <img src="assets/imgs/text-logo.svg" alt="logo" class="w-full" />
+      <div class="w-full sm:px-8 px-0">
         <section id="form-header" class="w-full">
           <div class="mb-4 text-center">
             <h1 class="text-1xl md:text-2xl font-neo-medium">
               {{ 'AUTH.WELCOME_MESSAGE' | translate }}
             </h1>
           </div>
-          <div body>
-            <form [formGroup]="userForm" class="flex w-full flex-col md:min-w-64" (ngSubmit)="onSubmit()">
-              <div class="m-2 min-h-9">
-                @if (submitted() && userForm.invalid) {
-                  <app-message [textMessage]="'ERRORS.INVALID_CREDENTIALS' | translate">
-                    <img src="assets/imgs/error.svg" alt="error" class="mx-2 h-6 w-6" />
-                  </app-message>
-                }
-              </div>
-              <app-input
-                [controlName]="CredentialsControls.USERNAME"
-                [label]="'AUTH.USERNAME' | translate"
-                [maxLength]="10"
-                [errors]="usernameErrors"
-                [inputType]="InputType.TEXT"
-              >
-              </app-input>
-              <app-input
-                [controlName]="CredentialsControls.PASSWORD"
-                [label]="'AUTH.PASSWORD' | translate"
-                [errors]="passwordErrors"
-                [inputType]="InputType.PASSWORD"
-              >
-              </app-input>
-              <div class="mt-4">
-                <app-custom-button [buttonType]="ButtonType.SUBMIT">
-                  {{ 'AUTH.LOGIN' | translate }}
-                </app-custom-button>
-              </div>
-            </form>
-          </div>
         </section>
+        <div>
+          <form
+            [formGroup]="userForm"
+            class="flex w-full flex-col md:min-w-64"
+            (ngSubmit)="onSubmit()"
+          >
+            <div class="m-2 min-h-9">
+              @if (submitted() && userForm.invalid) {
+                <app-message [textMessage]="'ERRORS.INVALID_CREDENTIALS' | translate">
+                  <img src="assets/imgs/error.svg" alt="error" class="mx-2 h-6 w-6" />
+                </app-message>
+              }
+            </div>
+            <app-input
+              [controlName]="CredentialsControls.USERNAME"
+              [label]="'AUTH.USERNAME' | translate"
+              [maxLength]="10"
+              [errors]="usernameErrors"
+              [inputType]="InputType.TEXT"
+            >
+            </app-input>
+            <app-input
+              [controlName]="CredentialsControls.PASSWORD"
+              [label]="'AUTH.PASSWORD' | translate"
+              [errors]="passwordErrors"
+              [inputType]="InputType.PASSWORD"
+            >
+            </app-input>
+            <div class="mt-4">
+              <app-custom-button [buttonType]="ButtonType.SUBMIT">
+                {{ 'AUTH.LOGIN' | translate }}
+              </app-custom-button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </app-card>
