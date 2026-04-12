@@ -1,86 +1,67 @@
-<app-card [style]="CardStyle.DETAILS">
-  @if (event(); as currentEvent) {
+<div class="m-10">
+  <app-card [style]="CardStyle.DETAILS">
+    @if (event$ | async; as currentEvent) {
     <div body class="grid grid-cols-1 gap-16 text-start md:grid-cols-3">
-      <ng-container
-        *ngTemplateOutlet="
+      <ng-container *ngTemplateOutlet="
           detailItem;
           context: { label: 'EVENTS.EVENT_NAME', value: currentEvent.name, translateValue: true }
-        "
-      ></ng-container>
-      <ng-container
-        *ngTemplateOutlet="
+        "></ng-container>
+      <ng-container *ngTemplateOutlet="
           detailItem;
           context: {
             label: 'EVENTS.EVENT_CATEGORY',
             value: 'EVENTS.EVENT_CATEGORY_' + currentEvent.category.toUpperCase(),
             translateValue: true,
           }
-        "
-      ></ng-container>
-      <ng-container
-        *ngTemplateOutlet="
+        "></ng-container>
+      <ng-container *ngTemplateOutlet="
           detailItem;
           context: {
             label: 'EVENTS.EVENT_TYPE',
             value: 'EVENTS.EVENT_TYPE_' + currentEvent.type.toUpperCase(),
             translateValue: true,
           }
-        "
-      ></ng-container>
+        "></ng-container>
       @if (currentEvent.type === 'physical') {
-        <ng-container
-          *ngTemplateOutlet="
+      <ng-container *ngTemplateOutlet="
             detailItem;
             context: { label: 'EVENTS.EVENT_LOCATION', value: currentEvent.location }
-          "
-        ></ng-container>
+          "></ng-container>
       }
       @if (currentEvent.type === 'online') {
-        <ng-container
-          *ngTemplateOutlet="
+      <ng-container *ngTemplateOutlet="
             detailItem;
             context: { label: 'EVENTS.EVENT_LINK', value: currentEvent.link, breakAll: true }
-          "
-        ></ng-container>
+          "></ng-container>
       }
-      <ng-container
-        *ngTemplateOutlet="
+      <ng-container *ngTemplateOutlet="
           detailItem;
           context: { label: 'EVENTS.EVENT_DATE', value: currentEvent.date }
-        "
-      ></ng-container>
-      <ng-container
-        *ngTemplateOutlet="
+        "></ng-container>
+      <ng-container *ngTemplateOutlet="
           detailItem;
           context: { label: 'EVENTS.EVENT_TIME', value: currentEvent.time }
-        "
-      ></ng-container>
-      <ng-container
-        *ngTemplateOutlet="
+        "></ng-container>
+      <ng-container *ngTemplateOutlet="
           detailItem;
           context: { label: 'EVENTS.EVENT_CAPACITY', value: currentEvent.capacity }
-        "
-      ></ng-container>
+        "></ng-container>
     </div>
-  }
-</app-card>
-<ng-template
-  #detailItem
-  let-label="label"
-  let-value="value"
-  let-translateValue="translateValue"
-  let-breakAll="breakAll"
->
-  <div class="flex flex-col gap-1">
-    <p class="font-neo-medium text-sm text-grey-subtitle">
-      {{ label | translate }}
-    </p>
-    <p class="font-neo-regular text-sm text-primary" [class.break-all]="breakAll">
-      @if (value) {
+    }
+  </app-card>
+  <ng-template #detailItem let-label="label" let-value="value" let-translateValue="translateValue"
+    let-breakAll="breakAll">
+    <div class="flex flex-col gap-1">
+      <p class="font-neo-medium text-sm text-grey-subtitle">
+        {{ label | translate }}
+      </p>
+      <p class="font-neo-regular text-sm text-primary" [class.break-all]="breakAll">
+        @if (value) {
         {{ translateValue ? (value | translate) : value }}
-      } @else {
+        } @else {
         {{ 'EVENTS.DATA_PLACEHOLDER' | translate }}
-      }
-    </p>
-  </div>
-</ng-template>
+        }
+      </p>
+    </div>
+  </ng-template>
+</div>

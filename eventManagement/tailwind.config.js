@@ -49,7 +49,10 @@ module.exports = {
         pink: {
           100: '#FDD4DD',
           200: '#FA5A7D',
-        }
+        },
+        beige: {
+          normal:'#FBF4E2',
+        },
       },
       backgroundImage: {
         'main-gradient': 'linear-gradient(112.9deg, #1D3557 0%, #264653 50%, #5FB6AB 100%)',

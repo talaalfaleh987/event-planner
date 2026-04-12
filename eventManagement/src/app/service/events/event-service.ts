@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest, map, of } from 'rxjs';
-import { EventData, PaginatedEvents } from '../../models/data';
 import { MonthlyEventsChartItem } from '../../models/charts/monthly-events-chart-Item';
 import { PieChartItem } from '../../models/charts/events-pie-charts-data';
 import { MonthlyAttendanceChartItem } from '../../models/charts/monthly-attendance-chartI-tem';
 import { Option } from '../../models/dropdown/option';
 import { Constants } from '../../core/constants';
+import { EventData, PaginatedEvents } from '../../models/event-details';
 
 @Injectable({
   providedIn: 'root',
