@@ -1,0 +1,52 @@
+@if (pagedEvents$() | async; as paged) {
+    @for (event of paged.items; track event.id) {
+    <div>
+        {{ event.name }}
+    </div>
+    }
+    <div class="border flex justify-between items-center bg-white text-grey-400 font-neo-sans-regular">
+        <div class="flex items-center">
+            <div class="border p-2">
+                <select class="text-primary-normal" [value]="paged.pageSize"
+                    (change)="changePageSize()(+$any($event.target).value)">
+                    <option [value]="5">5</option>
+                    <option [value]="10">10</option>
+                    <option [value]="20">20</option>
+                </select>
+                {{ 'PAGINATOR.ITEMS_PER_PAGE' | translate }}
+            </div>
+            <span class="border p-2">
+                {{ paged.items.length }} {{ 'PAGINATOR.OF' | translate }} {{ paged.totalItems }} {{ 'PAGINATOR.ITEM' |
+                translate }}
+            </span>
+        </div>
+        <div class="flex items-center">
+            <div class="border p-2">
+                <select class="text-primary-normal" [value]="paged.currentPage"
+                    (change)="goToPage()(+$any($event.target).value)">
+                    @for (page of getPages(paged.totalPages || 1); track page) {
+                    <option [value]="page">
+                        {{ page }}
+                    </option>
+                    }
+                </select> {{ 'PAGINATOR.OF' | translate }} {{ paged.totalPages }} {{ 'PAGINATOR.PAGES' | translate }}
+            </div>
+            <div class="flex items-center" dir="rtl">
+            <app-custom-button 
+            [style]="ButtonStyle.PAGINATOR" 
+            (click)="previousPage()()" 
+            [isDisabled]="!paged.hasPrevious"
+            [class.opacity-50]="!paged.hasPrevious">
+                <img src="assets/imgs/right.svg" alt="previous" />
+            </app-custom-button>
+            <app-custom-button 
+            [style]="ButtonStyle.PAGINATOR" 
+            (click)="nextPage()()" 
+            [isDisabled]="!paged.hasNext"
+            [class.opacity-50]="!paged.hasNext">
+                <img src="assets/imgs/left.svg" alt="next" />
+            </app-custom-button>
+        </div>
+        </div>
+    </div>
+}
