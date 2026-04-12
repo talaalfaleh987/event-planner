@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { of, Observable, map, BehaviorSubject } from 'rxjs';
-import { EventData } from '../../models/data';
+import { BehaviorSubject, Observable, combineLatest, map, of } from 'rxjs';
+import { EventData, PaginatedEvents } from '../../models/data';
 import { MonthlyEventsChartItem } from '../../models/charts/monthly-events-chart-Item';
 import { PieChartItem } from '../../models/charts/events-pie-charts-data';
 import { MonthlyAttendanceChartItem } from '../../models/charts/monthly-attendance-chartI-tem';
 import { Option } from '../../models/dropdown/option';
+import { Constants } from '../../core/constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventService {
-  private eventsSubject = new BehaviorSubject<EventData[]>([
+  private readonly eventsSubject = new BehaviorSubject<EventData[]>([
     {
       id: 1,
       name: 'مؤتمر التقنية 2026',
@@ -57,6 +58,17 @@ export class EventService {
     },
     {
       id: 5,
+      name: 'احتفالية اليوم الوطني',
+      category: 'Entertainment',
+      type: 'physical',
+      location: 'الخبر',
+      link: '',
+      date: '2026-06-16',
+      time: '22:00',
+      capacity: '55',
+    },
+    {
+      id: 6,
       name: 'لقاء مفتوح للمجتمع',
       category: 'Other',
       type: 'physical',
@@ -66,7 +78,98 @@ export class EventService {
       time: '19:00',
       capacity: '80',
     },
+    {
+      id: 7,
+      name: 'أمسية فنية',
+      category: 'Entertainment',
+      type: 'physical',
+      location: 'جدة',
+      link: '',
+      date: '2026-06-20',
+      time: '20:30',
+      capacity: '300',
+    },
+    {
+      id: 8,
+      name: 'ملتقى ريادة الأعمال',
+      category: 'Work',
+      type: 'physical',
+      location: 'الرياض',
+      link: '',
+      date: '2026-06-18',
+      time: '11:00',
+      capacity: '200',
+    },
+    {
+      id: 9,
+      name: 'مهرجان الطعام',
+      category: 'Entertainment',
+      type: 'physical',
+      location: 'جدة',
+      link: '',
+      date: '2026-07-05',
+      time: '19:00',
+      capacity: '600',
+    },
+    {
+      id: 10,
+      name: 'ندوة الأمن السيبراني',
+      category: 'Education',
+      type: 'online',
+      location: '',
+      link: 'https://cyber-session.com',
+      date: '2026-06-15',
+      time: '16:00',
+      capacity: '120',
+    },
+    {
+      id: 11,
+      name: 'مسابقة برمجية',
+      category: 'Education',
+      type: 'physical',
+      location: 'الخبر',
+      link: '',
+      date: '2026-07-10',
+      time: '09:00',
+      capacity: '250',
+    },
+    {
+      id: 12,
+      name: 'جلسة نقاش مفتوحة',
+      category: 'Other',
+      type: 'online',
+      location: '',
+      link: 'https://open-talk.com',
+      date: '2026-07-08',
+      time: '21:00',
+      capacity: '70',
+    },
+    {
+      id: 13,
+      name: 'يوم اليوقا العالمي',
+      category: 'Entertainment',
+      type: 'physical',
+      location: 'ابها',
+      link: '',
+      date: '2026-09-3',
+      time: '12:00',
+      capacity: '33',
+    },
+    {
+      id: 14,
+      name: 'ورشة تصميم UI/UX',
+      category: 'Education',
+      type: 'online',
+      location: '',
+      link: 'https://uiux-workshop.com',
+      date: '2026-06-22',
+      time: '18:00',
+      capacity: '90',
+    },
   ]);
+
+  private readonly currentPageSubject = new BehaviorSubject<number>(Constants.CURRENT_PAGE);
+  private readonly pageSizeSubject = new BehaviorSubject<number>(Constants.PAGE_SIZE);
 
   getEvent(id: number): Observable<EventData> {
     return this.getAllEvents().pipe(
@@ -79,9 +182,56 @@ export class EventService {
       }),
     );
   }
-
   getAllEvents(): Observable<EventData[]> {
     return this.eventsSubject.asObservable();
+  }
+  getPaginatedEvents(): Observable<PaginatedEvents> {
+    return combineLatest([
+      this.eventsSubject.asObservable(),
+      this.currentPageSubject.asObservable(),
+      this.pageSizeSubject.asObservable(),
+    ]).pipe(
+      map(([events, currentPage, pageSize]) => {
+        const totalItems = events.length;
+        const totalPages = totalItems === 0 ? 1 : Math.ceil(totalItems / pageSize);
+
+        const safeCurrentPage = Math.min(Math.max(currentPage, 1), totalPages);
+        const startIndex = (safeCurrentPage - 1) * pageSize;
+        const endIndex = startIndex + pageSize;
+
+        return {
+          items: events.slice(startIndex, endIndex),
+          totalItems,
+          totalPages,
+          currentPage: safeCurrentPage,
+          pageSize,
+          hasPrevious: safeCurrentPage > 1,
+          hasNext: safeCurrentPage < totalPages,
+        };
+      }),
+    );
+  }
+
+  setPage(page: number): void {
+    const totalItems = this.eventsSubject.getValue().length;
+    const pageSize = this.pageSizeSubject.getValue();
+    const totalPages = totalItems === 0 ? 1 : Math.ceil(totalItems / pageSize);
+
+    const safePage = Math.min(Math.max(page, 1), totalPages);
+    this.currentPageSubject.next(safePage);
+  }
+
+  nextPage(): void {
+    this.setPage(this.currentPageSubject.getValue() + 1);
+  }
+
+  previousPage(): void {
+    this.setPage(this.currentPageSubject.getValue() - 1);
+  }
+
+  setPageSize(pageSize: number): void {
+    this.pageSizeSubject.next(pageSize);
+    this.currentPageSubject.next(1);
   }
 
   addEvent(newEvent: Omit<EventData, 'id'>): Observable<EventData> {
@@ -94,19 +244,13 @@ export class EventService {
       ...newEvent,
     };
 
-    this.eventsSubject.next([...currentEvents, eventWithId]);
+    const updatedEvents = [...currentEvents, eventWithId];
+    this.eventsSubject.next(updatedEvents);
+
+    const pageSize = this.pageSizeSubject.getValue();
+    const totalPages = Math.ceil(updatedEvents.length / pageSize);
+    this.currentPageSubject.next(totalPages);
     return of(eventWithId);
-    // TODO: use this code in add-event
-    //     this.eventService.addEvent({
-    //   name: 'فعالية جديدة',
-    //   category: 'Other',
-    //   type: 'physical',
-    //   location: 'الرياض',
-    //   link: '',
-    //   date: '2026-07-01',
-    //   time: '18:00',
-    //   capacity: '100',
-    // });
   }
 
   getMonthlyEventsData(): Observable<MonthlyEventsChartItem[]> {

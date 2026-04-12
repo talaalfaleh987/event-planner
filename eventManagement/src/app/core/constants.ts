@@ -7,4 +7,6 @@ export const REGEX = {
 export const Constants = {
   PASSWORD_MIN_LENGTH: 8,
   DEFAULT_TOAST_DURATION: 3000,
+  CURRENT_PAGE: 1,
+  PAGE_SIZE: 5,
 };
