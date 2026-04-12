@@ -4,7 +4,7 @@
     <app-card [style]="CardStyle.VIEW" (click)="onCardClick(event)">
         <div body class="grid grid-cols-2 gap-5 text-sm font-medium gap-x-8">
                 {{ event.name }}
-                <div class="">
+                <div class="pr-5">
                 <app-tag [type]="categoryMap[event.category]"
                     [label]="'EVENTS.EVENT_CATEGORY_' + event.category.toUpperCase()">
                 </app-tag></div>

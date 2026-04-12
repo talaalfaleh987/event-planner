@@ -4,7 +4,9 @@
     <h2 class="text-lg font-semibold">
       {{ 'EVENTS.TITLE' | translate }}
     </h2>
-    <app-custom-button [style]="ButtonStyle.VIEW" (triggerCallback)="toggleView()">
+    <app-custom-button 
+      [style]="ButtonStyle.VIEW" 
+      (triggerCallback)="toggleView()">
       <img [src]="isTableView()
         ? 'assets/imgs/card-view.svg'
         : 'assets/imgs/table-view.svg'" alt="view icon" />

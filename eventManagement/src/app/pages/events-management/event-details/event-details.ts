@@ -1,10 +1,10 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CardStyle } from '../../../enums/card.enum';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Card } from '../../../components/card/card';
 import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
-import { map, Observable, of, switchMap } from 'rxjs';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { distinctUntilChanged, filter, map, Observable, of, switchMap } from 'rxjs';
 import { QUERY_PARAMS } from '../../../core/query-prams';
 import { EventService } from '../../../service/events/event-service';
 import { EventData } from '../../../models/event-details';
@@ -19,17 +19,12 @@ export class EventDetails {
   private route = inject(ActivatedRoute);
   private eventService = inject(EventService);
 
-  event$!: Observable<EventData | undefined>;
-
-  ngOnInit() {
-  this.event$ = this.route.paramMap.pipe(
-    map(params => Number(params.get(QUERY_PARAMS.ID))),
-    switchMap(id => {
-      if (id) {
-        return this.eventService.getEvent(id);
-      }
-      return of(undefined);
-    })
+  event$: Observable<EventData> = this.route.paramMap.pipe(
+    map((params: ParamMap) => params.get(QUERY_PARAMS.ID)),
+    filter((id): id is string => id !== null),
+    map((id: string) => Number(id)),
+    filter((id: number) => !Number.isNaN(id) && id > 0),
+    distinctUntilChanged(),
+    switchMap((id) => this.eventService.getEvent(id))
   );
-}
 }

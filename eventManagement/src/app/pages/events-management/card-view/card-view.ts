@@ -6,7 +6,6 @@ import { TagType } from '../../../enums/tag.enum';
 import { Tag } from '../../../components/tag/tag';
 import { TranslatePipe } from '@ngx-translate/core';
 
-
 @Component({
   selector: 'app-card-view',
   imports: [Card, Tag, TranslatePipe],
@@ -29,5 +28,5 @@ export class CardView {
   Education: TagType.EDUCATIONAL,
   Entertainment: TagType.ENTERTAINMENT,
   Other: TagType.OTHER,
-};
+ };
 }
