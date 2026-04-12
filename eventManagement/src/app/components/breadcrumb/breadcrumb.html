@@ -3,9 +3,10 @@
   @if (items.length) {
   <nav class="font-neo-regular text-primary-normal flex gap-1">
     @for (item of items; track item.label; let last = $last) {
-    <span [class.underline]="!last" class="cursor-pointer">
+    <a [routerLink]="item.url && !last ? item.url : null" [class.cursor-pointer]="item.url && !last"
+      [class.underline]="item.url && !last">
       {{ item.label | translate }}
-    </span>
+    </a>
     @if (!last) {
     <span class="text-primary-normal">&gt;</span>
     }
