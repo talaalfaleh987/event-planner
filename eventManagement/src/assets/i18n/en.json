@@ -65,5 +65,13 @@
     "MINUTE": "Minute",
     "HOUR": "Hour",
     "PERIOD": "Period"
+  },
+  "PAGINATOR": {
+    "ITEMS_PER_PAGE": "items per page",
+    "SHOWING": "Showing",
+    "OF": "of",
+    "ITEM": "items",
+    "PAGES": "pages",
+    "PAGE": "page"
   }
 }

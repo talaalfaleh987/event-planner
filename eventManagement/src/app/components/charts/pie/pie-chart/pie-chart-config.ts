@@ -67,7 +67,7 @@ export const pieChartConfig = (
         };
     }
     return {
-        tooltip: { trigger: 'item' },
+        tooltip: false,
         legend: {
             top: '40%',
             left: 'right',

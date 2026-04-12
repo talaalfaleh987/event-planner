@@ -65,5 +65,13 @@
     "MINUTE": "دقيقة",
     "HOUR": "ساعة",
     "PERIOD": "فترة"
+  },
+  "PAGINATOR": {
+    "ITEMS_PER_PAGE": "عنصر لكل صفحة",
+    "SHOWING": "عرض",
+    "OF": "من",
+    "ITEM": "عنصر",
+    "PAGES": "صفحات",
+    "PAGE": "صفحة"
   }
 }
