@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Card } from '../../../components/card/card';
@@ -8,7 +8,7 @@ import { Dropdown } from '../../../components/dropdown/dropdown';
 import { CustomButton } from '../../../components/custom-button/custom-button';
 import { CustomInput } from '../../../components/input/input';
 import { EventFormControls } from '../../../enums/events-form-control';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { REGEX } from '../../../core/constants';
 import { RouterPath } from '../../../core/router-paths';
@@ -21,6 +21,7 @@ import { Option } from '../../../models/dropdown/option';
 import { conditionalRequiredValidator } from '../../../core/validators/conditional-required.validator';
 import { EventType } from '../../../enums/event-type';
 import { ToastService } from '../../../service/toast/toast-service';
+import { EventCategory } from '../../../models/event-type';
 
 @Component({
   selector: 'app-add-event',
@@ -40,6 +41,7 @@ export class AddEvent {
   private readonly eventService = inject(EventService);
   private readonly router = inject(Router);
   private readonly toastService = inject(ToastService);
+  private readonly destroyRef = inject(DestroyRef);
 
   readonly ButtonStyle = ButtonStyle;
   readonly ButtonType = ButtonType;
@@ -63,6 +65,7 @@ export class AddEvent {
 
   protected eventForm = new FormGroup({
     [EventFormControls.NAME]: new FormControl('', {
+      nonNullable: true,
       validators: [Validators.required],
     }),
     [EventFormControls.CATEGORY]: new FormControl<number | null>(null, {
@@ -72,18 +75,23 @@ export class AddEvent {
       validators: [Validators.required],
     }),
     [EventFormControls.CAPACITY]: new FormControl('', {
+      nonNullable: true,
       validators: [Validators.required, Validators.pattern(REGEX.NUMBERS)],
     }),
     [EventFormControls.LOCATION]: new FormControl('', {
+      nonNullable: true,
       validators: [conditionalRequiredValidator(EventFormControls.TYPE, EventType.PHYSICAL)],
     }),
     [EventFormControls.LINK]: new FormControl('', {
+      nonNullable: true,
       validators: [conditionalRequiredValidator(EventFormControls.TYPE, EventType.ONLINE)],
     }),
     [EventFormControls.DATE]: new FormControl('', {
+      nonNullable: true,
       validators: [Validators.required],
     }),
     [EventFormControls.TIME]: new FormControl('', {
+      nonNullable: true,
       validators: [Validators.required],
     }),
   });
@@ -124,28 +132,26 @@ export class AddEvent {
     if (this.eventForm.invalid) return;
 
     const formValue = this.eventForm.getRawValue();
-
-    const isPhysical = formValue.type === EventType.PHYSICAL;
+    const isPhysical = this.isPhysical;
 
     this.eventService
       .addEvent({
-        name: formValue.name ?? '',
+        name: formValue.name,
         category: this.getCategoryLabel(formValue.category),
         type: isPhysical ? 'physical' : 'online',
-        location: isPhysical ? (formValue.location ?? '') : '',
-        link: isPhysical ? '' : (formValue.link ?? ''),
-        date: formValue.date ?? '',
-        time: formValue.time ?? '',
-        capacity: formValue.capacity ?? '',
+        location: isPhysical ? formValue.location : '',
+        link: isPhysical ? '' : formValue.link,
+        date: formValue.date,
+        time: formValue.time,
+        capacity: formValue.capacity,
       })
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(() => {
         this.toastService.setToast('success', 'EVENTS.ADDED_SUCCESSFULLY');
         void this.router.navigateByUrl(RouterPath.Pages.EVENTS_MANAGEMENT);
       });
   }
-  private getCategoryLabel(
-    categoryValue: number | null,
-  ): 'Work' | 'Education' | 'Entertainment' | 'Other' {
+  private getCategoryLabel(categoryValue: number | null): EventCategory {
     switch (categoryValue) {
       case 1:
         return 'Work';
