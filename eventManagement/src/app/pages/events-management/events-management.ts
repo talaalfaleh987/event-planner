@@ -25,9 +25,12 @@ export class EventsManagement {
   
   isTableView = signal(true);
 
-  onSelectEvent(event: EventData) {
-    this.router.navigate([RouterPath.Pages.DETAILS(event.id)]);
-  }
+ onSelectEvent(event: EventData) {
+  this.router.navigate([
+    RouterPath.Pages.EVENTS_MANAGEMENT,
+    event.id
+  ]);
+}
 
   toggleView(): void {
     this.isTableView.update((view) => !view);
@@ -39,5 +42,5 @@ export class EventsManagement {
       RouterPath.Pages.EVENTS_MANAGEMENT,
       RouterPath.Pages.ADD_EVENT,
     ]);
-  }
+  } 
 }
