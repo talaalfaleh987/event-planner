@@ -17,8 +17,8 @@ module.exports = {
           100: '#F9F9F9',
           200: '#FFFDFD',
           300: '#85979E',
-          400: '',
-          500: '',
+          400: '#E0E5E6',
+          500: '#E6E7E8',
         },
         red: {
           error: '#9D1C1CCC',
@@ -36,7 +36,7 @@ module.exports = {
           200: '#E0EEE0',
           300: '#8FBC8F',
           400: '#D2EED7',
-          500: '#4BBF64',       
+          500: '#4BBF64',
         },
         orange: {
           100: '#FFE3DC',
@@ -51,7 +51,7 @@ module.exports = {
           200: '#FA5A7D',
         },
         beige: {
-          normal:'#FBF4E2',
+          normal: '#FBF4E2',
         },
       },
       backgroundImage: {
