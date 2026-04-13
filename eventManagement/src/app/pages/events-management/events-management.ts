@@ -8,12 +8,10 @@ import { Router } from '@angular/router';
 import { RouterPath } from '../../core/router-paths';
 import { EventData } from '../../models/event-details';
 import { AsyncPipe } from '@angular/common';
-import { Breadcrumb } from '../../components/breadcrumb/breadcrumb';
-
 
 @Component({
   selector: 'app-events-management',
-  imports: [AsyncPipe, EventDetails, CustomButton, TranslatePipe, Breadcrumb, CardView],
+  imports: [AsyncPipe, CustomButton, TranslatePipe, CardView],
   templateUrl: './events-management.html',
 })
 export class EventsManagement {
@@ -27,9 +25,12 @@ export class EventsManagement {
   
   isTableView = signal(true);
 
-  onSelectEvent(event: EventData) {
-    this.router.navigate([RouterPath.Pages.DETAILS(event.id)]);
-  }
+ onSelectEvent(event: EventData) {
+  this.router.navigate([
+    RouterPath.Pages.EVENTS_MANAGEMENT,
+    event.id
+  ]);
+}
 
   toggleView(): void {
     this.isTableView.update((view) => !view);
@@ -41,6 +42,5 @@ export class EventsManagement {
       RouterPath.Pages.EVENTS_MANAGEMENT,
       RouterPath.Pages.ADD_EVENT,
     ]);
-  }
-  
+  } 
 }

@@ -7,6 +7,7 @@ import { Login } from './pages/login/login';
 import { authGuard } from './core/guards/auth-guard';
 import { AddEvent } from './pages/events-management/add-event/add-event';
 import { EventDetails } from './pages/events-management/event-details/event-details';
+import { eventResolver } from './core/resolver/eventResolver';
 
 export const routes: Routes = [
   {
@@ -23,7 +24,10 @@ export const routes: Routes = [
     component: Layout,
     canActivate: [authGuard],
     children: [
-      { path: RouterPath.Pages.HOME, component: Home },
+      {
+        path: RouterPath.Pages.HOME,
+        component: Home,
+      },
       {
         path: RouterPath.Pages.EVENTS_MANAGEMENT,
         children: [
@@ -44,27 +48,25 @@ export const routes: Routes = [
                   label: 'EVENTS.ADD'
                 }
               ]
-            },
+            }
           },
           {
             path: ':id',
             component: EventDetails,
+            resolve: {
+              eventName: eventResolver
+            },
             data: {
               breadcrumb: [
                 {
                   label: 'EVENTS.TITLE',
                   url: RouterPath.Pages.EVENTS_MANAGEMENT
-                },
-                {
-                  label: 'EVENTS.EVENT_DETAILS'
                 }
               ]
-            },
-          },
-        ],
-      },
-      { path: RouterPath.Pages.EVENTS_DETAILS, component: EventDetails },
-
-    ],
-  },
+            }
+          }
+        ]
+      }
+    ]
+  }
 ];
