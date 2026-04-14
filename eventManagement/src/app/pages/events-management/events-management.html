@@ -26,9 +26,12 @@
   <app-table [data]="eventsList" [columns]="columns" (rowSelect)="onSelectEvent($event)" [loading]="loading()" />
   <app-paginator [currentPage]="currentPage()" [pageSize]="pageSize()" [totalItems]="totalItems()"
     [pageSizeOptions]="[5, 10, 20]" (pageChange)="onPageChange($event)"
-    (pageSizeChange)="onPageSizeChange($event)"></app-paginator>
+    (pageSizeChange)="onPageSizeChange($event)" [view]="ViewMode.TABLE"></app-paginator>
   } @else {
   <app-card-view [events]="eventsList" (selectedEvent)="onSelectEvent($event)" />
+  <app-paginator [currentPage]="currentPage()" [pageSize]="pageSize()" [totalItems]="totalItems()"
+    [pageSizeOptions]="[5, 10, 20]" (pageChange)="onPageChange($event)"
+    (pageSizeChange)="onPageSizeChange($event)" [view]="ViewMode.CARD"></app-paginator>
   }
   }
 </div>

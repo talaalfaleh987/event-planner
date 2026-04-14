@@ -2,6 +2,7 @@ import { Component, computed, input, output } from '@angular/core';
 import { CustomButton } from '../custom-button/custom-button';
 import { ButtonStyle } from '../../enums/button.enum';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ViewMode } from '../../enums/view-mode';
 
 @Component({
   selector: 'app-paginator',
@@ -14,11 +15,13 @@ export class Paginator{
   pageSize = input.required<number>();
   totalItems = input.required<number>();
   pageSizeOptions = input<number[]>([5, 10, 20]);
+  view = input<ViewMode>(ViewMode.TABLE);
 
   pageChange = output<number>();
   pageSizeChange = output<number>();
 
   readonly ButtonStyle = ButtonStyle;
+  readonly ViewMode = ViewMode;
 
   totalPages = computed(() => {
     const total = Math.ceil(this.totalItems() / this.pageSize());

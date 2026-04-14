@@ -1,3 +1,4 @@
+@if (view() === ViewMode.TABLE) {
 <div class="border flex justify-between items-center bg-white text-grey-600 font-neo-sans-regular">
     <div class="flex items-center">
         <div class="border p-2 flex items-center gap-2">
@@ -19,7 +20,7 @@
         <div class="border p-2 flex items-center gap-2">
             <select class="text-primary-normal" [value]="currentPage()" (change)="goToPage($any($event.target).value)">
                 @for (page of pages; track page) {
-                <option [value]="page">{{ page }}</option>
+                <option [value]="page" [selected]="page === currentPage()">{{ page }}</option>
                 }
             </select>
             {{ 'PAGINATOR.OF' | translate }} {{ totalPages() }}
@@ -37,3 +38,15 @@
         </div>
     </div>
 </div>
+}
+@if (view() === ViewMode.CARD) {
+<div class="flex justify-center p-4">
+    <div class="join flex flex-wrap">
+        @for (page of pages; track page) {
+        <button class="join-item btn" [class.btn-active]="page === currentPage()" (click)="goToPage(page)">
+            {{ page }}
+        </button>
+        }
+    </div>
+</div>
+}
