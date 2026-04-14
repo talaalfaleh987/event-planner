@@ -3,24 +3,21 @@
     <thead class="text-primary-normal bg-grey-400">
       <tr class="border-b border-grey-300">
         @for (column of columns(); track column.key) {
-          <th class="text-start">
-            {{ column.label | translate }}
-          </th>
+        <th class="text-start">
+          {{ column.label | translate }}
+        </th>
         }
       </tr>
     </thead>
     <tbody>
       @for (row of data(); track trackByRow($index, row)) {
-        <tr
-          class="bg-white hover:bg-beige-normal cursor-pointer text-start border-grey-500"
-          (click)="onRowClick(row)"
-        >
-          @for (column of columns(); track column.key) {
-            <td>
-              {{ getDisplayValue(row, column) | translate }}
-            </td>
-          }
-        </tr>
+      <tr class="bg-white hover:bg-beige-normal cursor-pointer text-start border-grey-500" (click)="onRowClick(row)">
+        @for (column of columns(); track column.key) {
+        <td>
+          {{ getDisplayValue(row, column) | translate }}
+        </td>
+        }
+      </tr>
       }
     </tbody>
   </table>

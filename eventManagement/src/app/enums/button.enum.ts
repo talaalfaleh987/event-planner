@@ -23,4 +23,6 @@ export enum ButtonStyle {
   `,
   VIEW = `bg-gray-200 rounded-md p-3 flex`,
   ICON_BUTTON_SM = `flex h-5 w-5 items-center justify-center`,
+  PAGINATOR = `border h-full w-full p-3.5`,
+
 }
