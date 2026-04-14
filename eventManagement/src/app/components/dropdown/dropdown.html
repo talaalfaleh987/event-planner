@@ -1,5 +1,10 @@
-<div class="dropdown w-full" [class.dropdown-open]="isOpen">
-  <div tabindex="0" class="w-full cursor-pointer" (click)="toggleDropdown($event)">
+<div
+  class="dropdown w-full"
+  appDropdownToggle
+  #dropdownToggle="appDropdownToggle"
+  [class.dropdown-open]="dropdownToggle.isOpen()"
+>
+  <div class="w-full cursor-pointer" (click)="dropdownToggle.toggle()">
     <app-input
       [controlName]="controlName()"
       [label]="label()"
@@ -14,20 +19,22 @@
         src="assets/imgs/arrow.svg"
         alt="arrow"
         class="transition-transform duration-200"
-        [class.rotate-180]="isOpen"
+        [class.rotate-180]="dropdownToggle.isOpen()"
       />
     </app-input>
   </div>
-  @if (isOpen) {
+  @if (dropdownToggle.isOpen()) {
     <ul
-      class="dropdown-content z-[1] mt-0 max-h-60 w-full overflow-auto rounded-md border border-grey-light bg-white p-2 shadow-md"
+      class="dropdown-content z-[1] mt-0 p-2 max-h-60 w-full overflow-auto rounded-md border border-grey-light bg-white shadow-md"
     >
       @for (option of options(); track option.value) {
         <li
-          class="cursor-pointer rounded-md p-2 font-neo-regular text-primary hover:bg-primary-normal/10"
-          (click)="selectOption(option)"
+          class="hover:bg-primary-normal/10 p-2 rounded-md cursor-pointer"
+          (click)="selectOption(option); dropdownToggle.close()"
         >
-          {{ getOptionLabel(option) }}
+          <a class="font-neo-regular text-primary">
+            {{ getOptionLabel(option) }}
+          </a>
         </li>
       }
     </ul>
