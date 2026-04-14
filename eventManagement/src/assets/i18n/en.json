@@ -14,7 +14,8 @@
     "PASSWORD_REQUIRED": "Password is required",
     "PASSWORD_MIN_LENGTH": "Password must be at least 8 characters",
     "REQUIRED": "This field is required",
-    "NUMBERS_ONLY": "This field must contain numbers only"
+    "NUMBERS_ONLY": "This field must contain numbers only",
+    "PASSWORD_INVALID": "Must be 8 characters or more and include an uppercase letter, a lowercase letter, and a special character(!@#$%&*)"
   },
   "COMMON": {
     "ADD": "Add",

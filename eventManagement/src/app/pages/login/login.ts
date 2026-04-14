@@ -14,6 +14,7 @@ import { RouterPath } from '../../core/router-paths';
 import { InputErrorMessage } from '../../models/input-error-message';
 import { AuthService } from '../../service/auth/auth-service';
 import { CredentialsControls } from '../../enums/credentials-control';
+import { passwordValidator } from '../../core/validators/password.validator';
 
 @Component({
   selector: 'app-login',
@@ -44,7 +45,10 @@ export class Login {
       validators: [Validators.required, Validators.pattern(REGEX.NUMBERS)],
     }),
     [CredentialsControls.PASSWORD]: new FormControl('', {
-      validators: [Validators.required, Validators.minLength(Constants.PASSWORD_MIN_LENGTH)],
+      validators: [Validators.required,
+      Validators.minLength(Constants.PASSWORD_MIN_LENGTH),
+      passwordValidator(),
+      ]
     }),
   });
 
@@ -55,7 +59,7 @@ export class Login {
 
   passwordErrors: InputErrorMessage[] = [
     { message: 'ERRORS.PASSWORD_REQUIRED', types: [ValidatorType.required] },
-    { message: 'ERRORS.PASSWORD_MIN_LENGTH', types: [ValidatorType.minlength] },
+    { message: 'ERRORS.PASSWORD_INVALID', types: [ValidatorType.strongPassword] },
   ];
 
   onSubmit(): void {
