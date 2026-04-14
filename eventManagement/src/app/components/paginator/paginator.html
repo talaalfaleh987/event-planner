@@ -39,14 +39,47 @@
     </div>
 </div>
 }
-@if (view() === ViewMode.CARD) {
-<div class="flex justify-center p-4">
-    <div class="join flex flex-wrap">
-        @for (page of pages; track page) {
-        <button class="join-item btn" [class.btn-active]="page === currentPage()" (click)="goToPage(page)">
-            {{ page }}
-        </button>
-        }
-    </div>
+@else {
+<!-- NAV BUTTONS (SAME AS TABLE) -->
+ <div class="flex m-6 items-center gap-2">
+
+  <!-- NAV BUTTONS -->
+  <div class="flex flex-wrap" dir="rtl">
+    <app-custom-button
+      [style]="ButtonStyle.PAGINATOR"
+      (click)="previousPage()"
+      [isDisabled]="currentPage() === 1"
+      [class.opacity-50]="currentPage() === 1">
+
+      <img src="assets/imgs/right.svg" alt="previous" />
+    </app-custom-button>
+
+    <app-custom-button
+      [style]="ButtonStyle.PAGINATOR"
+      (click)="nextPage()"
+      [isDisabled]="currentPage() === totalPages()"
+      [class.opacity-50]="currentPage() === totalPages()">
+
+      <img src="assets/imgs/left.svg" alt="next" />
+    </app-custom-button>
+  </div>
+
+  <!-- PAGE NUMBERS -->
+  <div class="flex gap-1 flex-wrap justify-center items-center">
+
+    @for (page of pages; track page) {
+      <app-custom-button
+        [style]="ButtonStyle.NUM_PAGINATOR"
+        (click)="goToPage(page)"
+        [class.bg-primary-normal]="page === currentPage()"
+        [class.text-white]="page === currentPage()"
+        [class.opacity-50]="page !== currentPage()">
+
+        {{ page }}
+      </app-custom-button>
+    }
+
+  </div>
+
 </div>
 }
