@@ -7,13 +7,13 @@ import { CardView } from './card-view/card-view';
 import { Router } from '@angular/router';
 import { RouterPath } from '../../core/router-paths';
 import { EventData } from '../../models/event-details';
-import { AsyncPipe } from '@angular/common';
 import { Table } from '../../components/table/table';
 import { TableColumn } from '../../models/table-columns';
+import { Paginator } from '../../components/paginator/paginator';
 
 @Component({
   selector: 'app-events-management',
-  imports: [AsyncPipe, CustomButton, TranslatePipe, CardView, Table],
+  imports: [ CustomButton, TranslatePipe, CardView, Table, Paginator],
   templateUrl: './events-management.html',
 })
 export class EventsManagement {
@@ -23,7 +23,14 @@ export class EventsManagement {
   readonly ButtonStyle = ButtonStyle;
   readonly ButtonType = ButtonType;
 
-  events$ = this.eventService.getAllEvents();
+  isTableView = signal(true);
+
+  events = signal<EventData[]>([]);
+  loading = signal(false);
+
+  currentPage = signal(1);
+  pageSize = signal(10);
+  totalItems = signal(0);
 
   columns: TableColumn<EventData>[] = [
     { key: 'name', label: 'EVENTS.EVENT_NAME' },
@@ -42,14 +49,12 @@ export class EventsManagement {
     { key: 'time', label: 'EVENTS.EVENT_TIME' },
   ];
 
-  isTableView = signal(true);
-
- onSelectEvent(event: EventData) {
-  this.router.navigate([
-    RouterPath.Pages.EVENTS_MANAGEMENT,
-    event.id
-  ]);
-}
+  onSelectEvent(event: EventData) {
+    this.router.navigate([
+      RouterPath.Pages.EVENTS_MANAGEMENT,
+      event.id
+    ]);
+  }
 
   toggleView(): void {
     this.isTableView.update((view) => !view);
@@ -61,5 +66,46 @@ export class EventsManagement {
       RouterPath.Pages.EVENTS_MANAGEMENT,
       RouterPath.Pages.ADD_EVENT,
     ]);
-  } 
+  }
+
+  ngOnInit(): void {
+    this.eventService.getPaginatedEvents().subscribe((response) => {
+      this.events.set(response.items);
+      this.totalItems.set(response.totalItems);
+      this.currentPage.set(response.currentPage);
+      this.pageSize.set(response.pageSize);
+      this.loading.set(false);
+    });
+  }
+
+  loadEvents(): void {
+    this.loading.set(true);
+
+    this.eventService.getPaginatedEvents().subscribe({
+      next: (response) => {
+        this.events.set(response.items);
+        this.totalItems.set(response.totalItems);
+        this.currentPage.set(response.currentPage);
+        this.pageSize.set(response.pageSize);
+        this.loading.set(false);
+      },
+      error: () => {
+        this.events.set([]);
+        this.totalItems.set(0);
+        this.loading.set(false);
+      },
+    });
+  }
+
+  onPageChange(page: number): void {
+    this.eventService.setPage(page);
+  }
+
+  onPageSizeChange(size: number): void {
+    this.eventService.setPageSize(size);
+  }
+
+  onRowSelect(Event: EventData): void {
+    console.log(Event);
+  }
 }

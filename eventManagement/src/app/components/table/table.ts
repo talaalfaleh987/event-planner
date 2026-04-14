@@ -10,6 +10,7 @@ import { TableColumn } from '../../models/table-columns';
 export class Table<T extends object> {
   data = input.required<T[]>();
   columns = input.required<TableColumn<T>[]>();
+  loading = input<boolean>(false);
 
   rowSelect = output<T>();
 
