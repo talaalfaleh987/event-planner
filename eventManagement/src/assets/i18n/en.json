@@ -15,6 +15,7 @@
     "PASSWORD_MIN_LENGTH": "Password must be at least 8 characters",
     "REQUIRED": "This field is required",
     "NUMBERS_ONLY": "This field must contain numbers only",
+    "INVALID_LINK": "Please enter a valid link starting with http:// or https://",
     "PASSWORD_INVALID": "Must be 8 characters or more and include an uppercase letter, a lowercase letter, and a special character(!@#$%&*)"
   },
   "COMMON": {

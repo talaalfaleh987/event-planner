@@ -84,7 +84,10 @@ export class AddEvent {
     }),
     [EventFormControls.LINK]: new FormControl('', {
       nonNullable: true,
-      validators: [conditionalRequiredValidator(EventFormControls.TYPE, EventType.ONLINE)],
+      validators: [
+        conditionalRequiredValidator(EventFormControls.TYPE, EventType.ONLINE),
+        Validators.pattern(REGEX.URL),
+      ],
     }),
     [EventFormControls.DATE]: new FormControl('', {
       nonNullable: true,
@@ -114,6 +117,7 @@ export class AddEvent {
   ];
   linkErrors: InputErrorMessage[] = [
     { message: 'ERRORS.REQUIRED', types: [ValidatorType.required] },
+    { message: 'ERRORS.INVALID_LINK', types: [ValidatorType.pattern] },
   ];
   dateErrors: InputErrorMessage[] = [
     { message: 'ERRORS.REQUIRED', types: [ValidatorType.required] },
