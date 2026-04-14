@@ -2,12 +2,12 @@ import { Component, inject, input } from '@angular/core';
 import { CustomInput } from '../input/input';
 import { Option } from '../../models/dropdown/option';
 import { LanguageService } from '../../service/language/language-service';
+import { DropdownToggle } from '../../directives/dropdown-toggle';
 
 @Component({
   selector: 'app-dropdown',
-  imports: [CustomInput],
+  imports: [CustomInput, DropdownToggle],
   templateUrl: './dropdown.html',
-  styleUrls: ['./dropdown.css'],
 })
 export class Dropdown extends CustomInput {
   private readonly languageService = inject(LanguageService);
