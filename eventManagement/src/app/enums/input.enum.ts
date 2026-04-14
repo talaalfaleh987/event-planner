@@ -13,4 +13,5 @@ export enum ValidatorType {
   max = 'max',
   min = 'min',
   requiredTrue = 'requiredTrue',
+  strongPassword = 'strongPassword',
 }
