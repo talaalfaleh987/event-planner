@@ -2,23 +2,26 @@ import { Component, computed, input, output } from '@angular/core';
 import { CustomButton } from '../custom-button/custom-button';
 import { ButtonStyle } from '../../enums/button.enum';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ViewMode } from '../../enums/view-mode';
 
 @Component({
   selector: 'app-paginator',
   standalone: true,
-  imports: [ CustomButton, TranslatePipe],
+  imports: [CustomButton, TranslatePipe],
   templateUrl: './paginator.html',
 })
-export class Paginator{
+export class Paginator {
   currentPage = input.required<number>();
   pageSize = input.required<number>();
   totalItems = input.required<number>();
   pageSizeOptions = input<number[]>([5, 10, 20]);
+  view = input<ViewMode>(ViewMode.TABLE);
 
   pageChange = output<number>();
   pageSizeChange = output<number>();
 
   readonly ButtonStyle = ButtonStyle;
+  readonly ViewMode = ViewMode;
 
   totalPages = computed(() => {
     const total = Math.ceil(this.totalItems() / this.pageSize());
@@ -53,4 +56,20 @@ export class Paginator{
   get pages(): number[] {
     return Array.from({ length: this.totalPages() }, (_, index) => index + 1);
   }
+
+  visiblePages = computed(() => {
+    const total = this.totalPages();
+    const current = this.currentPage();
+    const max = 3;
+
+    let start = Math.max(current - Math.floor(max / 2), 1);
+    let end = start + max - 1;
+
+    if (end > total) {
+      end = total;
+      start = Math.max(end - max + 1, 1);
+    }
+
+    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+  });
 }

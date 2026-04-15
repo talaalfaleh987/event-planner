@@ -10,6 +10,7 @@ import { EventData } from '../../models/event-details';
 import { Table } from '../../components/table/table';
 import { TableColumn } from '../../models/table-columns';
 import { Paginator } from '../../components/paginator/paginator';
+import { ViewMode } from '../../enums/view-mode';
 
 @Component({
   selector: 'app-events-management',
@@ -22,6 +23,7 @@ export class EventsManagement {
 
   readonly ButtonStyle = ButtonStyle;
   readonly ButtonType = ButtonType;
+  readonly ViewMode = ViewMode;
 
   isTableView = signal(true);
 

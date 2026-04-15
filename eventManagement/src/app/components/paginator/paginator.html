@@ -1,3 +1,4 @@
+@if (view() === ViewMode.TABLE) {
 <div class="border flex justify-between items-center bg-white text-grey-600 font-neo-sans-regular">
     <div class="flex items-center">
         <div class="border p-2 flex items-center gap-2">
@@ -19,7 +20,7 @@
         <div class="border p-2 flex items-center gap-2">
             <select class="text-primary-normal" [value]="currentPage()" (change)="goToPage($any($event.target).value)">
                 @for (page of pages; track page) {
-                <option [value]="page">{{ page }}</option>
+                <option [value]="page" [selected]="page === currentPage()">{{ page }}</option>
                 }
             </select>
             {{ 'PAGINATOR.OF' | translate }} {{ totalPages() }}
@@ -37,3 +38,30 @@
         </div>
     </div>
 </div>
+}
+@else {
+<div class="flex m-6 items-center gap-1 justify-center">
+    <div class="flex flex-wrap" dir="rtl">
+        <app-custom-button [style]="ButtonStyle.PAGINATOR" (click)="previousPage()" [isDisabled]="currentPage() === 1"
+            [class.opacity-50]="currentPage() === 1">
+            <img src="assets/imgs/right.svg" alt="previous" />
+        </app-custom-button>
+    </div>
+    @for (page of visiblePages(); track page) {
+    <app-custom-button [style]="ButtonStyle.NUM_PAGINATOR" (click)="goToPage(page)"
+        [class.bg-primary-normal]="page === currentPage()" [class.text-white]="page === currentPage()"
+        [class.opacity-50]="page !== currentPage()">
+        {{ page }}
+    </app-custom-button>
+    }
+    @if (visiblePages()[visiblePages().length - 1] < totalPages()) { <span class="px-2">...</span>
+        <app-custom-button [style]="ButtonStyle.NUM_PAGINATOR" (click)="goToPage(totalPages())">
+            {{ totalPages() }}
+        </app-custom-button>
+        }
+        <app-custom-button [style]="ButtonStyle.PAGINATOR" (click)="nextPage()"
+            [isDisabled]="currentPage() === totalPages()" [class.opacity-50]="currentPage() === totalPages()">
+            <img src="assets/imgs/left.svg" alt="next" />
+        </app-custom-button>
+</div>
+}
