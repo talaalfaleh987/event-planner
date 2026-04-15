@@ -7,10 +7,10 @@ import { ViewMode } from '../../enums/view-mode';
 @Component({
   selector: 'app-paginator',
   standalone: true,
-  imports: [ CustomButton, TranslatePipe],
+  imports: [CustomButton, TranslatePipe],
   templateUrl: './paginator.html',
 })
-export class Paginator{
+export class Paginator {
   currentPage = input.required<number>();
   pageSize = input.required<number>();
   totalItems = input.required<number>();
@@ -56,4 +56,20 @@ export class Paginator{
   get pages(): number[] {
     return Array.from({ length: this.totalPages() }, (_, index) => index + 1);
   }
+
+  visiblePages = computed(() => {
+    const total = this.totalPages();
+    const current = this.currentPage();
+    const max = 3;
+
+    let start = Math.max(current - Math.floor(max / 2), 1);
+    let end = start + max - 1;
+
+    if (end > total) {
+      end = total;
+      start = Math.max(end - max + 1, 1);
+    }
+
+    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+  });
 }
