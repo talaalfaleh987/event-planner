@@ -20,7 +20,7 @@ export class EventService {
       location: 'افتراضي',
       link: 'https://www.techconference2026.com',
       date: '2026-04-24',
-      time: '18:00',
+      time: '09:00 صباحا ',
       capacity: '150',
     },
     {
@@ -31,7 +31,7 @@ export class EventService {
       location: 'الرياض',
       link: '',
       date: '2026-05-02',
-      time: '10:00',
+      time: '07:00 مساء ',
       capacity: '30',
     },
     {
@@ -42,18 +42,18 @@ export class EventService {
       location: 'جدة',
       link: '',
       date: '2026-05-10',
-      time: '20:00',
+      time: '11:20 مساء ',
       capacity: '500',
     },
     {
       id: 4,
-      name: 'دورة الذكاء الاصطناعي',
+      name: 'دورة مايكروسوفت',
       category: 'Education',
       type: 'online',
       location: 'افتراضي',
-      link: 'https://ai-course.com',
+      link: 'https://microsoft.com',
       date: '2026-06-01',
-      time: '17:00',
+      time: '09:00 صباحا ',
       capacity: '200',
     },
     {
@@ -64,7 +64,7 @@ export class EventService {
       location: 'الخبر',
       link: '',
       date: '2026-06-16',
-      time: '22:00',
+      time: '09:30 صباحا ',
       capacity: '55',
     },
     {
@@ -75,7 +75,7 @@ export class EventService {
       location: 'الدمام',
       link: '',
       date: '2026-06-12',
-      time: '19:00',
+      time: '11:15 مساء ',
       capacity: '80',
     },
     {
@@ -86,7 +86,7 @@ export class EventService {
       location: 'جدة',
       link: '',
       date: '2026-06-20',
-      time: '20:30',
+      time: '07:30 صباحا ',
       capacity: '300',
     },
     {
@@ -97,7 +97,7 @@ export class EventService {
       location: 'الرياض',
       link: '',
       date: '2026-06-18',
-      time: '11:00',
+      time: '11:00 مساء ',
       capacity: '200',
     },
     {
@@ -108,7 +108,7 @@ export class EventService {
       location: 'جدة',
       link: '',
       date: '2026-07-05',
-      time: '19:00',
+      time: '06:40 صباحا ',
       capacity: '600',
     },
     {
@@ -119,7 +119,7 @@ export class EventService {
       location: '',
       link: 'https://cyber-session.com',
       date: '2026-06-15',
-      time: '16:00',
+      time: '09:00 صباحا ',
       capacity: '120',
     },
     {
@@ -130,7 +130,7 @@ export class EventService {
       location: 'الخبر',
       link: '',
       date: '2026-07-10',
-      time: '09:00',
+      time: '11:15 مساء ',
       capacity: '250',
     },
     {
@@ -141,7 +141,7 @@ export class EventService {
       location: '',
       link: 'https://open-talk.com',
       date: '2026-07-08',
-      time: '21:00',
+      time: '08:00 صباحا ',
       capacity: '70',
     },
     {
@@ -152,7 +152,7 @@ export class EventService {
       location: 'ابها',
       link: '',
       date: '2026-09-3',
-      time: '12:00',
+      time: '09:10 صباحا ',
       capacity: '33',
     },
     {
@@ -163,7 +163,7 @@ export class EventService {
       location: '',
       link: 'https://uiux-workshop.com',
       date: '2026-06-22',
-      time: '18:00',
+      time: '10:33 مساء ',
       capacity: '90',
     },
     {
@@ -174,7 +174,7 @@ export class EventService {
       location: 'افتراضي',
       link: 'https://www.techconference2026.com',
       date: '2026-04-24',
-      time: '18:00',
+      time: '11:15 مساء ',
       capacity: '150',
     },
     {
@@ -185,7 +185,7 @@ export class EventService {
       location: 'الرياض',
       link: '',
       date: '2026-05-02',
-      time: '10:00',
+      time: '08:50 صباحا ',
       capacity: '30',
     },
     {
@@ -196,18 +196,18 @@ export class EventService {
       location: 'جدة',
       link: '',
       date: '2026-05-10',
-      time: '20:00',
+      time: '10:30 مساء ',
       capacity: '500',
     },
     {
       id: 4,
-      name: 'دورة الذكاء الاصطناعي',
+      name: 'دورة مايكروسوفت',
       category: 'Education',
       type: 'online',
       location: 'افتراضي',
-      link: 'https://ai-course.com',
+      link: 'https://microsoft.com',
       date: '2026-06-01',
-      time: '17:00',
+      time: '09:00 صباحا ',
       capacity: '200',
     },
     {
@@ -218,7 +218,7 @@ export class EventService {
       location: 'الخبر',
       link: '',
       date: '2026-06-16',
-      time: '22:00',
+      time: '11:00 مساء ',
       capacity: '55',
     },
     {
@@ -229,7 +229,7 @@ export class EventService {
       location: 'الدمام',
       link: '',
       date: '2026-06-12',
-      time: '19:00',
+      time: '07:00 مساء ',
       capacity: '80',
     },
     {
@@ -240,7 +240,7 @@ export class EventService {
       location: 'جدة',
       link: '',
       date: '2026-06-20',
-      time: '20:30',
+      time: '08:10 مساء ',
       capacity: '300',
     },
     {
@@ -251,7 +251,7 @@ export class EventService {
       location: 'الرياض',
       link: '',
       date: '2026-06-18',
-      time: '11:00',
+      time: '07:00 صباحا ',
       capacity: '200',
     },
     {
@@ -262,7 +262,7 @@ export class EventService {
       location: 'جدة',
       link: '',
       date: '2026-07-05',
-      time: '19:00',
+      time: '06:00 صباحا ',
       capacity: '600',
     },
     {
@@ -273,7 +273,7 @@ export class EventService {
       location: '',
       link: 'https://cyber-session.com',
       date: '2026-06-15',
-      time: '16:00',
+      time: '11:00 مساء ',
       capacity: '120',
     },
     {
@@ -284,7 +284,7 @@ export class EventService {
       location: 'الخبر',
       link: '',
       date: '2026-07-10',
-      time: '09:00',
+      time: '10:00 صباحا ',
       capacity: '250',
     },
     {
@@ -295,7 +295,7 @@ export class EventService {
       location: '',
       link: 'https://open-talk.com',
       date: '2026-07-08',
-      time: '21:00',
+      time: '08:00 مساء ',
       capacity: '70',
     },
     {
@@ -306,7 +306,7 @@ export class EventService {
       location: 'ابها',
       link: '',
       date: '2026-09-3',
-      time: '12:00',
+      time: '03:00 مساء ',
       capacity: '33',
     },
     {
@@ -317,7 +317,7 @@ export class EventService {
       location: '',
       link: 'https://uiux-workshop.com',
       date: '2026-06-22',
-      time: '18:00',
+      time: '07:00 مساء ',
       capacity: '90',
     },
   ]);
@@ -398,12 +398,11 @@ export class EventService {
       ...newEvent,
     };
 
-    const updatedEvents = [...currentEvents, eventWithId];
+    const updatedEvents = [eventWithId, ...currentEvents];
     this.eventsSubject.next(updatedEvents);
 
-    const pageSize = this.pageSizeSubject.getValue();
-    const totalPages = Math.ceil(updatedEvents.length / pageSize);
-    this.currentPageSubject.next(totalPages);
+    this.currentPageSubject.next(Constants.CURRENT_PAGE);
+
     return of(eventWithId);
   }
 

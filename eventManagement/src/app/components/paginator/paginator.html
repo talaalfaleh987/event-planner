@@ -40,7 +40,7 @@
 </div>
 }
 @else {
-<div class="flex m-6 items-center gap-1">
+<div class="flex m-6 items-center gap-1 justify-center">
     <div class="flex flex-wrap" dir="rtl">
         <app-custom-button [style]="ButtonStyle.PAGINATOR" (click)="previousPage()" [isDisabled]="currentPage() === 1"
             [class.opacity-50]="currentPage() === 1">
